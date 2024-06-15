@@ -36,7 +36,7 @@ const validateForm = (event) => {
 
   // Validar password , vacio, minimo de 8 caracteres, sin espacios
   if (password === '') {
-    event.preventDefault();
+    // event.preventDefault();
     messageError('La contraseña es obligatoria', errorPassword);
   } else if (password.length < 8 || password.length > 20) {
     event.preventDefault();
@@ -47,13 +47,13 @@ const validateForm = (event) => {
   } else {
     clearError(errorPassword);
     validarPassword = true;
-  };
+  }
 
   // LLamar a función Mensaje de exito validaciones
   if (validarEmail && validarPassword) {
-    event.preventDefault();
+    // event.preventDefault();
     messageSuccess();
-  };
+  }
 };
 
 // Mensaje de error validaciones

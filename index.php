@@ -104,7 +104,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <h2 class="main_register-subTitle">
             Cancela en cualquier momento.
           </h2>
+	        <?php if(!$user): ?>
           <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
+	        <?php endif;?>
         </section>
       </div>
     </div>
@@ -408,11 +410,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
-    <div class="container py-5 position-relative">
+    <div class="container-fluid py-5 text-center position-relative">
       <div class="row mb-2 mb-md-0">
-        <div class="col">
-          <nav class="footer_links">
-            <ul class="footer_list_links d-flex row-gap-3 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
+        <div class="col-12">
+          <nav class="footer_links d-flex justify-content-center">
+            <ul class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
               <li class="footer_item">
                 <a href="#" class="footer_link">Términos y condiciones</a>
               </li>
@@ -422,9 +424,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
               <li class="footer_item">
                 <a href="#" class="footer_link">Ayuda</a>
               </li>
-              <!-- <li class="footer_item">
-                <a href="#" class="footer_link-active">Administrador Peliculas</a>
-              </li> -->
+              <li class="footer_item">
+                <a href="#" class="footer_link">Contacto</a>
+              </li>
             </ul>
           </nav>
         </div>

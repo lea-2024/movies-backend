@@ -51,16 +51,18 @@
     <title>CAC-movies | Registro</title>
 </head>
 <body>
-<header class="header_color">
-      <nav class="header_nav_links">
-        <!-- Icono y logo -->
-        <a href="../../../index.php" class="header_logo">
-          <i class="fas fa-film"></i>
-          <span>CAC-Movies</span>
-        </a>
-      </nav>
-    </header>
+	<header class="header_color">
+    <nav class="header_nav_links">
+      <!-- Icono y logo -->
+      <a href="../../../index.php" class="header_logo">
+        <i class="fas fa-film"></i>
+        <span>CAC-Movies</span>
+      </a>
+    </nav>
+  </header>
+	<main class="container-fluid p-5 main-container">
+		<h1 class="fs-3">Administrador de Películas</h1>
+	</main>
 
-    
 </body>
 </html>

@@ -25,4 +25,20 @@ CREATE TABLE IF NOT EXISTS usuarios (
     CONSTRAINT chk_rol CHECK (rol IN ('admin', 'usuario'))
 );
 ```
----
+#### Crear la tabla peliculas
+```sql
+CREATE TABLE IF NOT EXISTS peliculas (
+  id_pelicula int UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre varchar(200) NOT NULL,
+  descripcion text NOT NULL,
+  genero varchar(150) NOT NULL,
+  anio int NOT NULL,
+  calificacion tinyint NOT NULL,
+  director varchar(255) NOT NULL,
+  imagen varchar(35) NOT NULL,
+  seccion varchar(100) NOT NULL,
+  estado tinyint NOT NULL DEFAULT 1,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id_pelicula)
+);
+```

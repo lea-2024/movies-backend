@@ -132,6 +132,11 @@ input:-webkit-autofill:focus {
   display: none;
 }
 
+/* margen superior para el contenedor principal */
+.main-container{
+  margin-top: 10vh;
+}
+
 /* Contenido principal - Registrarse */
 .main_register {
   margin-top: 10vh;
@@ -294,7 +299,9 @@ footer {
 
 /* Estilo copyright footer */
 .footer_copyRight {
-  font-size: 0.8rem;
+  margin-bottom: 0px;
+  font-size: 0.7rem;
+  color: #b2b0b0;
 }
 
 /*botón ir arriba*/
