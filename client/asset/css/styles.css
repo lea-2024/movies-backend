@@ -488,7 +488,7 @@ footer {
     border-radius: 10px;
     font-family: sans-serif;
     font-size: 1rem;
-    color: rgb(0, 0, 0);
+    color: #ffffff;
     box-shadow: 0 0 10px #030303;
     border: none;
     background: rgba(255, 255, 255, 0.39);
@@ -507,7 +507,17 @@ footer {
         border-radius: 5px;
         border: none;
         width: 80%;
-        color: white;
+        background: #ffffff;
+    }
+
+    select {
+        padding: 6px;
+        margin: 5px auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+        width: 80%;
+        text-align: center;
     }
 
     label {

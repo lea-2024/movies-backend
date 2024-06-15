@@ -23,16 +23,33 @@
 
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" required />
-                <label for="">Descripcion</label>
+                <label for="">Descripción</label>
                 <textarea
                     name="descripcion"
                     id=""
                     class="descripcion"
                 ></textarea>
-                <label for="genero">Genero</label>
+                <label for="genero">Género</label>
                 <input type="text" name="genero" required />
-                <label for="calificacion">Calificacion</label>
-                <input type="number" name="calificacion" required />
+                <label for="calificacion">Calificación</label>
+                <select name="calificacion" id="">
+                    <option value="" disabled selected>
+                        Selecciona una calificación
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <label for="seccion">Sección</label>
+                <select name="seccion" id="">
+                    <option value="" disabled selected>
+                        Selecciona una sección
+                    </option>
+                    <option value="novedades">Novedades</option>
+                    <option value="aclamadas">Aclamadas</option>
+                </select>
                 <label for="anio">Año</label>
                 <input type="number" name="anio" required />
                 <label for="director">Director</label>
