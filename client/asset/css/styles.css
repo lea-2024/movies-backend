@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: "nunito", sans-serif;
-  scrollbar-color: #9f3647 transparent;
+  scrollbar-color: rgb(0, 105, 197) transparent;
   scrollbar-width: thin;
 }
 
@@ -31,7 +31,7 @@ header {
   top: 0;
   width: 100%;
   display: flex;
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   height: 10vh;
 }
 
@@ -48,6 +48,13 @@ input:-webkit-autofill:focus {
   padding: 0 40px;
   align-items: center;
   justify-content: space-between;
+}
+
+.header_nav_links a{
+  font-family: Bebas Neue,sans-serif;
+  font-size: 1.7rem;
+  color: whitesmoke;
+  font-weight: 500;
 }
 
 /* Logo y Texto */
@@ -74,6 +81,12 @@ input:-webkit-autofill:focus {
   align-items: center;
   gap: 4%;
   list-style: none;
+  
+}
+
+.header_items {
+  text-align: left;
+  white-space: nowrap;
 }
 
 /* link de navegación*/
@@ -88,8 +101,8 @@ input:-webkit-autofill:focus {
 /* efectos hover link de navegacion y logo header */
 .header_link:hover,
 .header_logo:hover {
-  color: rgb(252, 221, 182);
-  font-weight: bolder;
+  color: rgb(44, 44, 44);
+  /* font-weight: bolder; */
 }
 
 /* link de login y API */
@@ -109,11 +122,12 @@ input:-webkit-autofill:focus {
   padding: 8px 14px;
   background-color: transparent;
   border: 2px solid whitesmoke;
+  min-width: 146px;
 }
 
 .header_link-login:hover {
   background-color: whitesmoke;
-  color: #9f3647;
+  color: rgb(0, 105, 197);
 }
 
 /* Botón mostrar/ocultar links de navegación responsive - se oculta en resoluciones grandes */
@@ -170,7 +184,7 @@ input:-webkit-autofill:focus {
 .main_register_btn {
   margin-top: 1rem;
   padding: 15px 25px;
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   color: white;
   text-decoration: none;
   font-size: 1.3rem;
@@ -205,7 +219,7 @@ input:-webkit-autofill:focus {
   outline: none;
   border: transparent;
   outline-offset: -2px;
-  box-shadow: 0 0 4px 5px #9f3647;
+  box-shadow: 0 0 4px 5px rgb(0, 105, 197);
 }
 
 /*boton form search*/
@@ -214,7 +228,7 @@ input:-webkit-autofill:focus {
   padding: 0 20px;
   border-radius: 50px;
   color: white;
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   font-size: 1.2rem;
   font-weight: bold;
   border: 2px solid white;
@@ -225,7 +239,7 @@ input:-webkit-autofill:focus {
 .line_divisor {
   width: 80%;
   margin: auto;
-  border: 1px solid #9f3647;
+  border: 1px solid rgb(0, 105, 197);
 }
 
 /*sección peliculas - tendencias*/
@@ -239,7 +253,7 @@ input:-webkit-autofill:focus {
 
 /*botones tendencias anterior - siguiente */
 .main_trends_btn {
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   width: 110px;
   padding: 1rem;
   font-size: 1rem;
@@ -257,7 +271,7 @@ input:-webkit-autofill:focus {
 
 /* Footer **************************************/
 footer {
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
 }
 
 /* footer nav */
@@ -276,7 +290,7 @@ footer {
 
 /* efectos links footer hover */
 .footer_link:hover {
-  color: rgb(252, 221, 182);
+  color: rgb(41, 41, 41);
   font-weight: bolder;
 }
 
@@ -294,14 +308,14 @@ footer {
 /* footer - link activo - hover */
 .footer_link-active:hover {
   background-color: whitesmoke;
-  color: #9f3647;
+  color: rgb(0, 105, 197);
 }
 
 /* Estilo copyright footer */
 .footer_copyRight {
   margin-bottom: 0px;
   font-size: 0.7rem;
-  color: #b2b0b0;
+  color: #f5f5f5;
 }
 
 /*botón ir arriba*/
@@ -416,7 +430,7 @@ footer {
   overflow: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #9f3647 #33333333;
+  scrollbar-color: rgb(0, 105, 197) #ffffff33;
 }
 
 /* Contenedor de pelicula */
@@ -439,7 +453,7 @@ footer {
   margin-right: 70px;
   color: whitesmoke;
   padding: 1px 3px;
-  background: #9f3647;
+  background: rgb(0, 105, 197);
   border: none;
   opacity: 1;
   border-radius: 4px;
@@ -462,7 +476,7 @@ footer {
 .main_register_btn:hover,
 .main_search_btn:hover,
 .form_btn:hover {
-  background-color: #812b3a;
+  background-color: rgb(36, 143, 236);
 }
 
 /* ****************************************************************************************************************************** */
@@ -496,7 +510,7 @@ footer {
   padding: 8px 15px;
   border-radius: 7px;
   outline: none;
-  border: 2px solid #9f3647;
+  border: 2px solid rgb(0, 105, 197);
   background: transparent;
   color: silver;
 }
@@ -537,7 +551,7 @@ input[type="date"] {
 
 /* cmbiar color al hacer foco en input */
 .form_input:focus {
-  border: 2px solid #911c2f;
+  border: 2px solid rgb(0, 105, 197);
 }
 
 /* estilos link de formulario */
@@ -571,7 +585,7 @@ input[type="date"] {
   font-size: 1.2rem;
   padding: 10px 5px;
   border-radius: 7px;
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   color: white;
   border: none;
   transition: background-color ease-in-out 500ms;
@@ -616,7 +630,7 @@ input[type="date"] {
 /* card de personaje */
 .card_character{
   transform: scale(1);
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   cursor: pointer;
   transition: all ease-in-out 500ms;
 }
@@ -628,15 +642,15 @@ input[type="date"] {
 .btn_next_prev{
   padding: 10px 20px;
   margin: 0 20px;
-  border:2px solid #9f3647;
+  border:2px solid rgb(0, 105, 197);
   background-color: transparent;
-  color: #9f3647;
+  color: rgb(0, 105, 197);
   border-radius: 5px;
   transition: all ease-in-out 500ms;
 }
 /* efecto hover botón */
 .btn_next_prev:hover{
-  background-color: #9f3647;
+  background-color: rgb(0, 105, 197);
   color: white;
 }
 
@@ -651,11 +665,15 @@ input[type="date"] {
 
 /* Estilos de spinner loading */
 .spinner_style{
-  color: #9f3647;
+  color: rgb(0, 105, 197);
 }
 
 
-@media only screen and (min-width: 768px) and (max-width: 924px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .header_nav_links a{
+    font-size: 1.2rem;
+  }
 
   .header_link{
     font-size: 0.9rem;
@@ -682,7 +700,7 @@ input[type="date"] {
     top: 10vh;
     left: 0;
     width: 100%;
-    background: #bb485a;
+    background: rgb(0, 105, 197);
     padding: 0;
     height: auto;
   }
@@ -712,7 +730,7 @@ input[type="date"] {
 
   /* color de fondo link API */
 .header_link-api{
-  background-color: #911b2e;
+  background-color: rgb(0, 105, 197);
   padding: 8px 0;
   border: none;
 }
@@ -722,13 +740,13 @@ input[type="date"] {
     display: block;
     padding: 10px 0;
     background-color: whitesmoke;
-    color: #9f3647;
+    color: rgb(0, 105, 197);
     box-shadow: none;
   }
 
   .header_link-login:hover {
     background-color: whitesmoke;
-    color: #9f3647;
+    color: rgb(0, 105, 197);
     padding: 10px 14px;
     border-radius: 0;
     font-size: 1.1rem;
