@@ -11,3 +11,6 @@ logs/
 
 # Ignorar todos los archivos dentro de client/asset/json
 client/asset/json/
+
+#Ignorar archivo generado por VSCode
+.idea

@@ -860,3 +860,70 @@ input[type="date"] {
     padding-bottom: 30px;
   }
 }
+
+/*
+-----------------------------------------------------------------------------------------------------------
+            STYLES - API - BACKEND
+-----------------------------------------------------------------------------------------------------------
+*/
+
+/* botón agregar nueva pelicula - dashboard */
+
+.container-api{
+  margin-top: 10vh;
+}
+
+.link_movie-add{
+  display: flex;
+  align-items: center;
+  gap:5px;
+  text-decoration: none;
+  color:whitesmoke;
+  padding: 10px 15px;
+  border-radius: 7px;
+  background-color: #9f3647;
+  transition: all 500ms ease-in-out;
+}
+
+.link_movie-add:hover{
+  background-color: #912839;
+  color:white;
+}
+
+/* Imágen vista tabla */
+
+.table-image{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* Boton eliminar tabla dashboard */
+.link-delete{
+  background:transparent;
+  border: none;
+}
+
+/* Imágenes de las card - vista previa dashboard - index.php */
+.img-card{
+  min-height: 250px;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+/* Botón estado acvito / no activo  */
+input[type=checkbox]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #9f3647;
+  background-color: dimgrey;
+}
+
+input[type=checkbox]:checked{
+  background-image: url("../../asset/images/check_18.png");
+  background-position: center;
+}
