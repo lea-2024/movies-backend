@@ -25,20 +25,27 @@ CREATE TABLE IF NOT EXISTS usuarios (
     CONSTRAINT chk_rol CHECK (rol IN ('admin', 'usuario'))
 );
 ```
+---
 #### Crear la tabla peliculas
 ```sql
 CREATE TABLE IF NOT EXISTS peliculas (
-  id_pelicula int UNSIGNED NOT NULL AUTO_INCREMENT,
-  nombre varchar(200) NOT NULL,
-  descripcion text NOT NULL,
-  genero varchar(150) NOT NULL,
-  anio int NOT NULL,
-  calificacion tinyint NOT NULL,
-  director varchar(255) NOT NULL,
-  imagen varchar(35) NOT NULL,
-  seccion varchar(100) NOT NULL,
-  estado tinyint NOT NULL DEFAULT 1,
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id_pelicula INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(200) NOT NULL,
+  descripcion TEXT NOT NULL,
+  genero VARCHAR(150) NOT NULL,
+  anio INT NOT NULL,
+  calificacion DECIMAL(4,3) NOT NULL DEFAULT 1,
+  director VARCHAR(255) NOT NULL,
+  imagen VARCHAR(255) NOT NULL,
+  seccion VARCHAR(100),
+  estado TINYINT NOT NULL DEFAULT 1,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_pelicula)
 );
 ```
+---
+#### Pegar esta direccion en la url y crea las peliculas en la base de datos
+<p style="color: #60A2F2 ; font-weight: bold;">localhost/movies-backend/api/unload/uploadmovies</p>
+
+---
+
