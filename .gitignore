@@ -1,5 +1,6 @@
 # Ignorar archivos de configuración de entorno
 .env
+.idea
 
 # Ignorar directorios de dependencias
 node_modules/
