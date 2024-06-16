@@ -79,4 +79,19 @@ function loginUser($email, $password) {
 // ---------------------------------------------------------------------------------------------------
 //                                            CRUD DE USUARIOS
 // ---------------------------------------------------------------------------------------------------
+  
+  // ---------------------------------------------------------------------------------------------------
+  //                                          CRUD DE PELICULAS
+  // ---------------------------------------------------------------------------------------------------
+  
+function getAllMovies(){
+  global $conn;
 
+  try {
+    $stmt = $conn->query("SELECT * FROM peliculas");
+    $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $peliculas;
+  } catch (PDOException $e){
+    echo "Error al obtener datos: ". $e->getMessage();
+  }
+}
