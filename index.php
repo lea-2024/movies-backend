@@ -1,4 +1,11 @@
 <?php
+$conexion = mysqli_connect("localhost", 'root', "root", 'movies_db');
+if (mysqli_connect_errno()) {
+  echo "fallo la conexion - error: " . mysqli_connect_errno();
+} else {
+  //echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
+}
+
 require './api/crud.php';
 session_start();
 
@@ -88,6 +95,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     </nav>
   </header>
   <!-- Fin encabezado-->
+
   <!-- Contenido principal del sitio -->
   <main class="container-fluid main_container" id="mainContainer">
     <!-- Registrarse -->
@@ -105,9 +113,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <h2 class="main_register-subTitle">
             Cancela en cualquier momento.
           </h2>
-	        <?php if(!$user): ?>
-          <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
-	        <?php endif;?>
+          <?php if (!$user) : ?>
+            <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
+          <?php endif; ?>
         </section>
       </div>
     </div>
@@ -143,158 +151,35 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       </div>
 
       <!-- Contenedor Películas    -->
+      <?php
+      // query de insercion
+      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='tendencias'";
+      $consulta = mysqli_query($conexion, $query);
+      ?>
       <div class="row mt-5">
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
-          <!-- Pelicula 1 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_1.jpg" alt="The Beekeeper" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Beekeeper">
-                  The Beekeeper
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 2 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_2.jpg" alt="Badland Hunters" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Badland Hunters">
-                  Badland Hunters
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 3 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_3.jpg" alt="The Marvels" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Marvels">
-                  The Marvels
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 4 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_4.jpg" alt="Wonka" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Wonka">Wonka</h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 5 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_5.jpg" alt="Aquaman Lost kingdom" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Aquaman and The lost kingdom">
-                  Aquaman and The lost kingdom
-                </h4>
-                <p class="trend_review-hover">⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 6 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_6.jpg" alt="Migration" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Migration">Migration</h4>
-                <p class="trend_review-hover">⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 7 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_7.jpg" alt="60 minutes" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="60 minutes">
-                  60 minutes
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 8 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_8.jpg" alt="Wish" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Wish">Wish</h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 9 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_9.jpg" alt="The Masked Saint" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Masked Saint">
-                  The Masked Saint
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 10 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_10.jpg" alt="Due Justice" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Due Justice">
-                  Due Justice
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 11 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_11.jpg" alt="Orion And The Dark" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Orion And The Dark">
-                  Orion And The Dark
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 12 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_12.jpg" alt="Genghis Khan" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="TGenghis Khan">
-                  Genghis Khan
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
+
+          <!-- Tendencias -->
+          <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+
+            <div class="trend_container">
+              <a href="#" class="trend_container_link">
+                <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+                <div class="trend_container-hover">
+                  <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                  <p class="trend_review-hover">
+                    <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
+                      echo '⭐';
+                    }
+                    ?>
+                  </p>
+                  <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
+                </div>
+              </a>
+            </div>
+
+          <?php } ?>
+
         </div>
       </div>
       <!-- Fin peliculas tendencias-->
@@ -319,6 +204,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
       </div>
       <!-- Contenedor aclamadas -->
+      <?php
+      // query de insercion
+      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='aclamadas'";
+      $consulta = mysqli_query($conexion, $query);
+      ?>
       <div class="row acclaimeds">
         <div class="col position-relative p-md-5">
           <section class="d-flex gap-md-5 gap-3 mt-5 mt-md-0 px-md-3 align-items-center acclaimeds_container" id="acclaimedsContainer">
@@ -328,78 +218,15 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <button class="position-absolute end-0 fs-2 acclaimed_btn" id="acclaimedBtnNext">
               <i class="fa-solid fa-angle-right"></i>
             </button>
-            <!-- aclamada 1 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_1.jpg" alt="aclamada 1" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 2 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_2.jpg" alt="aclamada 2" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 3 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_3.jpg" alt="aclamada 3" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 4 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_4.jpg" alt="aclamada 4" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 5 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_5.jpg" alt="aclamada 5" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 6 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_6.jpg" alt="aclamada 6" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 7 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_7.jpg" alt="aclamada 7" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 8 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_8.jpg" alt="aclamada 8" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 9 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_9.jpg" alt="aclamada 9" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 10 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_10.jpg" alt="aclamada 10" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 11 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_11.jpg" alt="aclamada 11" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 12 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_12.jpg" alt="aclamada 12" class="acclaimed_image" />
-              </a>
-            </div>
+
+            <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+              <div class="acclaimed_container">
+                <a href="#">
+                  <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                </a>
+              </div>
+            <?php } ?>
+
           </section>
         </div>
       </div>
