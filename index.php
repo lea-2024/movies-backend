@@ -1,16 +1,14 @@
 <?php
-$conexion = mysqli_connect("localhost", 'root', "root", 'movies_db');
-if (mysqli_connect_errno()) {
-  echo "fallo la conexion - error: " . mysqli_connect_errno();
-} else {
-  //echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
-}
-
 require './api/crud.php';
 session_start();
 
 // Comprobar si el usuario ha iniciado sesión
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
+$seccionTendencias = 'tendencias';
+$seccionAclamadas = 'aclamadas';
+$tendencias = getMoviesBySection($seccionTendencias);
+$aclamadas = getMoviesBySection($seccionAclamadas);
 ?>
 
 
@@ -41,6 +39,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./client/asset/images/film.ico" type="image/x-icon" />
+  <style>
+    #resultados {
+      display: none;
+    }
+  </style>
   <!-- Título de la Pestaña -->
   <title>CAC-MOVIES | Inicio</title>
 </head>
@@ -128,15 +131,53 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <!-- Formulario para buscar películas -->
           <div class="row">
             <div class="col-md-8 col-12 offset-md-2 col-lg-6 offset-lg-3 offset-0">
-              <form class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
+              <form id="searchForm" method="GET" action="" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
                 <input type="search" name="search" id="search" placeholder="Buscar..." class="h-50 main_search_input" />
                 <input type="submit" value="Buscar" class="main_search_btn" />
+                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn"">Limpiar</button>
               </form>
+              <div id="searchAncla">
             </div>
           </div>
         </div>
       </div>
+      </div>
     </section>
+    <!-- Separar sección con línea -->
+    <hr class="line_divisor" />
+    <div id="resultados" class="mt-5">
+      <h2>Resultados</h2>
+      <div class="row mt-5">
+        <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
+          <?php
+          if (isset($_GET['search'])) {
+            $name = $_GET['search'];
+            $resultados = searchMoviesByName($name);
+
+            if (!empty($resultados)) {
+              foreach ($resultados as $pelicula) {
+                echo '<div class="trend_container">';
+                echo '<a href="#" class="trend_container_link">';
+                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+                echo '<div class="trend_container-hover">';
+                echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
+                echo htmlspecialchars($pelicula['nombre']);
+                echo '</h4>';
+                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
+                echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+              }
+            } else {
+              echo "No se encontraron películas.";
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <div class="mb-5"></div>
+    </div>
 
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
@@ -151,16 +192,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       </div>
 
       <!-- Contenedor Películas    -->
-      <?php
-      // query de insercion
-      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='tendencias'";
-      $consulta = mysqli_query($conexion, $query);
-      ?>
       <div class="row mt-5">
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+          <?php foreach ($tendencias as $registro) { ?>
 
             <div class="trend_container">
               <a href="#" class="trend_container_link">
@@ -204,11 +240,6 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
       </div>
       <!-- Contenedor aclamadas -->
-      <?php
-      // query de insercion
-      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='aclamadas'";
-      $consulta = mysqli_query($conexion, $query);
-      ?>
       <div class="row acclaimeds">
         <div class="col position-relative p-md-5">
           <section class="d-flex gap-md-5 gap-3 mt-5 mt-md-0 px-md-3 align-items-center acclaimeds_container" id="acclaimedsContainer">
@@ -219,10 +250,14 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
               <i class="fa-solid fa-angle-right"></i>
             </button>
 
-            <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+            <?php foreach ($aclamadas  as $registro) { ?>
               <div class="acclaimed_container">
                 <a href="#">
                   <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                  <div class="trend_container-hover">
+                    <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                    <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
+                  </div>
                 </a>
               </div>
             <?php } ?>
@@ -276,6 +311,15 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Fin footer-->
   <!-- Enlace script index.js-->
   <script src="./client/asset/js/index.js"></script>
+  <script src="./client/asset/js/search.js"></script>
+  <script>
+    // JavaScript para mostrar el div si hay resultados y el botón de limpiar
+    <?php if (isset($resultados) && !empty($resultados)) : ?>
+      document.getElementById('resultados').style.display = 'block';
+      document.getElementById('clearButton').style.display = 'inline-block';
+      window.location.hash = 'searchAncla';
+    <?php endif; ?>
+  </script>
 </body>
 
 </html>

@@ -945,3 +945,24 @@ input[type=checkbox]:checked{
   background-image: url("../../asset/images/check_17.png");
   background-position: center;
 }
+
+/* inicio search */
+
+
+#resultados{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.trend_container {
+  text-align: center;
+}
+.trend_image {
+  width: 100%;
+  max-width: 200px;
+}
+#clearButton {
+  display: none;
+}
+/* fin search */

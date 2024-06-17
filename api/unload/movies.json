@@ -2286,15 +2286,6 @@
         "calificacion": 8.537
     },
     {
-        "nombre": "The Matrix",
-        "imagen": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
-        "anio": 1999,
-        "genero": "Action, Science Fiction",
-        "descripcion": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
-        "director": "Lana Wachowski",
-        "calificacion": 8.217
-    },
-    {
         "nombre": "Kalikot",
         "imagen": "https://image.tmdb.org/t/p/w500/bnOz6hfBTOIDYyrj8P3Pcj4uVzE.jpg",
         "anio": 2024,
@@ -5551,33 +5542,6 @@
         "descripcion": "At the New York State University, one of Peter Parker's tutors has accidentally given three students all the materials they need to create an atomic bomb. While Peter Parker tries to find out what's happened, the police suspect him of the crime, and Peter has to deal with an attractive journalist determined to get an interview with Spider-Man. Then dastardly millionaire Mr. White shows up, and will stop at nothing to get his hands on the atomic bomb. Spider-Man must defeat this scheming villain and stop him blowing up the World Trade Centre.",
         "director": "Ron Satlof",
         "calificacion": 5.7
-    },
-    {
-        "nombre": "Matrix",
-        "imagen": "https://image.tmdb.org/t/p/w500/AfFD10ZqEx2vkxM2yvRZkybsGB7.jpg",
-        "anio": 1998,
-        "genero": "Action, Science Fiction",
-        "descripcion": "The film is composed of receding planes in a landscape: a back garden and the houses beyond. The wooden lattice fence, visible in the image, marks the border between enclosed and open, private and public space, and forms both a fulcrum for the work and a formal grid by which the shots are framed and organised.",
-        "director": "Nicky Hamlyn",
-        "calificacion": 6.9
-    },
-    {
-        "nombre": "Matrix",
-        "imagen": "https://image.tmdb.org/t/p/w500/frDqG8rmqKUg4HzQ604LZo8VLHB.jpg",
-        "anio": 1973,
-        "genero": "Action, Science Fiction",
-        "descripcion": "\"MATRIX is a flicker film which utilizes 81 still photographs of my wife's head. It is a film dependent upon variation of intense light changes by calculated combinations of black and white frame alternations with exposure changes. Throughout, the light intensity rises and falls as the head rotates in varying directions within a 360 degree frontal area.\" — James Cagle",
-        "director": "James Cagle",
-        "calificacion": 6.6
-    },
-    {
-        "nombre": "Matrix",
-        "imagen": "https://image.tmdb.org/t/p/w500/wx2s9xYeC6uP2auuuVg99yl4RpU.jpg",
-        "anio": 1973,
-        "genero": "Action, Science Fiction",
-        "descripcion": "Abstract art film made for gallery exhibition.",
-        "director": "Malcolm Le Grice",
-        "calificacion": 5.9
     },
     {
         "nombre": "The Matrix",

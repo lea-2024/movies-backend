@@ -84,6 +84,7 @@ function loginUser($email, $password) {
   //                                          CRUD DE PELICULAS
   // ---------------------------------------------------------------------------------------------------
   
+  // trae todas las peliculas
 function getAllMovies(){
   global $conn;
 
@@ -95,3 +96,32 @@ function getAllMovies(){
     echo "Error al obtener datos: ". $e->getMessage();
   }
 }
+
+// trae las peliculas por seccion
+function getMoviesBySection($seccion) {
+  global $conn;
+
+  try {
+      $stmt = $conn->prepare("SELECT * FROM peliculas WHERE seccion = :seccion");
+      $stmt->bindParam(':seccion', $seccion);
+      $stmt->execute();
+      $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $peliculas;
+  } catch (PDOException $e) {
+      echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
+  // Obtener pelicula por nombre
+  function searchMoviesByName($name) {
+    global $conn;
+  
+    try {
+      $stmt = $conn->prepare("SELECT * FROM peliculas WHERE nombre LIKE :name");
+      $stmt->execute(['name' => '%' . $name . '%']);
+      $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $peliculas;
+    } catch (PDOException $e){
+      echo "Error al obtener datos: ". $e->getMessage();
+    }
+  }

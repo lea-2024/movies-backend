@@ -8,7 +8,7 @@
 //               $port     =>
 //               $socket   =>  
 // retorna un OBJETO que llamamos $conexion
-$conexion = mysqli_connect("localhost", 'root', "root", 'movies_db');
+$conexion = mysqli_connect("localhost", 'root', "", 'movies_db');
 // en el SERVIDOR https://ar.000webhost.com/members/website/mmdohmen/dashboard
 //$conexion = mysqli_connect("localhost", 'id18225605_testo', "Zeta-18079551", 'id18225605_utesto');
 
