@@ -5398,5 +5398,1193 @@
         "descripcion": "A young pregnant woman discovers that her perfect boyfriend may be a dangerous sleepwalker when she finds out of strange disappearances and murders taking place in the region.",
         "director": "Mélanie Delloye-Betancourt",
         "calificacion": 6.7
+    },
+    {
+        "nombre": "Spider-Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg",
+        "anio": 2002,
+        "genero": "Action, Science Fiction",
+        "descripcion": "After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school student Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.",
+        "director": "Sam Raimi",
+        "calificacion": 7.297
+    },
+    {
+        "nombre": "Spider-Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/jNxRHZ2cxVkNRtxgHuCtv7GY4JP.jpg",
+        "anio": 1977,
+        "genero": "Science Fiction, Action, Crime, TV Movie",
+        "descripcion": "When an extortionist threatens to force a multi-suicide unless a huge ransom is paid, only Peter Parker can stop him with his new powers as Spider-Man.",
+        "director": "E.W. Swackhamer",
+        "calificacion": 6.1
+    },
+    {
+        "nombre": "Spider-Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/iYBfBk1i9zjN9Vybbj8UgTYzkyv.jpg",
+        "anio": 1969,
+        "genero": "Action, Science Fiction",
+        "descripcion": "Spider-man must rescue the beautiful daughter of the evil Dr. Lightning.",
+        "director": "Donald F. Glut",
+        "calificacion": 6.667
+    },
+    {
+        "nombre": "Spider-Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/y6M33fb3AjJAD7jMP6TSumjtl1O.jpg",
+        "anio": 1990,
+        "genero": "Action, Science Fiction",
+        "descripcion": "Peter Parker is spiderman",
+        "director": "Christian Davi",
+        "calificacion": 7
+    },
+    {
+        "nombre": "Spider-Man: Homecoming",
+        "imagen": "https://image.tmdb.org/t/p/w500/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+        "anio": 2017,
+        "genero": "Action, Adventure, Science Fiction, Drama",
+        "descripcion": "Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.",
+        "director": "Jon Watts",
+        "calificacion": 7.337
+    },
+    {
+        "nombre": "Spider-Man: No Way Home",
+        "imagen": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+        "anio": 2021,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+        "director": "Jon Watts",
+        "calificacion": 7.966
+    },
+    {
+        "nombre": "Spider-Man: Across the Spider-Verse",
+        "imagen": "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+        "anio": 2023,
+        "genero": "Animation, Action, Adventure, Science Fiction",
+        "descripcion": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+        "director": "Joaquim Dos Santos",
+        "calificacion": 8.362
+    },
+    {
+        "nombre": "The Amazing Spider-Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/BgcvtsVWLQfjHD6Dr3YYgeSLYk.jpg",
+        "anio": 2012,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "Peter Parker is an outcast high schooler abandoned by his parents as a boy, leaving him to be raised by his Uncle Ben and Aunt May. Like most teenagers, Peter is trying to figure out who he is and how he got to be the person he is today. As Peter discovers a mysterious briefcase that belonged to his father, he begins a quest to understand his parents' disappearance – leading him directly to Oscorp and the lab of Dr. Curt Connors, his father's former partner. As Spider-Man is set on a collision course with Connors' alter ego, The Lizard, Peter will make life-altering choices to use his powers and shape his destiny to become a hero.",
+        "director": "Marc Webb",
+        "calificacion": 6.702
+    },
+    {
+        "nombre": "Spider-Man: Into the Spider-Verse",
+        "imagen": "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+        "anio": 2018,
+        "genero": "Animation, Action, Adventure, Science Fiction",
+        "descripcion": "Struggling to find his place in the world while juggling school and family, Brooklyn teenager Miles Morales is unexpectedly bitten by a radioactive spider and develops unfathomable powers just like the one and only Spider-Man. While wrestling with the implications of his new abilities, Miles discovers a super collider created by the madman Wilson \"Kingpin\" Fisk, causing others from across the Spider-Verse to be inadvertently transported to his dimension.",
+        "director": "Bob Persichetti",
+        "calificacion": 8.405
+    },
+    {
+        "nombre": "Spider-Man: Far From Home",
+        "imagen": "https://image.tmdb.org/t/p/w500/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
+        "anio": 2019,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+        "director": "Jon Watts",
+        "calificacion": 7.428
+    },
+    {
+        "nombre": "Spider-Man 3",
+        "imagen": "https://image.tmdb.org/t/p/w500/qFmwhVUoUSXjkKRmca5yGDEXBIj.jpg",
+        "anio": 2007,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "The seemingly invincible Spider-Man goes up against an all-new crop of villains—including the shape-shifting Sandman. While Spider-Man’s superpowers are altered by an alien organism, his alter ego, Peter Parker, deals with nemesis Eddie Brock and also gets caught up in a love triangle.",
+        "director": "Sam Raimi",
+        "calificacion": 6.42
+    },
+    {
+        "nombre": "The Amazing Spider-Man 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/kV61FAIsRWZP6JhgWFOKug9RbBx.jpg",
+        "anio": 2014,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "For Peter Parker, life is busy. Between taking out the bad guys as Spider-Man and spending time with the person he loves, Gwen Stacy, high school graduation cannot come quickly enough. Peter has not forgotten about the promise he made to Gwen’s father to protect her by staying away, but that is a promise he cannot keep. Things will change for Peter when a new villain, Electro, emerges, an old friend, Harry Osborn, returns, and Peter uncovers new clues about his past.",
+        "director": "Marc Webb",
+        "calificacion": 6.508
+    },
+    {
+        "nombre": "Vjeran Tomic: The Spider-Man of Paris",
+        "imagen": "https://image.tmdb.org/t/p/w500/sv0Pzq9Kdv3NBZNdKnEu9xOdcT4.jpg",
+        "anio": 2023,
+        "genero": "Documentary, Crime",
+        "descripcion": "In his own words, the burglar behind the 2010 robbery of the Paris Museum of Modern Art tells how he pulled off the biggest art heist in French history.",
+        "director": "Jamie Roberts",
+        "calificacion": 7
+    },
+    {
+        "nombre": "Spider-Man 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/olxpyq9kJAZ2NU1siLshhhXEPR7.jpg",
+        "anio": 2004,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "Peter Parker is going through a major identity crisis. Burned out from being Spider-Man, he decides to shelve his superhero alter ego, which leaves the city suffering in the wake of carnage left by the evil Doc Ock. In the meantime, Parker still can't act on his feelings for Mary Jane Watson, a girl he's loved since childhood. A certain anger begins to brew in his best friend Harry Osborn as well...",
+        "director": "Sam Raimi",
+        "calificacion": 7.275
+    },
+    {
+        "nombre": "Spider-Man: All Roads Lead to No Way Home",
+        "imagen": "https://image.tmdb.org/t/p/w500/e2LLmI5wKIrWGAy9Of3yyWu7Szn.jpg",
+        "anio": 2022,
+        "genero": "Documentary",
+        "descripcion": "Join our hosts JB Smoove and Martin Starr for a celebration of 20 years of Spider-Man™ movies!  From the original Sam Raimi trilogy to Marc Webb’s “amazing” movies to the latest trio from Director Jon Watts, we will take viewers through the stars, the stunts and action, the villains and heroes and an homage to Stan Lee, along with a few surprises. Find your favourite Spider-Man pajamas and prepare to swing through the past two decades of Spider-Man at the movies!",
+        "director": "Jon Watts",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Once Upon a Time: The Super Heroes",
+        "imagen": "https://image.tmdb.org/t/p/w500/b6760qS8pEb3elWp4e7KPQsGliC.jpg",
+        "anio": 2001,
+        "genero": "Documentary, TV Movie",
+        "descripcion": "The historical saga of American superheroes. Born in the period between the Great Depression and the World War II to combat the hobgoblins of the modern world, these mutant human beings with superhuman powers colonized the funny papers, radio dramas, television and films, to become a truly national industry in the United States: they gave expression to the fears and obsessions of the twentieth century and bolstered American ideals.",
+        "director": "Michel Viotte",
+        "calificacion": 7.039
+    },
+    {
+        "nombre": "Spider-Man Strikes Back",
+        "imagen": "https://image.tmdb.org/t/p/w500/mwRss4cA5m4fH6izoTwwPfF3ZOU.jpg",
+        "anio": 1978,
+        "genero": "Action, Adventure, Family, Fantasy, TV Movie",
+        "descripcion": "At the New York State University, one of Peter Parker's tutors has accidentally given three students all the materials they need to create an atomic bomb. While Peter Parker tries to find out what's happened, the police suspect him of the crime, and Peter has to deal with an attractive journalist determined to get an interview with Spider-Man. Then dastardly millionaire Mr. White shows up, and will stop at nothing to get his hands on the atomic bomb. Spider-Man must defeat this scheming villain and stop him blowing up the World Trade Centre.",
+        "director": "Ron Satlof",
+        "calificacion": 5.7
+    },
+    {
+        "nombre": "Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/AfFD10ZqEx2vkxM2yvRZkybsGB7.jpg",
+        "anio": 1998,
+        "genero": "Action, Science Fiction",
+        "descripcion": "The film is composed of receding planes in a landscape: a back garden and the houses beyond. The wooden lattice fence, visible in the image, marks the border between enclosed and open, private and public space, and forms both a fulcrum for the work and a formal grid by which the shots are framed and organised.",
+        "director": "Nicky Hamlyn",
+        "calificacion": 6.9
+    },
+    {
+        "nombre": "Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/frDqG8rmqKUg4HzQ604LZo8VLHB.jpg",
+        "anio": 1973,
+        "genero": "Action, Science Fiction",
+        "descripcion": "\"MATRIX is a flicker film which utilizes 81 still photographs of my wife's head. It is a film dependent upon variation of intense light changes by calculated combinations of black and white frame alternations with exposure changes. Throughout, the light intensity rises and falls as the head rotates in varying directions within a 360 degree frontal area.\" — James Cagle",
+        "director": "James Cagle",
+        "calificacion": 6.6
+    },
+    {
+        "nombre": "Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/wx2s9xYeC6uP2auuuVg99yl4RpU.jpg",
+        "anio": 1973,
+        "genero": "Action, Science Fiction",
+        "descripcion": "Abstract art film made for gallery exhibition.",
+        "director": "Malcolm Le Grice",
+        "calificacion": 5.9
+    },
+    {
+        "nombre": "The Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+        "anio": 1999,
+        "genero": "Action, Science Fiction",
+        "descripcion": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
+        "director": "Lana Wachowski",
+        "calificacion": 8.217
+    },
+    {
+        "nombre": "Matrix: Generation",
+        "imagen": "https://image.tmdb.org/t/p/w500/53McB8R9RUBxfINRxWaPwUMtL5Q.jpg",
+        "anio": 2023,
+        "genero": "Documentary, TV Movie",
+        "descripcion": "After the 1999 premiere of the first Matrix movie, it became a pop culture phenomenon. A special documentary about the Matrix saga and its prophetic aspects.",
+        "director": "Benjamin Clavel",
+        "calificacion": 9
+    },
+    {
+        "nombre": "The Matrix Resurrections",
+        "imagen": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
+        "anio": 2021,
+        "genero": "Science Fiction, Action, Adventure",
+        "descripcion": "Plagued by strange memories, Neo's life takes an unexpected turn when he finds himself back inside the Matrix.",
+        "director": "Lana Wachowski",
+        "calificacion": 6.429
+    },
+    {
+        "nombre": "The Matrix Reloaded",
+        "imagen": "https://image.tmdb.org/t/p/w500/9TGHDvWrqKBzwDxDodHYXEmOE6J.jpg",
+        "anio": 2003,
+        "genero": "Adventure, Action, Thriller, Science Fiction",
+        "descripcion": "Six months after the events depicted in The Matrix, Neo has proved to be a good omen for the free humans, as more and more humans are being freed from the matrix and brought to Zion, the one and only stronghold of the Resistance.  Neo himself has discovered his superpowers including super speed, ability to see the codes of the things inside the matrix and a certain degree of pre-cognition. But a nasty piece of news hits the human resistance: 250,000 machine sentinels are digging to Zion and would reach them in 72 hours. As Zion prepares for the ultimate war, Neo, Morpheus and Trinity are advised by the Oracle to find the Keymaker who would help them reach the Source.  Meanwhile Neo's recurrent dreams depicting Trinity's death have got him worried and as if it was not enough, Agent Smith has somehow escaped deletion, has become more powerful than before and has fixed Neo as his next target.",
+        "director": "Lilly Wachowski",
+        "calificacion": 7.05
+    },
+    {
+        "nombre": "Armitage III: Poly Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/7sUCRdjGe7VggDCGIHywfguYdAK.jpg",
+        "anio": 1996,
+        "genero": "Animation, Science Fiction, Thriller",
+        "descripcion": "Ross Sylibus is assigned to a police unit on a Martian colony, to find that women are being murdered by a psychotic named D'anclaude. He is assigned a very unorthodox partner named Naomi Armitage, who seems to have links to the victims. To stir things up more, every victim is found to be an illegally made third-generation android.",
+        "director": "Takuya Sato",
+        "calificacion": 6.4
+    },
+    {
+        "nombre": "Armitage: Dual Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/p5nd9VPKxpow5MFAQfZy2DEatPI.jpg",
+        "anio": 2002,
+        "genero": "Thriller, Action, Animation, Science Fiction, Adventure",
+        "descripcion": "Naomi Armitage and Ross Sylibus have changed their names and live with their daughter Yoko as a happy and normal family on Mars — until an android riot breaks out at an anti-matter plant on Earth.",
+        "director": "Katsuhito Akiyama",
+        "calificacion": 6.3
+    },
+    {
+        "nombre": "The Matrix Revolutions",
+        "imagen": "https://image.tmdb.org/t/p/w500/4fkMHJgXzFrr2rHxTETTpve4QwP.jpg",
+        "anio": 2003,
+        "genero": "Adventure, Action, Thriller, Science Fiction",
+        "descripcion": "The human city of Zion defends itself against the massive invasion of the machines as Neo fights to end the war at another front while also opposing the rogue Agent Smith.",
+        "director": "Lilly Wachowski",
+        "calificacion": 6.724
+    },
+    {
+        "nombre": "The Matrix Revisited",
+        "imagen": "https://image.tmdb.org/t/p/w500/2LzFTywrUE3EY45fIhYQskiyshl.jpg",
+        "anio": 2001,
+        "genero": "Documentary",
+        "descripcion": "The film goes behind the scenes of the 1999 sci-fi movie The Matrix.",
+        "director": "Josh Oreck",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Sexual Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/vmhBIPKyYCWlp2PrIIc6EXZlP9Z.jpg",
+        "anio": 2000,
+        "genero": "Science Fiction, Romance",
+        "descripcion": "A professor designing a machine designed to meet the naughtiest fantasies. In order to perfect the discovery, he performed tests on various subjects, aided by his very appealing assistant.",
+        "director": "Udo Blass",
+        "calificacion": 6.6
+    },
+    {
+        "nombre": "Chess Boxing Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/iq8zeotrIDwjViRgnISwEwHJQ87.jpg",
+        "anio": 1988,
+        "genero": "Action, Adventure, Horror, Fantasy",
+        "descripcion": "Action packed vampire kung fu movie produced by Joseph Kuo. Jack Long portrays a fighting Taoist priest, who helps with the aid of his disciples to reunite a baby vampire with his parents from the \"King of Evil\", who has captured the young hopper to enhance his own powers.",
+        "director": "Chih-Cheng Wang",
+        "calificacion": 5.5
+    },
+    {
+        "nombre": "Matrix Dream Maze",
+        "imagen": "https://image.tmdb.org/t/p/w500/3OJJzgNQhY4t0dSuKTXUDg591uu.jpg",
+        "anio": 2023,
+        "genero": "terror",
+        "descripcion": "Legend has it that people who meet the dream demon are trapped there forever.",
+        "director": "Guo Wenji",
+        "calificacion": 1
+    },
+    {
+        "nombre": "Exit The Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/6K8XMPENGGht4MGfbOaKy8fOHwj.jpg",
+        "anio": 2019,
+        "genero": "Documentary",
+        "descripcion": "In the Absheron region of the Krasnodar Territory, among the majestic Caucasus Mountains and impenetrable forests, small villages were lost. They are connected to the rest of the world only by a thin thread of a narrow gauge railway winding through the gorges - and this is the only way from there and the only way there. A small old trolley - a motor-car, nicknamed by the locals \"Matrix\", delivers food, fuel and other benefits of civilization every day. People who, for one reason or another, prefer loneliness and unity with nature to noisy city life, make their journey on it.",
+        "director": "Alexandra Prikhodko",
+        "calificacion": 5.2
+    },
+    {
+        "nombre": "The Matrix Revolutions Revisited",
+        "imagen": "https://image.tmdb.org/t/p/w500/61ASnmqvzpuz9VEfFElo3e2nIft.jpg",
+        "anio": 2004,
+        "genero": "Documentary",
+        "descripcion": "The making of The Matrix Revolutions:  The cataclysmic final confrontation chronicled through six documentary pods revealing 28 featurettes",
+        "director": "Josh Oreck",
+        "calificacion": 7.1
+    },
+    {
+        "nombre": "A Glitch in the Matrix",
+        "imagen": "https://image.tmdb.org/t/p/w500/bn0BLVadmvzq6MmJ0n97MLxGpNQ.jpg",
+        "anio": 2021,
+        "genero": "Documentary",
+        "descripcion": "Are we in fact living in a simulation? This is the question postulated, wrestled with, and ultimately argued for through archival footage, compelling interviews with real people shrouded in digital avatars, and a collection of cases from some of our most iconoclastic figures in contemporary culture.",
+        "director": "Rodney Ascher",
+        "calificacion": 4.8
+    },
+    {
+        "nombre": "The Matrix Recalibrated",
+        "imagen": "https://image.tmdb.org/t/p/w500/gRni1Q651AZPnLqZczmahiIxG0s.jpg",
+        "anio": 2004,
+        "genero": "Documentary, Science Fiction",
+        "descripcion": "The making of Matrix Revolutions, The (2003) is briefly touched on here in this documentary. Interviews with various cast and crew members inform us how they were affected by the deaths of Gloria Foster and Aaliyah, and also delve into the making of the visual effects that takes up a lot of screen time. Written by Rhyl Donnelly",
+        "director": "Josh Oreck",
+        "calificacion": 6.6
+    },
+    {
+        "nombre": "Free Your Mind: The Matrix Now",
+        "imagen": "https://image.tmdb.org/t/p/w500/qghosGZ6NGpaQYzgnClQm4lBPJj.jpg",
+        "anio": 2023,
+        "genero": "TV Movie",
+        "descripcion": "Experience the classic sci-fi film The Matrix like never before in this spectacular live show brought to life through mind-expanding dance and the latest immersive design.",
+        "director": "Rhodri Huw",
+        "calificacion": 5
+    },
+    {
+        "nombre": "The Matrix Revolutions: Neo Realism - Evolution of Bullet Time",
+        "imagen": "https://image.tmdb.org/t/p/w500/2US7uuM36El9pnk8WLdGh1XN39r.jpg",
+        "anio": 2004,
+        "genero": "Documentary",
+        "descripcion": "A featurette about the special effects of The Matrix Trilogy",
+        "director": "Josh Oreck",
+        "calificacion": 6.5
+    },
+    {
+        "nombre": "Los Vengadores Chiflados",
+        "imagen": "https://image.tmdb.org/t/p/w500/l6qB7RAXx6A7EsoXj8mBTXwXRYU.jpg",
+        "anio": 2014,
+        "genero": "Comedy, Action, Adventure, Science Fiction",
+        "descripcion": "Parody of The Avengers (2012) made with action figures.",
+        "director": "Jesús Zavala",
+        "calificacion": 9.99
+    },
+    {
+        "nombre": "The Avengers",
+        "imagen": "https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+        "anio": 2012,
+        "genero": "Science Fiction, Action, Adventure",
+        "descripcion": "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
+        "director": "Joss Whedon",
+        "calificacion": 7.714
+    },
+    {
+        "nombre": "Avengers of Justice: Farce Wars",
+        "imagen": "https://image.tmdb.org/t/p/w500/yymsCwKPbJIF1xcl2ih8fl7OxAa.jpg",
+        "anio": 2018,
+        "genero": "Comedy, Fantasy, Action",
+        "descripcion": "While trying to remain a good husband and father, Superbat recruits the Avengers of Justice out of retirement to stop Dark Jokester and Lisp Luthor from freezing the planet.",
+        "director": "Jarret Tarnol",
+        "calificacion": 5.6
+    },
+    {
+        "nombre": "The Avengers",
+        "imagen": "https://image.tmdb.org/t/p/w500/1p5thyQ4pCy876HpdvFARqJ62N9.jpg",
+        "anio": 1998,
+        "genero": "Action, Adventure, Thriller, Science Fiction, Comedy",
+        "descripcion": "British Ministry agent John Steed, under direction from \"Mother\", investigates a diabolical plot by arch-villain Sir August de Wynter to rule the world with his weather control machine. Steed investigates the beautiful Doctor Mrs. Emma Peel, the only suspect, but simultaneously falls for her and joins forces with her to combat Sir August.",
+        "director": "Jeremiah S. Chechik",
+        "calificacion": 4.411
+    },
+    {
+        "nombre": "Avengers Confidential: Black Widow & Punisher",
+        "imagen": "https://image.tmdb.org/t/p/w500/wJcyYVRPZDOZOD2w0r2R6wuZqqN.jpg",
+        "anio": 2014,
+        "genero": "Animation, Science Fiction, Action",
+        "descripcion": "When the Punisher takes out a black-market weapons dealer, he stumbles upon a far-reaching terrorist plot devised by a group known as Leviathan.",
+        "director": "Kenichi Shimizu",
+        "calificacion": 6.425
+    },
+    {
+        "nombre": "Avengers 5",
+        "imagen": "https://image.tmdb.org/t/p/w500/6x1jLnQEdscoVgumzo9wVzdp9iA.jpg",
+        "anio": 2026,
+        "genero": "Science Fiction",
+        "descripcion": "An upcoming film in the Marvel Cinematic Universe's sixth Phase and part of The Multiverse Saga. Plot unknown.",
+        "director": "Jeremiah S. Chechik",
+        "calificacion": 6
+    },
+    {
+        "nombre": "Ultimate Avengers: The Movie",
+        "imagen": "https://image.tmdb.org/t/p/w500/fKQqZEDmvKMCXEQztvMJHGou9dO.jpg",
+        "anio": 2006,
+        "genero": "Action, Animation, Family, Adventure, Science Fiction",
+        "descripcion": "When a nuclear missile was fired at Washington in 1945, Captain America managed to detonate it in the upper atmosphere. But then he fell miles into the icy depths of the North Atlantic, where he remained lost for over sixty years. But now, with the world facing the very same evil, Captain America must rise again as our last hope for survival.",
+        "director": "Steven E. Gordon",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "LEGO Marvel Avengers: Time Twisted",
+        "imagen": "https://image.tmdb.org/t/p/w500/7nA9AjJ8iZvbBPsFPC2FNoFj568.jpg",
+        "anio": 2022,
+        "genero": "Family, Animation, Action, Adventure",
+        "descripcion": "When Thanos steals the quantum tunnel, the Avengers embark on a mission to stop him from changing history.",
+        "director": "Randi Rodrigues",
+        "calificacion": 7.083
+    },
+    {
+        "nombre": "The Revengers",
+        "imagen": "https://image.tmdb.org/t/p/w500/pkTz0NgUxn4bbNLBXPpjHlVbCgP.jpg",
+        "anio": 1972,
+        "genero": "Action, Western, Crime",
+        "descripcion": "The life of peaceful rancher John Benedict is torn apart when his family is massacred by a gang of marauding outlaws and his farm is destroyed. He assembles a team of mean, lawless convicts to act as his posse as he pursues the gang responsible for the deaths of his loved ones.",
+        "director": "Daniel Mann",
+        "calificacion": 5.7
+    },
+    {
+        "nombre": "Executioners from Shaolin",
+        "imagen": "https://image.tmdb.org/t/p/w500/9PJyuHP1nNDMyJDZMpZWpwEduSL.jpg",
+        "anio": 1977,
+        "genero": "Action, Drama",
+        "descripcion": "A couple unite - she is fluent in the crane style of kung fu, he in tiger style. They have a son, but the boy's father is killed by the evil eunuch Pai Mei. Disguised as a girl, his mom trains him in crane style while he secretly learns tiger style from his father's training manual.",
+        "director": "Lau Kar-leung",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Ultimate Avengers 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/h1PKqtjuTifmTU0EqM4W0Br2pHX.jpg",
+        "anio": 2006,
+        "genero": "Adventure, Animation, Action, Science Fiction",
+        "descripcion": "Mysterious Wakanda lies in the darkest heart of Africa, unknown to most of the world. An isolated land hidden behind closed borders, fiercely protected by its young king: Black Panther. But when brutal alien invaders attack, the threat leaves Black Panther with no option but to go against the sacred decrees of his people and ask for help from outsiders.",
+        "director": "Will Meugniot",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "The Elusive Revengers",
+        "imagen": "https://image.tmdb.org/t/p/w500/z7VVjxoPYSiNfuFCjox02FgkzUR.jpg",
+        "anio": 1967,
+        "genero": "Action, Adventure, Family",
+        "descripcion": "Dan'ka's and Ksanka's childhood in the village has been brutally ended when their father was killed by the White Guard officer in front of their eyes. Seeking revenge they join forces with an intellectual from the city Valerka and jipsy Yashka, but before they get close to their enemy they have to help their village and advancing Red Army.",
+        "director": "Edmond Keosayan",
+        "calificacion": 7.1
+    },
+    {
+        "nombre": "Next Avengers: Heroes of Tomorrow",
+        "imagen": "https://image.tmdb.org/t/p/w500/fpG1NDbcLV2a7c8X7LC4FPISBT7.jpg",
+        "anio": 2008,
+        "genero": "Animation, Family, Action, Adventure, Science Fiction",
+        "descripcion": "The children of the Avengers hone their powers and go head to head with the very enemy responsible for their parents' demise.",
+        "director": "Jay Oliva",
+        "calificacion": 6.9
+    },
+    {
+        "nombre": "The Avenging Angel",
+        "imagen": "https://image.tmdb.org/t/p/w500/6LMjMtqN6Cq5nz6pH38XJaknitr.jpg",
+        "anio": 1995,
+        "genero": "Western, TV Movie",
+        "descripcion": "Miles Utley is a professional Mormon commando/bodyguard who is forced to turn renegade and to question his faith as he investigates a scandal involving assassination and land speculation.",
+        "director": "Craig R. Baxley",
+        "calificacion": 5.583
+    },
+    {
+        "nombre": "Vengadores Chiflados: La Era de Pultrón",
+        "imagen": "https://image.tmdb.org/t/p/w500/eyDTg67Q6Zpx8jKNKvEctGODbp8.jpg",
+        "anio": 2016,
+        "genero": "Comedy, Adventure, Action, Science Fiction",
+        "descripcion": "Parody of Avengers: Age of Ultron (2015) made with action figures.",
+        "director": "Jesús Zavala",
+        "calificacion": 9.99
+    },
+    {
+        "nombre": "The New Adventures of the Elusive Avengers",
+        "imagen": "https://image.tmdb.org/t/p/w500/hy7RVuhoUR53txkGRUeVCQfTNM2.jpg",
+        "anio": 1968,
+        "genero": "Action, Adventure, Family",
+        "descripcion": "The action takes place in 1920 during the Civil War.  Crimea on the eve of complete liberation from the White Guards. Returning from patrol, the four brave “elusive” knocked down an airplane. In the field bag of the captured pilot, they find a secret report, which speaks of the existence of defensive fortifications around the coastal city, which the Reds have yet to take. Young heroes get the task to get a map of fortifications and go to the city...",
+        "director": "Edmond Keosayan",
+        "calificacion": 7.3
+    },
+    {
+        "nombre": "Cheung Po Chai",
+        "imagen": "https://image.tmdb.org/t/p/w500/lKnebaLgTqeAEEtfmrloiR8J4as.jpg",
+        "anio": 1973,
+        "genero": "Action, Adventure",
+        "descripcion": "Hong Kong martial arts movie.",
+        "director": "Gwan Jing-Leung",
+        "calificacion": 7
+    },
+    {
+        "nombre": "Marvel",
+        "imagen": "https://image.tmdb.org/t/p/w500/p6XFjLX7XDnAMCczOBCevVaZpFv.jpg",
+        "anio": 1969,
+        "genero": "Science Fiction, Adventure, Action",
+        "descripcion": "The quintessential student film of 1969.",
+        "director": "Arthur Hall",
+        "calificacion": 6.5
+    },
+    {
+        "nombre": "The Marvels",
+        "imagen": "https://image.tmdb.org/t/p/w500/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
+        "anio": 2023,
+        "genero": "Science Fiction, Adventure, Action",
+        "descripcion": "Carol Danvers, aka Captain Marvel, has reclaimed her identity from the tyrannical Kree and taken revenge on the Supreme Intelligence. But unintended consequences see Carol shouldering the burden of a destabilized universe. When her duties send her to an anomalous wormhole linked to a Kree revolutionary, her powers become entangled with that of Jersey City super-fan Kamala Khan, aka Ms. Marvel, and Carol’s estranged niece, now S.A.B.E.R. astronaut Captain Monica Rambeau. Together, this unlikely trio must team up and learn to work in concert to save the universe.",
+        "director": "Nia DaCosta",
+        "calificacion": 6.127
+    },
+    {
+        "nombre": "Captain Marvel",
+        "imagen": "https://image.tmdb.org/t/p/w500/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+        "anio": 2019,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
+        "director": "Ryan Fleck",
+        "calificacion": 6.821
+    },
+    {
+        "nombre": "Pokémon the Movie: Volcanion and the Mechanical Marvel",
+        "imagen": "https://image.tmdb.org/t/p/w500/j9TIzeMxNknVrBvgxzLqhIhxml4.jpg",
+        "anio": 2016,
+        "genero": "Family, Adventure, Animation, Fantasy, Science Fiction",
+        "descripcion": "Ash meets the Mythical Pokémon Volcanion when it crashes down from the sky, creating a cloud of dust—and a mysterious force binds the two of them together! Volcanion despises humans and tries to get away, but it’s forced to drag Ash along as it continues its rescue mission. They arrive in a city of cogs and gears, where a corrupt official has stolen the ultimate invention: the Artificial Pokémon Magearna, created 500 years ago. He plans to use its mysterious power to take control of this mechanical kingdom! Can Ash and Volcanion work together to rescue Magearna? One of the greatest battles in Pokémon history is about to unfold!",
+        "director": "Kunihiko Yuyama",
+        "calificacion": 6.71
+    },
+    {
+        "nombre": "LEGO Marvel Avengers: Code Red",
+        "imagen": "https://image.tmdb.org/t/p/w500/rDzig50dj7VpLwJ7SThbamETK1G.jpg",
+        "anio": 2023,
+        "genero": "Animation, Action, Family",
+        "descripcion": "The Avengers gather to celebrate their latest victory, but their celebration is quickly interrupted by the mysterious disappearance of Black Widow's father, Red Guardian. As the Avengers investigate, they discover that Red Guardian isn't the only one missing when they meet a dangerous new foe quite unlike anything they've ever encountered before.",
+        "director": "Ken Cunningham",
+        "calificacion": 6.665
+    },
+    {
+        "nombre": "Shinkansen Henkei Robo Shinkalion The Movie: The Marvelous Fast ALFA-X That Comes From the Future",
+        "imagen": "https://image.tmdb.org/t/p/w500/tfWOshCwOcPCTos6UrFUM1Sp7Lk.jpg",
+        "anio": 2019,
+        "genero": "Animation, Action, Adventure, Science Fiction",
+        "descripcion": "The new enemies, Nahane and Ohanefu, along with the mysterious new Giant Monstrous Beings appear from space to take over the Earth! Holding the key to these events is Shinkalion ALFA-X, which was secretly developed by the Ultra Evolution Institute...!? For Hayato and Team Shinkalion, who had been living in peace, the battle begins again.",
+        "director": "Takahiro Ikezoe",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Marvel Rising: Chasing Ghosts",
+        "imagen": "https://image.tmdb.org/t/p/w500/pufQvXrrxng95dT4kYlQtXn98kK.jpg",
+        "anio": 2019,
+        "genero": "Family, Animation, Action, Adventure",
+        "descripcion": "Hot on the trails of Sheath and Exile, Ghost-Spider teams up with the rest of the Secret Warriors to bring down the villains for good.",
+        "director": "Alfred Gimeno",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Marvel One-Shot: Item 47",
+        "imagen": "https://image.tmdb.org/t/p/w500/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
+        "anio": 2012,
+        "genero": "Science Fiction, Action, Fantasy",
+        "descripcion": "Benny and Claire, a down-on-their-luck couple, find a discarded Chitauri weapon referred to as 'Item 47'.",
+        "director": "Louis D'Esposito",
+        "calificacion": 6.447
+    },
+    {
+        "nombre": "Marvelous Stunts Of Kung Fu",
+        "imagen": "https://image.tmdb.org/t/p/w500/eLs9RqwkrEDFM3MhcbiPvcn95tP.jpg",
+        "anio": 1979,
+        "genero": " Acción, Drama, Artes marciales",
+        "descripcion": "The stars are cast as a gorgeous woman, a mystic and a kung-fu expert.  They team up to form a united front when an insidious empire threatens the well-being of the land they love.",
+        "director": "N/A",
+        "calificacion": 5.9
+    },
+    {
+        "nombre": "LEGO Marvel Super Heroes: Avengers Reassembled!",
+        "imagen": "https://image.tmdb.org/t/p/w500/xUBZNoY7idPfqKZepnDEv7Qc8GC.jpg",
+        "anio": 2015,
+        "genero": "Family, Animation",
+        "descripcion": "The Avengers are forced to “party” with Ultron when he seeks to disassemble the team by taking control of Iron Man’s armor and enact a nefarious scheme to take over the world.",
+        "director": "Rob Silvestri",
+        "calificacion": 6.629
+    },
+    {
+        "nombre": "Wee Sing in the Marvelous Musical Mansion",
+        "imagen": "https://image.tmdb.org/t/p/w500/bHLxG2wASGGnddkjlomCUIbhD11.jpg",
+        "anio": 1992,
+        "genero": "Family",
+        "descripcion": "A mysterious package from Timbuktu? A door knocker that rattles off riddles? Music boxes that come to life? Piccolo Pizza and Piano Pudding? Where will you find such magical, musical, mysterious things? At Uncle Rubato’s Marvelous Musical Mansion! Dance and sing in every room with enchanting new friends and help Uncle Rubato, Aunty Annabella, Alex, Benji, and Kelly solve a most baffling mystery---who or what took all the missing musical treasures? Enjoy this wholesome entertainment for the entire family. Dazzling sets and over 20 uplifting song and dance numbers showcase adorable characters who inspire the love of music while sharing important values including self-esteem and being considerate of others.",
+        "director": "David Poulshock",
+        "calificacion": 3.3
+    },
+    {
+        "nombre": "Phineas and Ferb: Mission Marvel",
+        "imagen": "https://image.tmdb.org/t/p/w500/da2AREjdecPInHzWeZ550X1aYDU.jpg",
+        "anio": 2013,
+        "genero": "Animation, Family, Comedy",
+        "descripcion": "Phineas and Ferb team up with the Avengers to save the world from Dr. Doofenshmirtz and a group of dangerous supervillains.",
+        "director": "Robert Hughes",
+        "calificacion": 6.5
+    },
+    {
+        "nombre": "Giannis: The Marvelous Journey",
+        "imagen": "https://image.tmdb.org/t/p/w500/heOqng8QyxEFOuHdF6p4HGw70Zn.jpg",
+        "anio": 2024,
+        "genero": "Documentary",
+        "descripcion": "A documentary that chronicles the extraordinary odyssey of NBA mega-star Giannis Antetokounmpo from an impoverished childhood in Greece as the son of Nigerian immigrants to the very top of the basketball world.",
+        "director": "Kristen Lappas",
+        "calificacion": 7.294
+    },
+    {
+        "nombre": "Marvel One-Shot: All Hail the King",
+        "imagen": "https://image.tmdb.org/t/p/w500/ozXvopXv1TiOTls8zb09dBmu9dt.jpg",
+        "anio": 2014,
+        "genero": "Action, Comedy, Fantasy",
+        "descripcion": "A documentary filmmaker interviews the now-famous Trevor Slattery from behind bars.",
+        "director": "Drew Pearce",
+        "calificacion": 6.747
+    },
+    {
+        "nombre": "Marvel Rising: Playing with Fire",
+        "imagen": "https://image.tmdb.org/t/p/w500/lelNkBnjIi4N1uQBV2TnODgS9UT.jpg",
+        "anio": 2019,
+        "genero": "Animation, Action, Adventure, Family",
+        "descripcion": "Inferno’s powers are stolen by a young and powerful villain and it’s up to the Secret Warriors to defeat their new foe and help their friend. But does Inferno even WANT his powers back? Meanwhile, America Chavez learns a lesson about friendship and family from teammate Ms. Marvel.",
+        "director": "Sol Choi",
+        "calificacion": 6.4
+    },
+    {
+        "nombre": "Marvel Studios Assembled: The Making of Doctor Strange in the Multiverse of Madness",
+        "imagen": "https://image.tmdb.org/t/p/w500/eIzPe62s12uHsIPhGWY1yp68DY9.jpg",
+        "anio": 2022,
+        "genero": "Documentary",
+        "descripcion": "Join visionary director Sam Raimi and the cast of the film as they recount their experiences bringing Marvel’s darkest story to life.  From world-building to universe-building, hear first hand accounts from the cast and crew on what it took to design, create and make each universe unique and believable.",
+        "director": "Sam Raimi",
+        "calificacion": 7.1
+    },
+    {
+        "nombre": "Marvel One-Shot: Agent Carter",
+        "imagen": "https://image.tmdb.org/t/p/w500/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
+        "anio": 2013,
+        "genero": "Action, Adventure, Science Fiction, Fantasy",
+        "descripcion": "The film takes place one year after the events of Captain America: The First Avenger, in which Agent Carter, a member of the Strategic Scientific Reserve, is in search of the mysterious Zodiac.",
+        "director": "Louis D'Esposito",
+        "calificacion": 7.2
+    },
+    {
+        "nombre": "Marvel Studios: Assembling a Universe",
+        "imagen": "https://image.tmdb.org/t/p/w500/41Ke02UzYoPsiTc3YbomPGiQKMl.jpg",
+        "anio": 2014,
+        "genero": "Documentary, TV Movie",
+        "descripcion": "A look at the story behind Marvel Studios and the Marvel Cinematic Universe, featuring interviews and behind-the-scenes footage from all of the Marvel films, the Marvel One-Shots and \"Marvel's Agents of S.H.I.E.L.D.\"",
+        "director": "Sam Raimi",
+        "calificacion": 6.875
+    },
+    {
+        "nombre": "Marvel Rising: Secret Warriors",
+        "imagen": "https://image.tmdb.org/t/p/w500/kY1ufnbv2bTyoNcAtGF4BwapKi6.jpg",
+        "anio": 2018,
+        "genero": "Family, Animation, Action, Comedy, Science Fiction, TV Movie, Adventure",
+        "descripcion": "When a threat no one could have expected bears down on the Marvel Universe, this ragtag, untrained band of teens have no choice but to rise together and prove to the world that sometimes the difference between a 'hero' and 'misfit' is just in the name.",
+        "director": "Alfred Gimeno",
+        "calificacion": 6.7
+    },
+    {
+        "nombre": "Marvel Studios Assembled: The Making of X-Men '97",
+        "imagen": "https://image.tmdb.org/t/p/w500/6YIhiAzNB9PPgIPA04tD1xaSBMw.jpg",
+        "anio": 2024,
+        "genero": "Documentary",
+        "descripcion": "Spend time with the original cast, along with new voices, as this behind-the-scenes special recalls the birth of \"X-Men: The Animated Series,\" and its revival thirty years later as \"X-Men '97.\"",
+        "director": "Brad Baruh",
+        "calificacion": 5.6
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+        "anio": 2018,
+        "genero": "Science Fiction, Action",
+        "descripcion": "Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his newfound powers to protect the world from a shadowy organization looking for a symbiote of their own.",
+        "director": "Ruben Fleischer",
+        "calificacion": 6.828
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/hCMTpv1I9KK90ApxXDyaf8SwJcf.jpg",
+        "anio": 2005,
+        "genero": "Horror, Thriller",
+        "descripcion": "A group of teenagers fear for their lives in the swamps of Louisiana, chased by Mr. Jangles, a man possessed by 13 evil souls, and now relentless in his pursuit of new victims.",
+        "director": "Jim Gillespie",
+        "calificacion": 5.471
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/v44VNoH2suoaCPnUj2YyXcvgGfn.jpg",
+        "anio": 1981,
+        "genero": "Horror, Thriller",
+        "descripcion": "International terrorists attempt to kidnap a wealthy couple's child. Their plan comes unstuck when a deadly Black Mamba, sent by mistake instead of a harmless snake, escapes and the terrorists and several hostages are trapped in the boy's London home.",
+        "director": "Piers Haggard",
+        "calificacion": 5.554
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/xooRYiNbZtwNUdx0p60QvWxuxeD.jpg",
+        "anio": 2011,
+        "genero": "Thriller",
+        "descripcion": "After a car breaks down in an isolated desert, a mother and young daughter are relentlessly pursued by a deadly snake",
+        "director": "Gary Breslin",
+        "calificacion": 5.5
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/qf58eUwhZqWRts3OSa5TTb3VkOM.jpg",
+        "anio": 1974,
+        "genero": "Horror",
+        "descripcion": "A Nazi scientist and a woman known as a \"spider goddess\" attempt to develop a nerve gas made from spider venom.",
+        "director": "Peter Sykes",
+        "calificacion": 4.9
+    },
+    {
+        "nombre": "Venom: The Last Dance",
+        "imagen": "https://image.tmdb.org/t/p/w500/aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+        "anio": 2024,
+        "genero": "Action, Science Fiction, Adventure",
+        "descripcion": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
+        "director": "Kelly Marcel",
+        "calificacion": 8
+    },
+    {
+        "nombre": "Venom: Let There Be Carnage",
+        "imagen": "https://image.tmdb.org/t/p/w500/1MJNcPZy46hIy2CmSqOeru0yr5C.jpg",
+        "anio": 2021,
+        "genero": "Science Fiction, Action, Adventure",
+        "descripcion": "After finding a host body in investigative reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the alter ego of serial killer Cletus Kasady.",
+        "director": "Andy Serkis",
+        "calificacion": 6.801
+    },
+    {
+        "nombre": "The Five Venoms",
+        "imagen": "https://image.tmdb.org/t/p/w500/z446TqbbOb7emtN1S8iOrwTHz7Y.jpg",
+        "anio": 1978,
+        "genero": "Action, Drama, Mystery",
+        "descripcion": "A dying master sends his last student to check up on five former pupils, who each know a special style of kung-fu.",
+        "director": "Chang Cheh",
+        "calificacion": 6.683
+    },
+    {
+        "nombre": "Medusa's Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/t3aEoDsRQ8UTaCbJizpHbSG9XL.jpg",
+        "anio": 2023,
+        "genero": "Horror",
+        "descripcion": "The beast is back and her venom is deadlier than ever. When newcomer Lola is welcomed into Medusa's circle, she endures a ritual to bring her closer to her new sisters.",
+        "director": "Chase Martins",
+        "calificacion": 6.25
+    },
+    {
+        "nombre": "Spider-Man: The Venom Saga",
+        "imagen": "https://image.tmdb.org/t/p/w500/vvYt1CDagCKMrolohME0o15GPZ3.jpg",
+        "anio": 2005,
+        "genero": "Animation",
+        "descripcion": "A space-shuttle crash-landing puts the famous web-slinger Spider-Man in contact with a living alien substance that bonds to his suit and enhances his super-powers. Unfortunately, the alien substance begins to change him and he feels the pull of evil, so discards the suit. The evil attaches itself to another host leading to an epic confrontation between good and evil.",
+        "director": "Bob Richardson",
+        "calificacion": 6.794
+    },
+    {
+        "nombre": "Snake Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/g6QVQXjrwbv2n77S4eqE9nVEOWE.jpg",
+        "anio": 2019,
+        "genero": "Comedy, Drama",
+        "descripcion": "Heshmat is a religious guy and a candidate for the election of Tehran but when a troubled old friend finds him his troubles begin. He has to find a way to cope with these troubles.",
+        "director": "Javad Razavian",
+        "calificacion": 5.8
+    },
+    {
+        "nombre": "Scorpion: Double Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/5zGmIyyBubXmC6E4bp2xkwUCrIK.jpg",
+        "anio": 1998,
+        "genero": "Crime, Action, Thriller, Drama",
+        "descripcion": "Nami Matsushima, a former doctor, is put in prison for murdering one of the men who raped and killed her sister. Now, faced with violent and lecherous prison gangs, an aggressively amorous warden, and with a friend on death row, Nami must steel herself for a ten year stay in one of Japan's toughest women's prisons.",
+        "director": "Ryôji Shinmura",
+        "calificacion": 3.8
+    },
+    {
+        "nombre": "Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/tMTQiWhLSCrpA3uUzQKdD1r2YL1.jpg",
+        "anio": 1966,
+        "genero": "Drama",
+        "descripcion": "The story concerns a hedonistic young chap who delights in stirring up trouble with his video camera, screening filmed private intimate moments to parents of their children who are prominently featured on the video.",
+        "director": "Knud Leif Thomsen",
+        "calificacion": 6.3
+    },
+    {
+        "nombre": "LEGO Marvel Spider-Man: Vexed by Venom",
+        "imagen": "https://image.tmdb.org/t/p/w500/gTo2r8nNU3ZYAS6DqdeSp1VEqkq.jpg",
+        "anio": 2019,
+        "genero": "Animation, Action",
+        "descripcion": "Thanks to Green Goblin and Venom, tech theft is now at an all-time high. Can our Friendly Neighborhood Spider-Man put an end to their mysterious villainous scheme before all of New York City is destroyed?",
+        "director": "Ken Cunningham",
+        "calificacion": 6.6
+    },
+    {
+        "nombre": "Venom and Eternity",
+        "imagen": "https://image.tmdb.org/t/p/w500/vUc1nBIHKn5Y4soDaKf9JgcYCBP.jpg",
+        "anio": 1951,
+        "genero": "Drama",
+        "descripcion": "In this experimental film, Isidore Isou, the leader of the lettrist movement, lashes out at conventional cinema and offers a revolutionary form of movie-making: through scratching and bleaching the film, through desynchronizing the soundtrack and the visual track, through deconstructing the story, he aims to renew the seventh art the same way he tried to revolutionize the literary world.",
+        "director": "Isidore Isou",
+        "calificacion": 6.7
+    },
+    {
+        "nombre": "Guardians of the Galaxy Vol. 3",
+        "imagen": "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+        "anio": 2023,
+        "genero": "Science Fiction, Adventure, Action",
+        "descripcion": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+        "director": "James Gunn",
+        "calificacion": 8
+    },
+    {
+        "nombre": "Guardians of the Galaxy Vol. 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
+        "anio": 2017,
+        "genero": "Science Fiction, Adventure, Action",
+        "descripcion": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
+        "director": "James Gunn",
+        "calificacion": 7.621
+    },
+    {
+        "nombre": "The Guardians of the Galaxy Holiday Special",
+        "imagen": "https://image.tmdb.org/t/p/w500/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
+        "anio": 2022,
+        "genero": "Comedy, Science Fiction, Adventure",
+        "descripcion": "On a mission to make Christmas unforgettable for Quill, the Guardians head to Earth in search of the perfect present.",
+        "director": "James Gunn",
+        "calificacion": 7.2
+    },
+    {
+        "nombre": "Guardians of the Galaxy",
+        "imagen": "https://image.tmdb.org/t/p/w500/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
+        "anio": 2014,
+        "genero": "Action, Science Fiction, Adventure",
+        "descripcion": "Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.",
+        "director": "James Gunn",
+        "calificacion": 7.908
+    },
+    {
+        "nombre": "Marvel Studios Assembled: The Making of the Guardians of the Galaxy Vol. 3",
+        "imagen": "https://image.tmdb.org/t/p/w500/w9rY9CT7pI3pl6ATcAS7bXrIDc5.jpg",
+        "anio": 2023,
+        "genero": "Documentary",
+        "descripcion": "Join visionary director James Gunn and superstars such as Chris Pratt and Zoe Saldaña as they recount how “Guardians of the Galaxy Vol. 3” was conceived, shaped, and delivered to the world. And stand alongside the cast and crew in the emotional final moments of the shoot as they bid farewell to each other, and close this chapter in the saga of Peter Quill and his loveable band of misfit-warriors.",
+        "director": "Brad Baruh",
+        "calificacion": 6.1
+    },
+    {
+        "nombre": "LEGO Marvel Super Heroes: Guardians of the Galaxy - The Thanos Threat",
+        "imagen": "https://image.tmdb.org/t/p/w500/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg",
+        "anio": 2017,
+        "genero": "Animation, Family, Science Fiction",
+        "descripcion": "The Guardians are on a mission to deliver the Build Stone to the Avengers before the Ravagers, Thanos and his underlings steal it from them.",
+        "director": "Michael D. Black",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Star Wars",
+        "imagen": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+        "anio": 1977,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+        "director": "George Lucas",
+        "calificacion": 8.202
+    },
+    {
+        "nombre": "Star Wars: The Force Awakens",
+        "imagen": "https://image.tmdb.org/t/p/w500/wqnLdwVXoBjKibFRR5U3y0aDUhs.jpg",
+        "anio": 2015,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+        "director": "J.J. Abrams",
+        "calificacion": 7.281
+    },
+    {
+        "nombre": "Star Wars: The Last Jedi",
+        "imagen": "https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+        "anio": 2017,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+        "director": "Rian Johnson",
+        "calificacion": 6.803
+    },
+    {
+        "nombre": "Star Wars: The Rise of Skywalker",
+        "imagen": "https://image.tmdb.org/t/p/w500/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+        "anio": 2019,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
+        "director": "J.J. Abrams",
+        "calificacion": 6.333
+    },
+    {
+        "nombre": "Solo: A Star Wars Story",
+        "imagen": "https://image.tmdb.org/t/p/w500/4oD6VEccFkorEBTEDXtpLAaz0Rl.jpg",
+        "anio": 2018,
+        "genero": "Science Fiction, Adventure, Action",
+        "descripcion": "Through a series of daring escapades deep within a dark and dangerous criminal underworld, Han Solo meets his mighty future copilot Chewbacca and encounters the notorious gambler Lando Calrissian.",
+        "director": "Ron Howard",
+        "calificacion": 6.56
+    },
+    {
+        "nombre": "Star Wars: Episode I - The Phantom Menace",
+        "imagen": "https://image.tmdb.org/t/p/w500/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+        "anio": 1999,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
+        "director": "George Lucas",
+        "calificacion": 6.55
+    },
+    {
+        "nombre": "Rogue One: A Star Wars Story",
+        "imagen": "https://image.tmdb.org/t/p/w500/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+        "anio": 2016,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.",
+        "director": "Gareth Edwards",
+        "calificacion": 7.491
+    },
+    {
+        "nombre": "Star Wars: Episode III - Revenge of the Sith",
+        "imagen": "https://image.tmdb.org/t/p/w500/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg",
+        "anio": 2005,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "The evil Darth Sidious enacts his final plan for unlimited power -- and the heroic Jedi Anakin Skywalker must choose a side.",
+        "director": "George Lucas",
+        "calificacion": 7.426
+    },
+    {
+        "nombre": "Doraemon: Nobita's Little Star Wars",
+        "imagen": "https://image.tmdb.org/t/p/w500/n4IPqrfXEEtMC8hzV5PaCElkdNP.jpg",
+        "anio": 1985,
+        "genero": "Animation, Adventure, Family, Fantasy, Science Fiction",
+        "descripcion": "Nobita helps Doraemon to create a space movie. After Dekisugi fails to help them, the duo rope in Shizuka, who prefers to make a film about dolls.",
+        "director": "Tsutomu Shibayama",
+        "calificacion": 6.878
+    },
+    {
+        "nombre": "Doraemon the Movie: Nobita's Little Star Wars 2021",
+        "imagen": "https://image.tmdb.org/t/p/w500/48gKZioIDeUOI0afbYv3kh9u9RQ.jpg",
+        "anio": 2022,
+        "genero": "Animation, Science Fiction, Adventure, Family",
+        "descripcion": "One day during summer vacation, a palm-sized alien named Papi appears from a small rocket that Nobita picks up. He is the president of Pirika, a small planet in outer space, and has come to Earth to escape the rebels. Doraemon and his friends are puzzled by Papi’s small size, but as they play together using the secret tool “Small Light”, they gradually become friends. However, a whale-shaped space battleship comes to earth and attacks Doraemon, Nobita and the others in order to capture Papi. Feeling responsible for getting everyone involved, Papi tries to stand up to the rebels. Doraemon and his friends leave for the planet Pirika to protect their dear friend and his home.",
+        "director": "Susumu Yamaguchi",
+        "calificacion": 5.929
+    },
+    {
+        "nombre": "Star Wars: Episode II - Attack of the Clones",
+        "imagen": "https://image.tmdb.org/t/p/w500/oZNPzxqM2s5DyVWab09NTQScDQt.jpg",
+        "anio": 2002,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "Following an assassination attempt on Senator Padmé Amidala, Jedi Knights Anakin Skywalker and Obi-Wan Kenobi investigate a mysterious plot that could change the galaxy forever.",
+        "director": "George Lucas",
+        "calificacion": 6.562
+    },
+    {
+        "nombre": "Phineas and Ferb: Star Wars",
+        "imagen": "https://image.tmdb.org/t/p/w500/2XGlp5x232CeZM0PVjMMYQcXViA.jpg",
+        "anio": 2014,
+        "genero": "Animation, Comedy, Family, Science Fiction, Adventure, TV Movie",
+        "descripcion": "Phineas and Ferb become the galaxy's unlikeliest last hope when they must return the Death Star plans to the Rebel Alliance.",
+        "director": "Sue Perrotto",
+        "calificacion": 7.113
+    },
+    {
+        "nombre": "Star Wars: Heroes & Villains",
+        "imagen": "https://image.tmdb.org/t/p/w500/9ReI6qt3bvsIxUZkDpOzaCpiLwx.jpg",
+        "anio": 2005,
+        "genero": "Documentary",
+        "descripcion": "A look at the creation and filming of the various heroes and villains from all six Star Wars movies, leading up to the release of Star Wars: Episode III - Revenge of the Sith.",
+        "director": "Anthony Daniels",
+        "calificacion": 7.2
+    },
+    {
+        "nombre": "Star Wars: The Clone Wars",
+        "imagen": "https://image.tmdb.org/t/p/w500/iJQfixW818LUdSXlCDL3JZm0S0g.jpg",
+        "anio": 2008,
+        "genero": "Animation, Action, Science Fiction, Adventure",
+        "descripcion": "As the Clone Wars sweep through the galaxy, the heroic Jedi Knights struggle to maintain order and restore peace. More and more systems are falling prey to the forces of the dark side as the Galactic Republic slips further and further under the sway of the Separatists and their never-ending droid army. Anakin Skywalker and his Padawan learner Ahsoka Tano find themselves on a mission with far-reaching consequences, one that brings them face-to-face with crime lord Jabba the Hutt. But Count Dooku and his sinister agents, including the nefarious Asajj Ventress, will stop at nothing to ensure that Anakin and Ahsoka fail at their quest. Meanwhile, on the front lines of the Clone Wars, Obi-Wan Kenobi and Master Yoda lead the massive clone army in a valiant effort to resist the forces of the dark side...",
+        "director": "Dave Filoni",
+        "calificacion": 6.117
+    },
+    {
+        "nombre": "The Star Wars Holiday Special",
+        "imagen": "https://image.tmdb.org/t/p/w500/2X17DnEtlI6ULf95wXC6sA4GrlL.jpg",
+        "anio": 1978,
+        "genero": "Fantasy, Science Fiction, Family, TV Movie",
+        "descripcion": "Luke Skywalker and Han Solo battle evil Imperial forces to help Chewbacca reach his imperiled family on the Wookiee planet - in time for Life Day, their most important day of the year!",
+        "director": "Steve Binder",
+        "calificacion": 3.338
+    },
+    {
+        "nombre": "LEGO Star Wars Holiday Special",
+        "imagen": "https://image.tmdb.org/t/p/w500/zyzJSI7UZZzz5Toj10rYGF5689z.jpg",
+        "anio": 2020,
+        "genero": "Animation, Family, Science Fiction, Adventure, Comedy",
+        "descripcion": "As her friends prep for a Life Day holiday celebration, Rey journeys with BB-8 on a quest to gain a deeper knowledge of the Force at a mysterious Jedi Temple. There, she embarks on a cross-timeline adventure through beloved moments in Star Wars history, coming into contact with iconic heroes and villains from all eras of the saga. But will she make it back in time for the Life Day feast?",
+        "director": "Ken Cunningham",
+        "calificacion": 6.5
+    },
+    {
+        "nombre": "Star Wars Kid: The Rise of the Digital Shadows",
+        "imagen": "https://image.tmdb.org/t/p/w500/zspMlOFJ76g5KyfmucgnvnkJnuN.jpg",
+        "anio": 2022,
+        "genero": "Documentary",
+        "descripcion": "Ghyslain Raza, better known as the “Star Wars Kid,” breaks his silence to reflect on our hunger for content and the right to be forgotten in the digital age.",
+        "director": "Mathieu Fournier",
+        "calificacion": 7.6
+    },
+    {
+        "nombre": "LEGO Star Wars Terrifying Tales",
+        "imagen": "https://image.tmdb.org/t/p/w500/fYiaBZDjyXjvlY6EDZMAxIhBO1I.jpg",
+        "anio": 2021,
+        "genero": "Animation, Family, Science Fiction, Comedy, TV Movie",
+        "descripcion": "Poe Dameron and BB-8 must face the greedy crime boss Graballa the Hutt, who has purchased Darth Vader’s castle and is renovating it into the galaxy’s first all-inclusive Sith-inspired luxury hotel.",
+        "director": "Ken Cunningham",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "LEGO Star Wars Summer Vacation",
+        "imagen": "https://image.tmdb.org/t/p/w500/2SatEFCs04oFRqkZuY1fODYXeFI.jpg",
+        "anio": 2022,
+        "genero": "Animation, Family, Science Fiction, Comedy, TV Movie",
+        "descripcion": "Looking for a much-needed break, Finn arranges a surprise vacation for his friends Rey, Poe, Rose, Chewie, BB-8, R2-D2, and C-3PO, aboard the luxurious Halcyon. However, Finn's plan to have one last hurrah together quickly goes awry.",
+        "director": "Ken Cunningham",
+        "calificacion": 5.9
+    },
+    {
+        "nombre": "Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+        "anio": 2008,
+        "genero": "Action, Science Fiction, Adventure",
+        "descripcion": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+        "director": "Jon Favreau",
+        "calificacion": 7.643
+    },
+    {
+        "nombre": "Iron Man 3",
+        "imagen": "https://image.tmdb.org/t/p/w500/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
+        "anio": 2013,
+        "genero": "Action, Adventure, Science Fiction",
+        "descripcion": "When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.",
+        "director": "Shane Black",
+        "calificacion": 6.928
+    },
+    {
+        "nombre": "Iron Man 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg",
+        "anio": 2010,
+        "genero": "Adventure, Action, Science Fiction",
+        "descripcion": "With the world now aware of his dual life as the armored superhero Iron Man, billionaire inventor Tony Stark faces pressure from the government, the press and the public to share his technology with the military. Unwilling to let go of his invention, Stark, with Pepper Potts and James 'Rhodey' Rhodes at his side, must forge new alliances – and confront powerful enemies.",
+        "director": "Jon Favreau",
+        "calificacion": 6.84
+    },
+    {
+        "nombre": "Iron Man: Rise of Technovore",
+        "imagen": "https://image.tmdb.org/t/p/w500/eHDez1uN5X2ZAq4niX7HvhyZIIO.jpg",
+        "anio": 2013,
+        "genero": "Science Fiction, Animation, Action",
+        "descripcion": "Iron Man enlists the help of ruthless vigilante the Punisher to track down War Machine's murderer. All the while, he's being pursued by S.H.I.E.L.D. agents Black Widow and Hawkeye, who suspect his involvement in a recent terrorist plot.",
+        "director": "Hiroshi Hamasaki",
+        "calificacion": 6.029
+    },
+    {
+        "nombre": "Tetsuo: The Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/v3OnlQS8ED0qmpnz6LZQRKN6Zor.jpg",
+        "anio": 1989,
+        "genero": "Horror, Science Fiction",
+        "descripcion": "A \"metal fetishist\", driven mad by the maggots wriggling in the wound he's made to embed metal into his flesh, runs out into the night and is accidentally run down by a Japanese businessman and his girlfriend. The pair dispose of the corpse in hopes of quietly moving on with their lives. However, the businessman soon finds that he is now plagued by a vicious curse that transforms his flesh into iron.",
+        "director": "Shinya Tsukamoto",
+        "calificacion": 6.968
+    },
+    {
+        "nombre": "Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/eJh3B7ekyN97e0PXUeumwVdFVP4.jpg",
+        "anio": 1951,
+        "genero": "Drama",
+        "descripcion": "In Coaltown, Pennsylvania, miner Coke Mason hopes to better himself, buy a radio store, and marry Rose Warren. His gambler brother George thinks Coke can be more successful as a boxer, knowing that when he fights he's consumed with a murderous rage that makes him an \"iron man.\" Seeing dollar signs in Rose's eyes, Coke reluctantly agrees, though he's fearful of the \"killer instinct\" that makes him a knockout success in the ring...and brings him the booing hatred of the fans. Will Coke throw off his personal demon before he kills someone?",
+        "director": "Joseph Pevney",
+        "calificacion": 4.5
+    },
+    {
+        "nombre": "The Man in the Iron Mask",
+        "imagen": "https://image.tmdb.org/t/p/w500/zHE9yRURvA7DyhYtQxkGTfE1Ywi.jpg",
+        "anio": 1998,
+        "genero": "Adventure, Action, Drama",
+        "descripcion": "Years have passed since the Three Musketeers, Aramis, Athos and Porthos, have fought together with their friend, D'Artagnan. But with the tyrannical King Louis using his power to wreak havoc in the kingdom while his twin brother, Philippe, remains imprisoned, the Musketeers reunite to abduct Louis and replace him with Philippe.",
+        "director": "Randall Wallace",
+        "calificacion": 6.64
+    },
+    {
+        "nombre": "Man of Iron",
+        "imagen": "https://image.tmdb.org/t/p/w500/olnMdMunyQzZdizsH8hlAObhTJk.jpg",
+        "anio": 1972,
+        "genero": "Action, Drama, Crime",
+        "descripcion": "Man of Iron was positioned as something of a follow-up to Boxer From Shantung, the rise-and-fall story of Ma Yung Chen and it reunites the directors and some of the cast in a similar but much slighter tale of a lesser gangster's rise and fall in Shanghai. While the opening narration specifically recalls the events and tragic conclusion of BOXER, this one is set 20 years later in the same section of Shanghai but otherwise has nothing to do with the events or characters of the previous film.",
+        "director": "Chang Cheh",
+        "calificacion": 6.3
+    },
+    {
+        "nombre": "Man of Iron",
+        "imagen": "https://image.tmdb.org/t/p/w500/22wNUqKyz2m6wzAt31f26H8Y433.jpg",
+        "anio": 1981,
+        "genero": "Drama, History",
+        "descripcion": "In Warsaw in 1980, the Communist Party sends disgruntled radio reporter Winkel to Gdańsk to dig up dirt on the shipyard strikers - particularly on Maciek Tomczyk, an independent labour union leader whose father was killed in the December 1970 protests. Posing as sympathetic, Winkel interviews the people surrounding Tomczyk, including his detained wife, Agnieszka.",
+        "director": "Andrzej Wajda",
+        "calificacion": 6.82
+    },
+    {
+        "nombre": "The Invincible Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/eebNTSRa5Hh5skPKGdGJIJpo9Ls.jpg",
+        "anio": 2007,
+        "genero": "Action, Adventure, Animation, Fantasy, Science Fiction",
+        "descripcion": "When a cocky industrialist's efforts to raise an ancient Chinese temple leads him to be seriously wounded and captured by enemy forces, he must use his ideas for a revolutionary power armor in order to fight back as a superhero.",
+        "director": "Jay Oliva",
+        "calificacion": 6.136
+    },
+    {
+        "nombre": "Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/l66ZkItJmi4er0I0mGe4mksjfB.jpg",
+        "anio": 1931,
+        "genero": "Drama",
+        "descripcion": "Prizefighter Mason loses his opening fight so wife Rose leaves him for Hollywood. Without her around Mason trains and starts winning. Rose comes back and wants Mason to dump his manager Regan and replace him with her secret lover Lewis.",
+        "director": "Tod Browning",
+        "calificacion": 4.8
+    },
+    {
+        "nombre": "Bartali: The Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/9LQ4PEInhA4X35sqRbQlC8LAzNZ.jpg",
+        "anio": 2006,
+        "genero": "TV Movie, Drama",
+        "descripcion": "TV Miniseries (2 episodes) about life and rivalry of italian bikers Gino Bartali and Fausto Coppi.",
+        "director": "Alberto Negrin",
+        "calificacion": 6.8
+    },
+    {
+        "nombre": "Iron Man & Captain America: Heroes United",
+        "imagen": "https://image.tmdb.org/t/p/w500/AcFFHZGkpLUs31bKf42z8UVLimS.jpg",
+        "anio": 2014,
+        "genero": "Adventure, Animation, Action",
+        "descripcion": "Iron Man and Captain America battle to keep the Red Skull and his triggerman, Taskmaster, from unleashing an army of Hydra Brutes on the world!  Sequel to the film \"Iron Man & Hulk: Heroes United\" and feature Iron Man teaming up with Captain America, it comes to accompany the live-action film \"Captain America: The Winter Soldier\".",
+        "director": "Leo Riley",
+        "calificacion": 6.3
+    },
+    {
+        "nombre": "Iron Man & Hulk: Heroes United",
+        "imagen": "https://image.tmdb.org/t/p/w500/5xrRSqoZKXfZX9oIyZhyvLHc44e.jpg",
+        "anio": 2013,
+        "genero": "Action, Adventure, Animation, Family",
+        "descripcion": "The Invincible Iron Man and the Incredible Hulk must join forces to save the Earth from its greatest threat yet! When two Hydra scientists try to supercharge a Stark Arc Reactor with Hulk's Gamma Energy, they unleash a being of pure electricity called Zzzax - and he's hungry for destruction. Together, Iron Man and Hulk are the only force that stands in the way of the Zzzax's planetary blackout. But first, the super heroic duo will have to get through snarling Wendigos, deadly robots and the scaly powerhouse, Abomination.  Can two of Marvel's mightiest heroes find a way to work together without smashing each other before time runs out?",
+        "director": "Eric Radomski",
+        "calificacion": 5.7
+    },
+    {
+        "nombre": "The Iron Man",
+        "imagen": "https://image.tmdb.org/t/p/w500/cv1C3Bpvb2zUaO1deWosihfmgHV.jpg",
+        "anio": 1973,
+        "genero": "Action",
+        "descripcion": "In 1944 Chang Chin's father was murdered by the Japanese with the help of Ching Tang and Fan Hsi-Shang, two collaborators led by Fung Mu. Now a grown up and a master of kung fu, Chang is ready to revenge his father.",
+        "director": "Jang Il-ho",
+        "calificacion": 4
+    },
+    {
+        "nombre": "The Man with the Iron Heart",
+        "imagen": "https://image.tmdb.org/t/p/w500/ZVQfCY2DgCjrm8w2saXvT8Ao3B.jpg",
+        "anio": 2017,
+        "genero": "War, Action, History, Thriller",
+        "descripcion": "With the Third Reich at its peak in 1942, the Czech resistance in London plans the most ambitious military operation of WWII –  Anthropoid. Two young recruits are sent to Prague to assassinate the most ruthless Nazi leader – Reinhardt Heydrich, head of the SS, the Gestapo and the architect of the Final Solution.",
+        "director": "Cédric Jimenez",
+        "calificacion": 6.548
+    },
+    {
+        "nombre": "The Man with the Iron Fists",
+        "imagen": "https://image.tmdb.org/t/p/w500/9dipO9811zpe3P7H26w9X1z1U2y.jpg",
+        "anio": 2012,
+        "genero": "Action",
+        "descripcion": "In feudal China, a blacksmith who makes weapons for a small village is put in the position where he must defend himself and his fellow villagers.",
+        "director": "RZA",
+        "calificacion": 5.521
+    },
+    {
+        "nombre": "The Man with the Iron Fists 2",
+        "imagen": "https://image.tmdb.org/t/p/w500/n1U7x2OMsyI28auLY3U9XB3udl7.jpg",
+        "anio": 2015,
+        "genero": "Action",
+        "descripcion": "When a stranger, Thaddeus, is found badly wounded near the village, miner Li Kung and his wife Ah Ni offer him refuge. As he heals, he becomes entrenched in a conflict that pits the townsfolk against the evil Master Ho, his nefarious Beetle Clan and the terrifying Lord Pi.",
+        "director": "Roel Reiné",
+        "calificacion": 5.5
     }
 ]
