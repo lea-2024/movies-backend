@@ -35,6 +35,12 @@ header {
   height: 10vh;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #3b3b3b inset;
+}
+
 /* header nav */
 .header_nav_links {
   width: 100%;
@@ -124,6 +130,11 @@ header {
 /* Estilo botón cerrar menú */
 .btn_menu_toggle-close {
   display: none;
+}
+
+/* margen superior para el contenedor principal */
+.main-container{
+  margin-top: 10vh;
 }
 
 /* Contenido principal - Registrarse */
@@ -288,7 +299,9 @@ footer {
 
 /* Estilo copyright footer */
 .footer_copyRight {
-  font-size: 0.8rem;
+  margin-bottom: 0px;
+  font-size: 0.7rem;
+  color: #b2b0b0;
 }
 
 /*botón ir arriba*/

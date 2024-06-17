@@ -6,8 +6,8 @@ if (mysqli_connect_errno()) {
   //echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
 }
 
-//require './api/crud.php';
-//session_start();
+require './api/crud.php';
+session_start();
 
 // Comprobar si el usuario ha iniciado sesión
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
