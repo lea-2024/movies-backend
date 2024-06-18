@@ -132,6 +132,11 @@ input:-webkit-autofill:focus {
     display: none;
 }
 
+/* margen superior para el contenedor principal */
+.main-container {
+    margin-top: 10vh;
+}
+
 /* Contenido principal - Registrarse */
 .main_register {
     margin-top: 10vh;
@@ -294,7 +299,9 @@ footer {
 
 /* Estilo copyright footer */
 .footer_copyRight {
-    font-size: 0.8rem;
+    margin-bottom: 0px;
+    font-size: 0.7rem;
+    color: #b2b0b0;
 }
 
 /*botón ir arriba*/
@@ -477,7 +484,14 @@ footer {
     width: 100%;
 }
 
-/* formulario peliculas */
+/* ====FORMULARIO PELICULAS====== */
+
+.peliculas_contianer {
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../asset/images/fondo_movie.png');
+}
 
 .form-peliculas {
     display: flex;
@@ -491,12 +505,8 @@ footer {
     color: #ffffff;
     box-shadow: 0 0 10px #030303;
     border: none;
-    background: rgba(255, 255, 255, 0.39);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #222222;
+    box-shadow: 0 0 10px 2px #000;
 
     /* INPUT CSS */
 
@@ -505,9 +515,10 @@ footer {
         margin: 5px auto;
         margin-bottom: 10px;
         border-radius: 5px;
-        border: none;
+        border: 2px solid #9f3647;
         width: 80%;
-        background: #ffffff;
+        background-color: #222222;
+        color: white;
     }
 
     select {
@@ -518,6 +529,9 @@ footer {
         border: none;
         width: 80%;
         text-align: center;
+        background-color: #222222;
+        color: white;
+        border: 2px solid #9f3647;
     }
 
     label {
@@ -529,13 +543,17 @@ footer {
         padding: 10px 20px;
         font-size: 14px;
         font-weight: bold;
-        background-color: #0c913f;
+        background-color: #9f3647;
         color: white;
         border: none;
         cursor: pointer;
         border-radius: 5px;
         margin: 0 auto;
         width: 100px;
+    }
+
+    .date {
+        color: white;
     }
 
     .h1-form {
@@ -548,11 +566,18 @@ footer {
         margin: 0 auto;
         height: 100px;
         border-radius: 10px;
-        border: none;
+        background-color: #222222;
+        color: white;
+        border: 2px solid #9f3647;
+    }
+    select,
+    option {
+        background-color: #222222;
+        color: white;
     }
 }
 
-/*--------------------------- */
+/*===========FIN CONTENEDOR FORMULARIO DE REGISTRO (ESTEBAN)=========== */
 
 /* contenedor formulario de registro */
 .register_form_container {
