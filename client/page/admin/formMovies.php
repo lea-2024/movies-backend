@@ -46,7 +46,8 @@ unset($_SESSION['errores']);
 		<form action="createMovie.php" method="post" class="form-peliculas" enctype=multipart/form-data>
 			<h1 class="text-center p-2 h1-form">Cargar Películas</h1>
 			<label for="nombre">Nombre</label>
-			<input type="text" name="nombre" />
+				<input type="text" name="nombre"/>
+				
 			<?php if (isset($errores['nombre'])) : ?>
 			<p class="text-danger fs-6 mx-5"><?php echo $errores['nombre'] ?></p>
 			<?php endif; ?>
@@ -111,7 +112,7 @@ unset($_SESSION['errores']);
 			<p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
 			<?php endif; ?>
 
-			<input type="submit" value="enviar" />
+			<input type="submit" value="enviar" class="mt-3" />
 		</form>
 <!--		<footer class="container-fluid">-->
 <!--			 links de navagación - footer -->

@@ -1,4 +1,8 @@
 <?php
+  require '../../../api/connect.php';
+  require '../../../api/crud.php';
+  global $conn;
+  
 $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $genero = $_POST['genero'];
@@ -57,7 +61,7 @@ $imagen = $_FILES['imagen'];
     */
 
     // Definir la carpeta de destino
-    $rutaDestino = 'C:\xampp\htdocs\movies-backend\client\asset\upload\img_';
+    $rutaDestino = '../../asset/uploads/img_';
 
     // Verificar si se cargó correctamente la imagen
     if ($imagen['error'] === UPLOAD_ERR_OK) {
@@ -66,63 +70,34 @@ $imagen = $_FILES['imagen'];
     
         // Verificar si la imagen existe en la carpeta de destino
         if (file_exists($rutaImagen)) {
-            echo 'La imagen ya existe en la carpeta de destino'.'<br>';
+          echo 'La imagen ya existe en la carpeta de destino'.'<br>';
+          echo '<script>alert("La imagen ya existe")</script>';
         } else {
-            // Verificar el tamaño de la imagen
-            if ($_FILES['imagen']['size'] <= 1000000) {
-                // Verificar la extensión de la imagen
-                if(in_array($imagen['type'], ['image/png', 'image/jpeg'])) {
-                    // Si no existe, mover el archivo a la carpeta de destino
-                    if (move_uploaded_file($imagen['tmp_name'], $rutaImagen)) {
-                        echo 'La imagen se movió correctamente a la carpeta de destino'.'<br>';
-                    } else {
-                        // Error al mover la imagen
-                        echo 'Error al mover la imagen a la carpeta de destino'.'<br>';
-                    }
+                // Verificar el tamaño de la imagen
+                if ($_FILES['imagen']['size'] <= 1000000) {
+                  // Verificar la extensión de la imagen
+                  if(!in_array($imagen['type'], ['image/png', 'image/jpeg'])) {
+                      echo 'La imagen no tiene la extensión correcta!!'.'<br>';
+                  }
                 } else {
-                    echo 'La imagen no tiene la extensión correcta!!'.'<br>';
-                }
-            } else {
-                echo 'La imagen es demasiado grande'.'<br>';
-            }
+                    echo 'La imagen es demasiado grande'.'<br>';
+                  }
+
         }
-    } else {
-        echo 'Error al cargar la imagen';
     }
-        
-    
-    
-    /*
-    !================CONEXION A LA BASE DE DATOS=========== 
-    */
-
-    //conexion a la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "movies_db";
-
-    // Crear la conexión
-    $conexion = new mysqli($servername, $username, $password, $dbname);
-    // Verificar la conexión
-    if (!$conexion) {
-        die("Error de conexión: " . mysqli_connect_error());
-    }
-
 
     // Validar si la imagen ya existe en la base de datos
 
-    $existeImg= 'SELECT * FROM peliculas WHERE imagen = "'.$rutaImagen.'"';
+    $sql_check_image = 'SELECT * FROM peliculas WHERE imagen = :rutaImagen';
 
-    $result = mysqli_query($conexion, $existeImg);
-
-    if (mysqli_num_rows($result) > 0) {
-        $errores['imagen'] = 'La imagen ya existe, porfavor cargue nuevamente la pelicula o cambie la imagen';
-        
+//    $result = mysqli_query($conexion, $existeImg);
+    $result = $conn->prepare($sql_check_image);
+    $result->bindParam(':rutaImagen', $rutaImagen);
+    $result->execute();
+    if($result->rowCount() > 0){
+      $errores['imagen'] = 'La imagen ya existe, por favor cargue nuevamente la pelicula o cambie la imagen';
     }
-
     
-  
     // si contiene errores el array
     if (count($errores) > 0) {
       session_start();
@@ -134,45 +109,47 @@ $imagen = $_FILES['imagen'];
     // si no hay errores, inserto los datos
 
     if (empty($errores)) {
-    
     /*
     ?======================iNSERTAR DATOS====================
     */
 
     // Verificar si ya existe un registro con los mismos valores
-    $sqlCheck = "SELECT * FROM peliculas WHERE nombre = '$nombre' AND descripcion = '$descripcion' AND genero = '$genero'
-    AND calificacion = '$calificacion' AND seccion = '$seccion' AND anio = '$anio' AND director = '$director'";
-    $resultCheck = mysqli_query($conexion, $sqlCheck);
+    $sqlCheck = "SELECT * FROM peliculas WHERE nombre = :nombre AND descripcion = :descripcion AND genero = :genero AND calificacion = :calificacion AND seccion = :seccion AND anio = :anio AND director = :director";
+    
+    $register_exists = $conn->prepare($sqlCheck);
+    $register_exists->bindParam(':nombre', $nombre);
+    $register_exists->bindParam(':descripcion', $descripcion);
+    $register_exists->bindParam(':genero', $genero);
+    $register_exists->bindParam(':calificacion', $calificacion);
+    $register_exists->bindParam(':seccion', $seccion);
+    $register_exists->bindParam(':anio', $anio);
+    $register_exists->bindParam(':director', $director);
+    
+//    $resultCheck = mysqli_query($conexion, $sqlCheck);
+      $register_exists->execute();
 
-    if (mysqli_num_rows($resultCheck) > 0) {
+    if ($register_exists->rowCount() > 0) {
         echo '<script type="text/javascript">
-        alert("ya existe un registro con estos datos.Porfavor cargue nuevamente la pelicula o cambie los datos");
+        alert("ya existe un registro con estos datos.Por favor cargue nuevamente la pelicula o cambie los datos");
         window.location.href="formMovies.php";
         </script>';
     } else {
+      
         // si no existe insertar los datos
-        $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES ('$nombre', '$descripcion', '$genero', '$calificacion', '$seccion', '$anio', '$director','$rutaImagen')";
-
+      $tempURL = $imagen['tmp_name'];
+        $movie = storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $rutaImagen, $tempURL);
+        
+        
         // Ejecutar la consulta
-        if (mysqli_query($conexion, $sql) ) {
+        if($movie){
         echo '<script type="text/javascript">
             alert("Pelicula cargada con exito");
             window.location.href="formMovies.php";
             </script>';
         
         } else {
-            echo "Error al insertar los datos: " . mysqli_error($conexion);
+            echo "Error al insertar los datos";
         }
     }
-
-
-    //!!===Cerrar la conexión===
-    mysqli_close($conexion);
-
-
-
 };
-
-
-
 ?>

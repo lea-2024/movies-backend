@@ -96,7 +96,26 @@ function getAllMovies(){
   }
 }
 
-function storeMovie(){
+function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
   global $conn;
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':nombre', $nombre);
+  $stmt->bindParam(':descripcion', $descripcion);
+  $stmt->bindParam(':genero', $genero);
+  $stmt->bindParam(':calificacion', $calificacion);
+  $stmt->bindParam(':seccion', $seccion);
+  $stmt->bindParam(':anio', $anio);
+  $stmt->bindParam(':director', $director);
+  $stmt->bindParam(':rutaImagen', $imagen);
+  try {
+    $stmt->execute();
+    move_uploaded_file($tempURL, $imagen);
+    return true;
+  } catch (PDOException $e){
+    echo "Error al guardar datos: ". $e->getMessage();
+    return false;
+  }
   
+
 }

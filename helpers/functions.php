@@ -25,4 +25,5 @@
       echo $genero, $indice < count($generos) -1 ? ' | ' : '';
     }
   }
+  
   ?>
