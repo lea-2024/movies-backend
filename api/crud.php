@@ -116,6 +116,4 @@ function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $an
     echo "Error al guardar datos: ". $e->getMessage();
     return false;
   }
-  
-
 }

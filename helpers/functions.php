@@ -1,5 +1,4 @@
 <?php
-  
   // Convertir el numero de calificación en estrellas
   function convert_ratings($number){
     $stars;
@@ -26,4 +25,28 @@
     }
   }
   
+  // Verificar si una pelicula ya existe en la base de datos
+  function movie_exists($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director){
+    global $conn;
+    $sqlCheck = "SELECT * FROM peliculas WHERE nombre = :nombre AND descripcion = :descripcion AND genero = :genero AND calificacion = :calificacion AND seccion = :seccion AND anio = :anio AND director = :director";
+    $register_exists = $conn->prepare($sqlCheck);
+    $register_exists->bindParam(':nombre', $nombre);
+    $register_exists->bindParam(':descripcion', $descripcion);
+    $register_exists->bindParam(':genero', $genero);
+    $register_exists->bindParam(':calificacion', $calificacion);
+    $register_exists->bindParam(':seccion', $seccion);
+    $register_exists->bindParam(':anio', $anio);
+    $register_exists->bindParam(':director', $director);
+    
+    try {
+      $register_exists->execute();
+      if ($register_exists->rowCount() > 0){
+        return true;
+      } else{
+        return false;
+      }
+    } catch (PDOException $e){
+      echo "Error al obtener datos de la DB ".$e->getMessage();
+    }
+  }
   ?>
