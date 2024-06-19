@@ -95,3 +95,8 @@ function getAllMovies(){
     echo "Error al obtener datos: ". $e->getMessage();
   }
 }
+
+function storeMovie(){
+  global $conn;
+  
+}
