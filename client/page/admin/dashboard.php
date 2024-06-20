@@ -1,6 +1,20 @@
 <?php
 	require '../../../api/crud.php';
 	require '../../../helpers/functions.php';
+	session_start();
+	$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
+	if (!$user) {
+		header('Location: ../../../index.php');
+		exit; // Detén la ejecución del script
+	}
+	
+	// Verifica si el usuario tiene el rol de administrador
+	if ($user['rol'] !== 'admin') {
+		// Si el usuario no es administrador, redirige al índice
+		header('Location: ../../../index.php');
+		exit; // Detén la ejecución del script
+	}
 	
 	$peliculas = getAllMovies();
 
@@ -73,6 +87,8 @@
       </a>
     </nav>
   </header>
+  <?php if ($user) : ?>
+	<?php if ($user['rol'] == 'admin') : ?>
 	<main class="container-fluid p-5 container-api">
 		<div class="d-flex align-items-center justify-content-between">
 		<h1 class="fs-3">Administrador de Películas</h1>
@@ -138,6 +154,8 @@
       <?php endif ?>
 		</section>
 	</main>
+	<?php endif; ?>
+	<?php endif; ?>
 
 	<!--	JQuery -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

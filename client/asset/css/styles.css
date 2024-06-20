@@ -705,6 +705,13 @@ input[type="date"] {
     height: auto;
   }
 
+  .header_list_links a{
+    display: flex; /* Enables horizontal layout */
+    align-items: center; /* Aligns content vertically */
+    justify-content: flex-start; /* Aligns content to the left */
+    padding-left: 20px; /* Margin on the left side */
+  }
+
   /* items del nav */
   .header_items {
     width: 100%;
@@ -737,8 +744,8 @@ input[type="date"] {
 
   /* efectos hover links */
   .header_link:hover {
-    display: block;
-    padding: 10px 0;
+    /* display: block; */
+    /* padding: 10px 0; */
     background-color: whitesmoke;
     color: rgb(0, 105, 197);
     box-shadow: none;
@@ -747,9 +754,9 @@ input[type="date"] {
   .header_link-login:hover {
     background-color: whitesmoke;
     color: rgb(0, 105, 197);
-    padding: 10px 14px;
+    /* padding: 10px 14px; */
     border-radius: 0;
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
     text-decoration: none;
     transition: all ease-in-out 500ms;
   }

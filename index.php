@@ -36,6 +36,7 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
 
   <!-- Estilos personalizados-->
   <link rel="stylesheet" href="./client/asset/css/styles.css" />
+  <link rel="stylesheet" href="./client/asset/css/modalFooter.css" />
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./client/asset/images/film.ico" type="image/x-icon" />
@@ -183,6 +184,22 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
     <hr class="line_divisor" />
 
     <!-- Sección de películas Tendencias-->
+    <?php
+      $peliculasPorPagina = 10;
+      $totalPeliculas = count($tendencias);
+
+      $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
+
+      // Obtener la página actual de la solicitud, si no está presente, establecer en 1
+      $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+      // Calcular el índice inicial y final para las películas de la página actual
+      $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
+      $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
+
+      // Obtener las películas para la página actual
+      $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
+    ?>
     <!-- Contenedor Tendencias -->
     <section class="container p-5 trends_container" id="trends">
       <div class="row">
@@ -196,7 +213,7 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php foreach ($tendencias as $registro) { ?>
+          <?php foreach ($peliculasPagina as $registro) { ?>
 
             <div class="trend_container">
               <a href="#" class="trend_container_link">
@@ -222,11 +239,20 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
       <!-- Botones anterior - siguiente -->
       <div class="row text-center mt-5">
         <div class="col d-flex gap-4 justify-content-center align-items-center">
-          <button class="main_trends_btn" id="btnTrendPrev">Anterior</button>
-          <button class="main_trends_btn" id="btnTrendNext">Siguiente</button>
+          <button class="main_trends_btn" id="btnTrendPrev" <?php if ($paginaActual <= 1) echo 'disabled'; ?>>Anterior</button>
+          <button class="main_trends_btn" id="btnTrendNext" <?php if ($paginaActual >= $totalPaginas) echo 'disabled'; ?>>Siguiente</button>
         </div>
       </div>
     </section>
+    <script>
+      document.getElementById('btnTrendPrev').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> - 1) + '#trends';
+      });
+
+      document.getElementById('btnTrendNext').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> + 1) + '#trends';
+      });
+    </script>
     <!-- Fin contenedor tendencias -->
 
     <!-- Separar sección con línea -->
@@ -254,10 +280,6 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
               <div class="acclaimed_container">
                 <a href="#">
                   <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
-                  <div class="trend_container-hover">
-                    <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
-                    <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-                  </div>
                 </a>
               </div>
             <?php } ?>
@@ -270,6 +292,41 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
     <!-- Fin peliculas aclamadas -->
   </main>
   <!-- Fin contenido principal -->
+   <!-- Contenedor del modal footer-->
+   <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- El contenido del modal se cargará aquí -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con todos los términos aquí descritos.
+                        </p>
+                        <p>
+                            1. Uso del sitio: ...
+                        </p>
+                        <p>
+                            2. Propiedad intelectual: ...
+                        </p>
+                        <!-- Agrega más contenido según sea necesario -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
@@ -279,16 +336,16 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
           <nav class="footer_links d-flex justify-content-center">
             <ul class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
               <li class="footer_item">
-                <a href="#" class="footer_link">Términos y condiciones</a>
+                <a href="#" class="footer_link" data-content="terms">Términos y condiciones</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Preguntas frecuentes</a>
+                <a href="#" class="footer_link" data-content="pregunt">Preguntas frecuentes</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Ayuda</a>
+                <a href="#" class="footer_link" data-content="ayuda">Ayuda</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Contacto</a>
+                <a href="#" class="footer_link" data-content="default">Contacto</a>
               </li>
             </ul>
           </nav>
@@ -312,6 +369,9 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
   <!-- Enlace script index.js-->
   <script src="./client/asset/js/index.js"></script>
   <script src="./client/asset/js/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <!-- Script para el modal del footer-->
+   <script src="./client/asset/js/modal_footer.js"></script>
   <script>
     // JavaScript para mostrar el div si hay resultados y el botón de limpiar
     <?php if (isset($resultados) && !empty($resultados)) : ?>

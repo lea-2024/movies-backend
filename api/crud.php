@@ -69,11 +69,14 @@ function deleteUser($id) {
 
 // Login de usuario
 function loginUser($email, $password) {
-    $user = getUserByEmail($email);
-    if ($user && password_verify($password, $user['password'])) {
-        return $user;
-    }
-    return false;
+  $user = getUserByEmail($email);
+  if (!$user) {
+      return 'email_incorrecto';
+  }
+  if (!password_verify($password, $user['password'])) {
+      return 'contraseña_incorrecta'; 
+  }
+  return $user;
 }
 
 // ---------------------------------------------------------------------------------------------------
