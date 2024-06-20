@@ -15,20 +15,8 @@ $conexion = mysqli_connect("localhost", 'root', "root", 'movies_db');
 if(mysqli_connect_errno()) {
     echo "fallo la conexion - error: " . mysqli_connect_errno();
 } else {
-    echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
+    //echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
 }
 //echo "<br><br>";
-
-// query de insercion
-$query = "SELECT * FROM registro";
-
-// OBJETO de tipo 'mysqli_result' q contiene el resultado de la consulta $query realizada
-$consulta = mysqli_query($conexion, $query);
-
-echo 'url - nombre - calificacion';
-while ($registro = mysqli_fetch_array($consulta)) {
-    // 'mysqli_fetch_array(...)' proporciona una forma de iterar sobre los resultados como si fueran filas de un array asociativo que llamamos $registro
-    echo $registro['url'] . ' - ' . $registro['nombre'] . ' - ' . $registro['calificacion'];
-}
 
 ?>

@@ -1,10 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", 'root', "root", 'movies_db');
-if (mysqli_connect_errno()) {
-  echo "fallo la conexion - error: " . mysqli_connect_errno();
-} else {
-  //echo "🤙 CONEXION ESTABLECIDA mediante archivo externo";
-}
+include 'conexion.php';
 
 require './api/crud.php';
 session_start();
@@ -162,7 +157,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
 
             <div class="trend_container">
-              <a href="#" class="trend_container_link">
+              <a href="pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
                 <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
                 <div class="trend_container-hover">
                   <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
@@ -220,7 +215,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
             <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
               <div class="acclaimed_container">
-                <a href="#">
+                <a href="pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
                   <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
                 </a>
               </div>
