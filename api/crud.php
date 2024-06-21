@@ -84,7 +84,8 @@ function loginUser($email, $password) {
   //                                          CRUD DE PELICULAS
   // ---------------------------------------------------------------------------------------------------
   
-function getAllMovies(){
+ // Mostrar todas las peliculas
+  function getAllMovies(){
   global $conn;
 
   try {
@@ -96,6 +97,7 @@ function getAllMovies(){
   }
 }
 
+// Guardar pelicula
 function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
   global $conn;
   $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";

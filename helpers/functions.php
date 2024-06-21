@@ -1,7 +1,7 @@
 <?php
   // Convertir el numero de calificación en estrellas
   function convert_ratings($number){
-    $stars;
+    $stars=null;
     
     if($number >= 0 && $number < 2){
       $stars = str_repeat('⭐',1);

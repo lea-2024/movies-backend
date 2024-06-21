@@ -61,7 +61,7 @@ $peliculas = getAllMovies();
   <main class="container-fluid p-5 container-api">
     <div class="d-flex align-items-center justify-content-between">
       <h1 class="fs-3">Administrador de Películas</h1>
-      <a href="formMovies.php" class="link_movie-add"><i class="fa-regular fa-file"></i>Agregar</a>
+      <a href="formMovie.php" class="link_movie-add"><i class="fa-regular fa-file"></i>Agregar</a>
     </div>
     <section class="mt-5">
       <?php if (count($peliculas) == 0) : ?>

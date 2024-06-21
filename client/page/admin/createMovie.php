@@ -95,7 +95,7 @@ if($result->rowCount() > 0){
 if (count($errores) > 0) {
   session_start();
   $_SESSION['errores'] = $errores; // guarda el array errores en la session con el nombre errores
-  header('Location:formMovies.php');
+  header('Location:formMovie.php');
   
 }
 
@@ -111,7 +111,7 @@ if (empty($errores)) {
   if ($movie_exists) {
       echo '<script type="text/javascript">
       alert("ya existe un registro con estos datos.Por favor cargue nuevamente la pelicula o cambie los datos");
-      window.location.href="formMovies.php";
+      window.location.href="formMovie.php";
       </script>';
   } else {
     // si no existe insertar los datos y guarda la imágen en uploads
@@ -123,13 +123,13 @@ if (empty($errores)) {
       echo
       '<script type="text/javascript">
         alert("Pelicula cargada con exito");
-        window.location.href="formMovies.php";
+        window.location.href="formMovie.php";
       </script>';
     } else {
     echo
     '<script type="text/javascript">
       alert("Error al cargar la pelicula");
-      window.location.href="formMovies.php";
+      window.location.href="formMovie.php";
       </script>';
     }
   }
