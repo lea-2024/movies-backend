@@ -9,6 +9,7 @@ $director = $_POST['director'];
 $imagen = $_FILES['imagen'];
 
 
+
 // validar si los campos no estan vacios
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -164,6 +165,7 @@ $imagen = $_FILES['imagen'];
             alert("Pelicula cargada con exito");
             window.location.href="cargarPelicula.php";
             </script>';
+
         
         } else {
             echo "Error al insertar los datos: " . mysqli_error($conexion);
@@ -177,7 +179,5 @@ $imagen = $_FILES['imagen'];
 
 
 };
-
-
 
 ?>

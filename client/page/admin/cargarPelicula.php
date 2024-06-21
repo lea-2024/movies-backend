@@ -25,13 +25,15 @@ unset($_SESSION['errores']);
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 	<link rel="stylesheet" href="../../asset/css/styles.css" />
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link href="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css
+        " rel="stylesheet" />
 	<title>Cargar Películas</title>
 </head>
 
 <body class="peliculas_contianer">
 	<section>
-		<form action="registroPeliculas.php" method="post" class="form-peliculas" enctype=multipart/form-data>
+		<form action="registroPeliculas.php" method="post" class="form-peliculas" enctype=multipart/form-data id="form">
 			<h1 class="text-center p-2 h1-form">Cargar Películas</h1>
 			<label for="nombre">Nombre</label>
 			<input type="text" name="nombre" />
@@ -137,9 +139,14 @@ unset($_SESSION['errores']);
 			</div>
 		</footer>
 	</section>
+	<!-- <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js
+"></script>
+	<script src="../../asset/js/alerta.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
 		integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
 	</script>
+
 
 </body>
 
