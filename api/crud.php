@@ -177,18 +177,45 @@ function getMoviesBySection($seccion){
 }
 
 // Obtener pelicula por nombre
-function searchMoviesByName($name){
+function searchMoviesByName($name) {
   global $conn;
 
   try {
-    $stmt = $conn->prepare("SELECT * FROM peliculas WHERE nombre LIKE :name AND estado = 1");
-    $stmt->execute(['name' => '%' . $name . '%']);
+    // Normalizar el nombre de entrada reemplazando caracteres especiales y espacios
+    $normalizedName = '%' . str_replace(['-', ' '], '%', $name) . '%';
+    // Preparar la consulta principal
+    $stmt = $conn->prepare("
+      SELECT * FROM peliculas 
+      WHERE REPLACE(REPLACE(REPLACE(nombre, '-', ''), ' ', ''), ' ', '') 
+      LIKE REPLACE(REPLACE(REPLACE(:name, '-', ''), ' ', ''), ' ', '') 
+      AND estado = 1
+    ");
+    
+    // Ejecutar la consulta principal
+    $stmt->execute(['name' => $normalizedName]);
     $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Si no hay resultados, hacer una nueva consulta con las primeras 4 letras
+    if (empty($peliculas)) {
+      $shortName = substr($name, 0, 4) . '%';
+      $stmt = $conn->prepare("
+        SELECT * FROM peliculas 
+        WHERE nombre LIKE :shortName 
+        AND estado = 1
+      ");
+      $stmt->execute(['shortName' => $shortName]);
+      $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     return $peliculas;
   } catch (PDOException $e) {
     echo "Error al obtener datos: " . $e->getMessage();
   }
 }
+
+
+
+
 
 // Obtener pelicula por id
 function searchMoviesById($id){
