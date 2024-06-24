@@ -89,10 +89,8 @@ function loginUser($email, $password)
 // ---------------------------------------------------------------------------------------------------
 //                                          CRUD DE PELICULAS
 // ---------------------------------------------------------------------------------------------------
-
 // trae todas las peliculas
-function getAllMovies()
-{
+function getAllMovies(){
   global $conn;
 
   try {
@@ -141,11 +139,30 @@ function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, 
   }
 }
 
-
+function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
+  global $conn;
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':nombre', $nombre);
+  $stmt->bindParam(':descripcion', $descripcion);
+  $stmt->bindParam(':genero', $genero);
+  $stmt->bindParam(':calificacion', $calificacion);
+  $stmt->bindParam(':seccion', $seccion);
+  $stmt->bindParam(':anio', $anio);
+  $stmt->bindParam(':director', $director);
+  $stmt->bindParam(':rutaImagen', $imagen);
+  try {
+    $stmt->execute();
+    move_uploaded_file($tempURL, $imagen);
+    return true;
+  } catch (PDOException $e){
+    echo "Error al guardar datos: ". $e->getMessage();
+    return false;
+  }
+}
 
 // trae las peliculas por seccion
-function getMoviesBySection($seccion)
-{
+function getMoviesBySection($seccion){
   global $conn;
 
   try {
@@ -160,8 +177,7 @@ function getMoviesBySection($seccion)
 }
 
 // Obtener pelicula por nombre
-function searchMoviesByName($name)
-{
+function searchMoviesByName($name){
   global $conn;
 
   try {
@@ -175,8 +191,7 @@ function searchMoviesByName($name)
 }
 
 // Obtener pelicula por id
-function searchMoviesById($id)
-{
+function searchMoviesById($id){
   global $conn;
 
   try {
@@ -190,8 +205,7 @@ function searchMoviesById($id)
 }
 
 // Da de baja la pelicula sin eliminarla de la DB
-function deleteMovie($id)
-{
+function deleteMovie($id){
   global $conn;
 
   try {
@@ -205,8 +219,7 @@ function deleteMovie($id)
 }
 
 // Elimina de la base de datos
-function deleteMoviePermanently($id)
-{
+function deleteMoviePermanently($id){
   global $conn;
 
   try {

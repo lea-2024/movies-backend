@@ -6,22 +6,23 @@
   font-family: "nunito", sans-serif;
   scrollbar-color: rgb(0, 105, 197) transparent;
   scrollbar-width: thin;
+
 }
 
 html {
-  scroll-behavior: smooth;
-  font-size: 16px;
+    scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 :root {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /*Color de fondo y texto de todo el sitio*/
 body {
-  background-color: #181419;
-  color: white;
-  scroll-behavior: smooth;
+    background-color: #181419;
+    color: white;
+    scroll-behavior: smooth;
 }
 
 /*Estilos header*/
@@ -33,21 +34,22 @@ header {
   display: flex;
   background-color: rgb(0, 105, 197);
   height: 10vh;
+
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #3b3b3b inset;
 }
 
 /* header nav */
 .header_nav_links {
-  width: 100%;
-  display: flex;
-  padding: 0 40px;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header_nav_links a{
@@ -59,18 +61,18 @@ input:-webkit-autofill:focus {
 
 /* Logo y Texto */
 .header_logo {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all ease-in-out 500ms;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all ease-in-out 500ms;
 }
 
 /* Efecto hover logo */
 .header_logo:hover {
-  animation-name: heartBeat;
-  animation-duration: 2s;
-  animation-fill-mode: both;
+    animation-name: heartBeat;
+    animation-duration: 2s;
+    animation-fill-mode: both;
 }
 
 /* lista de links de navegación */
@@ -91,11 +93,11 @@ input:-webkit-autofill:focus {
 
 /* link de navegación*/
 .header_link {
-  color: white;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
-  transition: all ease-in-out 500ms;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all ease-in-out 500ms;
 }
 
 /* efectos hover link de navegacion y logo header */
@@ -107,14 +109,14 @@ input:-webkit-autofill:focus {
 
 /* link de login y API */
 .header_link-login {
-  padding: 10px 14px;
-  border-radius: 5px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
-  background-color: #000;
-  color: white;
-  transition: all ease-in-out 500ms;
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    background-color: #000;
+    color: white;
+    transition: all ease-in-out 500ms;
 }
 
 /* color de fondo link API */
@@ -132,52 +134,52 @@ input:-webkit-autofill:focus {
 
 /* Botón mostrar/ocultar links de navegación responsive - se oculta en resoluciones grandes */
 .btn_menu_toggle {
-  cursor: pointer;
-  transform: scale(1.1);
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /* Estilo botón abrir menú */
 .btn_menu_toggle-open {
-  display: none;
+    display: none;
 }
 
 /* Estilo botón cerrar menú */
 .btn_menu_toggle-close {
-  display: none;
+    display: none;
 }
 
 /* margen superior para el contenedor principal */
-.main-container{
-  margin-top: 10vh;
+.main-container {
+    margin-top: 10vh;
 }
 
 /* Contenido principal - Registrarse */
 .main_register {
-  margin-top: 10vh;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-position: center;
-  background-image: linear-gradient(to right top, #0000008a, #0000008a),
-  url("../images/banner-bg.jpg");
-  background-size: cover;
+    margin-top: 10vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-position: center;
+    background-image: linear-gradient(to right top, #0000008a, #0000008a),
+        url('../images/banner-bg.jpg');
+    background-size: cover;
 }
 
 /*Titulo principal*/
 .main_register-title {
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 /*Titulo secundario*/
 .main_register-subTitle {
-  font-size: 2.2rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
 }
 
 /*Botón registrar*/
@@ -195,24 +197,24 @@ input:-webkit-autofill:focus {
 
 /*Sección buscar menú principal*/
 .main_search_container {
-  margin: 70px auto;
-  opacity: 0;
+    margin: 70px auto;
+    opacity: 0;
 }
 
 /*titulo search*/
 .main_search_title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 /*form input search*/
 .main_search_input {
-  width: 70%;
-  padding: 0.7rem 1.5rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2rem;
+    width: 70%;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
 }
 
 .main_search_input:focus {
@@ -244,11 +246,11 @@ input:-webkit-autofill:focus {
 
 /*sección peliculas - tendencias*/
 .main_trends {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 3rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
 }
 
 /*botones tendencias anterior - siguiente */
@@ -266,7 +268,7 @@ input:-webkit-autofill:focus {
 
 /*Sección peliculas - aclamadas*/
 .main_acclaimed {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* Footer **************************************/
@@ -276,16 +278,16 @@ footer {
 
 /* footer nav */
 .footer_list_links {
-  list-style: none;
-  font-size: 1rem;
+    list-style: none;
+    font-size: 1rem;
 }
 
 /* footer link */
 .footer_link {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all ease-in-out 500ms;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all ease-in-out 500ms;
 }
 
 /* efectos links footer hover */
@@ -296,13 +298,13 @@ footer {
 
 /*footer - link activo*/
 .footer_link-active {
-  background-color: #181419;
-  color: white;
-  padding: 0.7rem 0.8rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all ease-in-out 500ms;
+    background-color: #181419;
+    color: white;
+    padding: 0.7rem 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all ease-in-out 500ms;
 }
 
 /* footer - link activo - hover */
@@ -320,108 +322,108 @@ footer {
 
 /*botón ir arriba*/
 .btn_top {
-  position: fixed;
-  display: none;
-  bottom: 1rem;
-  right: 1rem;
-  width: 1.8rem;
-  cursor: pointer;
+    position: fixed;
+    display: none;
+    bottom: 1rem;
+    right: 1rem;
+    width: 1.8rem;
+    cursor: pointer;
 }
 
 .btn_top_image:hover {
-  background-color: rgb(54, 54, 56);
-  border-radius: 50%;
+    background-color: rgb(54, 54, 56);
+    border-radius: 50%;
 }
 
 /*  Quitar márgenes */
 .no-margin {
-  margin: 0;
+    margin: 0;
 }
 
 /* Sección Pelicuas - Tendencias */
 /* contenedores de peliculas */
 .trends_container {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* Contenedor de pelicula */
 .trend_container {
-  position: relative;
-  width: 200px;
-  overflow: hidden;
+    position: relative;
+    width: 200px;
+    overflow: hidden;
 }
 
 /* imágen de pelicula */
 .trend_image {
-  width: 100%;
-  object-fit: contain;
-  border-radius: 15px;
-  transition: all ease-in-out 300ms;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+    transition: all ease-in-out 300ms;
 }
 
 /* Efecto al pasar el mouse sobre las cards */
 /* contenedor en efecto hover */
 .trend_container-hover {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  top: 0;
-  padding: 10px;
-  text-align: center;
-  color: white;
-  border-radius: 15px;
-  opacity: 0;
-  transition: all ease-in-out 900ms;
-  transform: scale(1);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    opacity: 0;
+    transition: all ease-in-out 900ms;
+    transform: scale(1);
 }
 
 /* titulo en efecto hover */
 .trend_title-hover {
-  text-shadow: 1px 1px 3px black;
-  font-size: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    text-shadow: 1px 1px 3px black;
+    font-size: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Reviews en efecto hover */
 .trend_review-hover {
-  margin-top: 20px;
-  font-size: 1.2rem;
+    margin-top: 20px;
+    font-size: 1.2rem;
 }
 
 /* Imágen en efecto hover */
 .trend_image-hover {
-  width: 40%;
-  margin-top: 1rem;
-  filter: contrast(60%);
-  transform: rotateY(-180deg);
-  transition: transform ease-in-out 1s;
+    width: 40%;
+    margin-top: 1rem;
+    filter: contrast(60%);
+    transform: rotateY(-180deg);
+    transition: transform ease-in-out 1s;
 }
 
 /* aL hacer hover en card aplicar el efecto en la imágen */
 .trend_container:hover .trend_image {
-  filter: blur(2px) grayscale(1) contrast(20%);
-  transform: scale(0.98);
+    filter: blur(2px) grayscale(1) contrast(20%);
+    transform: scale(0.98);
 }
 
 /* al hacer hover en la card mostrar el contenido oculto aplicando algunos estilos */
 .trend_container:hover .trend_container-hover {
-  transform: scale(0.98);
-  opacity: 1;
-  visibility: visible;
+    transform: scale(0.98);
+    opacity: 1;
+    visibility: visible;
 }
 
 /* al hacer hover en la card aplicar efecto sobre imágen que se muestra en el hover  */
 .trend_container:hover .trend_image-hover {
-  transform: rotateY(0deg);
+    transform: rotateY(0deg);
 }
 
 /* Sección Pelicuas - Aclamadas */
@@ -435,15 +437,15 @@ footer {
 
 /* Contenedor de pelicula */
 .acclaimed_container {
-  width: 160px;
-  min-width: 160px;
+    width: 160px;
+    min-width: 160px;
 }
 
 /* Imagen aclamadas */
 .acclaimed_image {
-  width: 100%;
-  object-fit: contain;
-  border-radius: 10px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 /* Estilos botones slice aclamadas */
@@ -461,14 +463,14 @@ footer {
 
 /* Efecto mostrar botones slice cuando estoy en el contenedor aclamadas */
 .acclaimeds:hover .acclaimed_btn {
-  display: block;
-  animation-name: opacity;
-  animation-duration: 1s;
+    display: block;
+    animation-name: opacity;
+    animation-duration: 1s;
 }
 
 /* ocultar botones slice next/prev - Basado en lo configurado en javascript */
 .acclaimed_btn-hide {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 /* efectos botones hover */
@@ -485,23 +487,118 @@ footer {
 
 /* Imágen de fondo */
 .register_container {
-  background-repeat: repeat;
-  background-size: cover;
-  background-image: linear-gradient(to left bottom, #000000, #000000),
-  url("../images/fondo_movie.png");
+    background-repeat: repeat;
+    background-size: cover;
+    background-image: linear-gradient(to left bottom, #000000, #000000),
+        url('../images/fondo_movie.png');
 }
 
 /* main página de registrarse */
 .register_main_container {
-  margin-top: 10vh;
-  position: absolute;
-  width: 100%;
+    margin-top: 10vh;
+    position: absolute;
+    width: 100%;
 }
+
+/* ====FORMULARIO PELICULAS====== */
+
+.peliculas_container {
+    margin-top: 15vh;
+    /*background-repeat: repeat;*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-image: url('../../asset/images/fondo_movie.png');*/
+}
+
+.form-peliculas {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    /*box-shadow: 0 0 10px #030303;*/
+    border: none;
+    background-color: #222222;
+    box-shadow: 0 0 10px 2px #000;
+
+    /* INPUT CSS */
+
+    input {
+        padding: 6px;
+        margin: 5px auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 2px solid #9f3647;
+        width: 80%;
+        background-color: #222222;
+        color: white;
+    }
+
+    select {
+        padding: 6px;
+        margin: 5px auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+        width: 80%;
+        text-align: center;
+        background-color: #222222;
+        color: white;
+        border: 2px solid #9f3647;
+    }
+
+    label {
+        margin: 5px auto;
+        font-weight: bold;
+    }
+
+    input[type='submit'] {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #9f3647;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 auto;
+    }
+
+    .date {
+        color: white;
+    }
+
+    .h1-form {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .descripcion {
+        width: 80%;
+        margin: 0 auto;
+        height: 100px;
+        border-radius: 10px;
+        background-color: #222222;
+        color: white;
+        border: 2px solid #9f3647;
+    }
+    select,
+    option {
+        background-color: #222222;
+        color: white;
+    }
+}
+
+/*===========FIN CONTENEDOR FORMULARIO DE REGISTRO (ESTEBAN)=========== */
 
 /* contenedor formulario de registro */
 .register_form_container {
-  background-color: #222222;
-  box-shadow: 0 0 10px 2px #000;
+    background-color: #222222;
+    box-shadow: 0 0 10px 2px #000;
 }
 
 /* input formulario */
@@ -517,36 +614,36 @@ footer {
 
 /* Registrarse - input date - mostrar texto como placeholder para que se vea en dispositivos mobiles */
 .form_input-date {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  left: 0;
-  margin-left: 1px;
-  margin-top: 1px;
-  font-size: 1.3rem;
-  padding: 8px 15px;
-  outline: none;
-  background: transparent;
-  color: gray;
-  z-index: -1;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    left: 0;
+    margin-left: 1px;
+    margin-top: 1px;
+    font-size: 1.3rem;
+    padding: 8px 15px;
+    outline: none;
+    background: transparent;
+    color: gray;
+    z-index: -1;
 }
 
 /* ocultar el icono de calendario del input date */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  z-index: 1;
+input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: 1;
 }
 
 /* color de placeholder del input de fecha  */
-input[type="date"] {
-  color: transparent;
+input[type='date'] {
+    color: transparent;
 }
 
 .form_select {
-  font-size: 1.3rem;
-  color: grey;
+    font-size: 1.3rem;
+    color: grey;
 }
 
 /* cmbiar color al hacer foco en input */
@@ -556,28 +653,28 @@ input[type="date"] {
 
 /* estilos link de formulario */
 .form_link {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: gray;
-  transition: color ease-in-out 500ms;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: gray;
+    transition: color ease-in-out 500ms;
 }
 
 /* efecto hover link */
 .form_link:hover {
-  color: rgb(179, 174, 174);
+    color: rgb(179, 174, 174);
 }
 
 /* texto de términos y condiciones */
 .form_terms_text {
-  font-size: small;
-  margin-left: 5px;
-  color: silver;
+    font-size: small;
+    margin-left: 5px;
+    color: silver;
 }
 
 /* terminos y condiciones */
 .form_container_terms {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 /* Boton del formulario */
@@ -591,41 +688,40 @@ input[type="date"] {
   transition: background-color ease-in-out 500ms;
 }
 
-
 /* ************************************************************************************************/
 /* Animaciones animate.css */
 .anim_slice_up {
-  animation-name: zoomIn;
-  animation-duration: 1s;
-  opacity: 1;
+    animation-name: zoomIn;
+    animation-duration: 1s;
+    opacity: 1;
 }
 
 /* Animación secciones opacidad */
 /* Aparecer */
 @keyframes opacity {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Desaparecer */
 @keyframes opacityOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 /* Estilos página Api - Rick and Morty */
 /* contenedor de cards */
-.container_api{
-  margin-top: 20vh;
-  min-height: calc(80vh - 138px);
+.container_api {
+    margin-top: 20vh;
+    min-height: calc(80vh - 138px);
 }
 /* card de personaje */
 .card_character{
@@ -634,8 +730,8 @@ input[type="date"] {
   cursor: pointer;
   transition: all ease-in-out 500ms;
 }
-.card_character:hover{
-  transform: scale(0.9);
+.card_character:hover {
+    transform: scale(0.9);
 }
 
 /* Botones next -prev card de personajes */
@@ -655,12 +751,12 @@ input[type="date"] {
 }
 
 /* botón deshabilitado */
-.btn_next_prev:disabled{
-  opacity: 0.6;
-  cursor: not-allowed;
-  color:black;
-  border: none;
-  background-color: rgb(110, 110, 110);
+.btn_next_prev:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: black;
+    border: none;
+    background-color: rgb(110, 110, 110);
 }
 
 /* Estilos de spinner loading */
@@ -687,7 +783,6 @@ input[type="date"] {
     font-size: 0.9rem;
   }
 }
-
 
 /* MEDIA QUERIES *************************************************************************** */
 /* Resoluciones inferiores a 768px */
