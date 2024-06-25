@@ -163,7 +163,7 @@ $imagen = $_FILES['imagen'];
         if (mysqli_query($conexion, $sql) ) {
         echo '<script type="text/javascript">
             alert("Pelicula cargada con exito");
-            window.location.href="cargarPelicula.php";
+            window.location.href="dashboard.php";
             </script>';
 
         
