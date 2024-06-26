@@ -45,7 +45,10 @@ CREATE TABLE IF NOT EXISTS peliculas (
 ```
 ---
 #### Pegar esta direccion en la url y crea las peliculas en la base de datos
-<p style="color: #60A2F2 ; font-weight: bold;">localhost/movies-backend/api/unload/uploadmovies</p>
-
+```markdown
+  localhost/movies-backend/api/unload/uploadmovies
+```
 ---
+
+
 
