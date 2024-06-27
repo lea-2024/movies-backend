@@ -96,10 +96,12 @@ unset($_SESSION['errores']);
 			<?php endif; ?>
 
 			<!-- SUBIR IMAGEN -->
-			<input type="file" name="imagen">
+			<img id="imgPreview" class="m-auto my-2 img-visualizar">
+			<input type="file" name="imagen" onchange="previewImage(event, '#imgPreview')">
 			<?php if (isset($errores['imagen'])) : ?>
 			<p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
 			<?php endif; ?>
+
 
 			<input type="submit" value="enviar" />
 		</form>
@@ -146,6 +148,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
 		integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
 	</script>
+
+	<script src="../../asset/js/visualizar.js"></script>
 
 
 </body>

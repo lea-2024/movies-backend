@@ -575,6 +575,14 @@ footer {
         background-color: #222222;
         color: white;
     }
+
+    .img-visualizar {
+        width: 120px;
+        height: 140px;
+        background-image: url(../../asset/images/no-disponible.jpg);
+        background-size: cover;
+        background-position: center;
+    }
 }
 
 /*===========FIN CONTENEDOR FORMULARIO DE REGISTRO (ESTEBAN)=========== */
