@@ -124,7 +124,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <div class="col-md-8 col-12 offset-md-2 col-lg-6 offset-lg-3 offset-0">
               <!-- <form class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form"> -->
 
-              <form id="searchForm" method="GET" action="" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
+              <form id="searchForm" method="GET" action="#searchContainer" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
 
                 <input type="search" name="search" id="search" placeholder="Buscar..." class="h-50 main_search_input" />
                 <input type="submit" value="Buscar" class="main_search_btn" />
@@ -156,7 +156,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             if (!empty($resultados)) {
               foreach ($resultados as $pelicula) {
                 echo '<div class="trend_container">';
-                echo '<a href="#" class="trend_container_link">';
+                echo '<a href="pelicula.php?id=' . $pelicula["id_pelicula"] . '" class="trend_container_link">';
                 echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
                 echo '<div class="trend_container-hover">';
                 echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
@@ -317,6 +317,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Fin footer-->
   <!-- Enlace script index.js-->
   <script src="./client/asset/js/index.js"></script>
+  <script src="./client/asset/js/search.js"></script>
 </body>
 
 </html>

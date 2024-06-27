@@ -95,3 +95,19 @@ function getAllMovies(){
     echo "Error al obtener datos: ". $e->getMessage();
   }
 }
+
+// Obtener pelicula por nombre
+function searchMoviesByName($name)
+{
+  global $conn;
+
+  try {
+    $stmt = $conn->prepare("SELECT * FROM peliculas WHERE nombre LIKE :name AND estado = 1");
+    $stmt->execute(['name' => '%' . $name . '%']);
+    $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $peliculas;
+  } catch (PDOException $e) {
+    echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
