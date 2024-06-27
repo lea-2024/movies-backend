@@ -118,10 +118,16 @@
                   <td class="align-middle">
                     <div class="d-flex justify-content-center align-items-center gap-3">
                       <a role="button" data-bs-toggle="modal"
-                        data-bs-target="#pelicula<?php echo $pelicula['id_pelicula'] ?>"><i
-                          class="fa-regular fa-eye bg-none text-light text-hover" title="Vista Previa"></i></a>
-                      <a href="update_form.php?id=<?php echo $pelicula['id_pelicula'] ?>"><i
-                          class="fa-regular fa-pen-to-square text-pink text-hover" title="Editar"></i></a>
+                        data-bs-target="#pelicula<?php echo $pelicula['id_pelicula'] ?>">
+                        <i class="fa-regular fa-eye bg-none text-light text-hover" title="Vista Previa"></i>
+                      </a>
+
+
+                      <a href="formMovie.php?id=<?php echo $pelicula['id_pelicula'] ?>">
+                        <i class="fa-regular fa-pen-to-square text-pink text-hover" title="Editar"></i>
+                      </a>
+
+
                       <form action="delete_movie.php" method="POST"
                         id="formDelete<?php echo $pelicula['id_pelicula'] ?>">
                         <input type="hidden" name="id" value="<?php echo $pelicula['id_pelicula'] ?>">

@@ -102,6 +102,18 @@ function getAllMovies(){
   }
 }
 
+function getAllName() {
+  global $conn;
+
+  try {
+    $stmt = $conn->query("SELECT nombre FROM peliculas WHERE estado = 1");
+    $peliculas = $stmt->fetchAll(PDO::FETCH_COLUMN, 0); // Obtener solo la columna de nombres
+    return $peliculas;
+  } catch (PDOException $e) {
+    echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
 // Update de peliculas
 function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $imagen, $seccion, $estado) {
   global $conn;

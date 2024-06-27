@@ -4,6 +4,7 @@ require '../../../api/crud.php';
 require '../../../helpers/functions.php';
 global $conn;
   
+$id = $_POST['id'];
 $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $genero = $_POST['genero'];
@@ -12,6 +13,17 @@ $seccion = $_POST['seccion'];
 $anio = intval($_POST['anio']);
 $director = $_POST['director'];
 $imagen = $_FILES['imagen'];
+
+if (!empty($id)) {
+  updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $imagen, $seccion, $estado);
+  echo
+  '<script type="text/javascript">
+    alert("Pelicula actualizada con exito");
+    window.location.href="formMovie.php";
+  </script>';
+  
+  exit();
+}
 
 // validar si los campos no estan vacios
 
