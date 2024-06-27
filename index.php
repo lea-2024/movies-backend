@@ -4,6 +4,16 @@ session_start();
 
 // Comprobar si el usuario ha iniciado sesión
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
+$seccionTendencias = 'tendencias';
+$seccionAclamadas = 'aclamadas';
+$tendencias = getMoviesBySection($seccionTendencias);
+$aclamadas = getMoviesBySection($seccionAclamadas);
+
+
+$peliculasByName = getAllName();
+$nameAutocomplete = json_encode($peliculasByName);
+
 ?>
 
 
@@ -21,6 +31,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <link rel="pre<connect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <!-- Animate CSS - animaciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -30,9 +41,19 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
   <!-- Estilos personalizados-->
   <link rel="stylesheet" href="./client/asset/css/styles.css" />
+  <link rel="stylesheet" href="./client/asset/css/modalFooter.css" />
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./client/asset/images/film.ico" type="image/x-icon" />
+  <style>
+    #resultados {
+      display: none;
+    }
+  </style>
   <!-- Título de la Pestaña -->
   <title>CAC-MOVIES | Inicio</title>
 </head>
@@ -87,6 +108,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     </nav>
   </header>
   <!-- Fin encabezado-->
+
   <!-- Contenido principal del sitio -->
   <main class="container-fluid main_container" id="mainContainer">
     <!-- Registrarse -->
@@ -104,9 +126,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <h2 class="main_register-subTitle">
             Cancela en cualquier momento.
           </h2>
-	        <?php if(!$user): ?>
-          <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
-	        <?php endif;?>
+          <?php if (!$user) : ?>
+            <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
+          <?php endif; ?>
         </section>
       </div>
     </div>
@@ -119,20 +141,82 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <!-- Formulario para buscar películas -->
           <div class="row">
             <div class="col-md-8 col-12 offset-md-2 col-lg-6 offset-lg-3 offset-0">
-              <form class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
+              <form id="searchForm" method="GET" action="" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
                 <input type="search" name="search" id="search" placeholder="Buscar..." class="h-50 main_search_input" />
                 <input type="submit" value="Buscar" class="main_search_btn" />
+                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn"">Limpiar</button>
               </form>
+              <div id="searchAncla">
             </div>
           </div>
         </div>
       </div>
+      </div>
+      <script>
+         $(document).ready(function() {
+            var peliculasByName = <?php echo $nameAutocomplete; ?>;
+            $("#search").autocomplete({
+                source: peliculasByName
+            });
+        });
+      </script>
     </section>
+    <!-- Separar sección con línea -->
+    <hr class="line_divisor" />
+    <div id="resultados" class="mt-5">
+      <h2>Resultados</h2>
+      <div class="row mt-5">
+        <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
+          <?php
+          if (isset($_GET['search'])) {
+            $name = $_GET['search'];
+            $resultados = searchMoviesByName($name);
+
+            if (!empty($resultados)) {
+              foreach ($resultados as $pelicula) {
+                echo '<div class="trend_container">';
+                echo '<a href="#" class="trend_container_link">';
+                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+                echo '<div class="trend_container-hover">';
+                echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
+                echo htmlspecialchars($pelicula['nombre']);
+                echo '</h4>';
+                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
+                echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+              }
+            } else {
+              echo "No se encontraron películas.";
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <div class="mb-5"></div>
+    </div>
 
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
 
     <!-- Sección de películas Tendencias-->
+    <?php
+      $peliculasPorPagina = 10;
+      $totalPeliculas = count($tendencias);
+
+      $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
+
+      // Obtener la página actual de la solicitud, si no está presente, establecer en 1
+      $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+      // Calcular el índice inicial y final para las películas de la página actual
+      $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
+      $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
+
+      // Obtener las películas para la página actual
+      $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
+    ?>
     <!-- Contenedor Tendencias -->
     <section class="container p-5 trends_container" id="trends">
       <div class="row">
@@ -144,167 +228,48 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       <!-- Contenedor Películas    -->
       <div class="row mt-5">
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
-          <!-- Pelicula 1 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_1.jpg" alt="The Beekeeper" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Beekeeper">
-                  The Beekeeper
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 2 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_2.jpg" alt="Badland Hunters" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Badland Hunters">
-                  Badland Hunters
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 3 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_3.jpg" alt="The Marvels" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Marvels">
-                  The Marvels
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 4 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_4.jpg" alt="Wonka" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Wonka">Wonka</h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 5 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_5.jpg" alt="Aquaman Lost kingdom" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Aquaman and The lost kingdom">
-                  Aquaman and The lost kingdom
-                </h4>
-                <p class="trend_review-hover">⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 6 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_6.jpg" alt="Migration" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Migration">Migration</h4>
-                <p class="trend_review-hover">⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 7 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_7.jpg" alt="60 minutes" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="60 minutes">
-                  60 minutes
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 8 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_8.jpg" alt="Wish" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Wish">Wish</h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 9 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_9.jpg" alt="The Masked Saint" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Masked Saint">
-                  The Masked Saint
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 10 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_10.jpg" alt="Due Justice" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Due Justice">
-                  Due Justice
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 11 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_11.jpg" alt="Orion And The Dark" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="Orion And The Dark">
-                  Orion And The Dark
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
-          <!-- Pelicula 12 -->
-          <div class="trend_container">
-            <a href="#" class="trend_container_link">
-              <img src="./client/asset/images/peliculas/peli_12.jpg" alt="Genghis Khan" class="trend_image" />
-              <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="TGenghis Khan">
-                  Genghis Khan
-                </h4>
-                <p class="trend_review-hover">⭐⭐⭐⭐</p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
-              </div>
-            </a>
-          </div>
+
+          <!-- Tendencias -->
+          <?php foreach ($peliculasPagina as $registro) { ?>
+
+            <div class="trend_container">
+              <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
+                <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+                <div class="trend_container-hover">
+                  <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                  <p class="trend_review-hover">
+                    <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
+                      echo '⭐';
+                    }
+                    ?>
+                  </p>
+                  <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
+                </div>
+              </a>
+            </div>
+
+          <?php } ?>
+
         </div>
       </div>
       <!-- Fin peliculas tendencias-->
       <!-- Botones anterior - siguiente -->
       <div class="row text-center mt-5">
         <div class="col d-flex gap-4 justify-content-center align-items-center">
-          <button class="main_trends_btn" id="btnTrendPrev">Anterior</button>
-          <button class="main_trends_btn" id="btnTrendNext">Siguiente</button>
+          <button class="main_trends_btn" id="btnTrendPrev" <?php if ($paginaActual <= 1) echo 'disabled'; ?>>Anterior</button>
+          <button class="main_trends_btn" id="btnTrendNext" <?php if ($paginaActual >= $totalPaginas) echo 'disabled'; ?>>Siguiente</button>
         </div>
       </div>
     </section>
+    <script>
+      document.getElementById('btnTrendPrev').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> - 1) + '#trends';
+      });
+
+      document.getElementById('btnTrendNext').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> + 1) + '#trends';
+      });
+    </script>
     <!-- Fin contenedor tendencias -->
 
     <!-- Separar sección con línea -->
@@ -327,78 +292,15 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <button class="position-absolute end-0 fs-2 acclaimed_btn" id="acclaimedBtnNext">
               <i class="fa-solid fa-angle-right"></i>
             </button>
-            <!-- aclamada 1 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_1.jpg" alt="aclamada 1" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 2 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_2.jpg" alt="aclamada 2" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 3 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_3.jpg" alt="aclamada 3" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 4 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_4.jpg" alt="aclamada 4" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 5 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_5.jpg" alt="aclamada 5" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 6 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_6.jpg" alt="aclamada 6" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 7 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_7.jpg" alt="aclamada 7" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 8 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_8.jpg" alt="aclamada 8" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 9 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_9.jpg" alt="aclamada 9" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 10 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_10.jpg" alt="aclamada 10" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 11 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_11.jpg" alt="aclamada 11" class="acclaimed_image" />
-              </a>
-            </div>
-            <!-- aclamada 12 -->
-            <div class="acclaimed_container">
-              <a href="#">
-                <img src="./client/asset/images/peliculas/aclamada_12.jpg" alt="aclamada 12" class="acclaimed_image" />
-              </a>
-            </div>
+
+            <?php foreach ($aclamadas  as $registro) { ?>
+              <div class="acclaimed_container">
+                <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
+                  <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                </a>
+              </div>
+            <?php } ?>
+
           </section>
         </div>
       </div>
@@ -407,6 +309,41 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <!-- Fin peliculas aclamadas -->
   </main>
   <!-- Fin contenido principal -->
+   <!-- Contenedor del modal footer-->
+   <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- El contenido del modal se cargará aquí -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con todos los términos aquí descritos.
+                        </p>
+                        <p>
+                            1. Uso del sitio: ...
+                        </p>
+                        <p>
+                            2. Propiedad intelectual: ...
+                        </p>
+                        <!-- Agrega más contenido según sea necesario -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
@@ -416,16 +353,16 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <nav class="footer_links d-flex justify-content-center">
             <ul class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
               <li class="footer_item">
-                <a href="#" class="footer_link">Términos y condiciones</a>
+                <a href="#" class="footer_link" data-content="terms">Términos y condiciones</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Preguntas frecuentes</a>
+                <a href="#" class="footer_link" data-content="pregunt">Preguntas frecuentes</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Ayuda</a>
+                <a href="#" class="footer_link" data-content="ayuda">Ayuda</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Contacto</a>
+                <a href="#" class="footer_link" data-content="default">Contacto</a>
               </li>
             </ul>
           </nav>
@@ -448,6 +385,18 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Fin footer-->
   <!-- Enlace script index.js-->
   <script src="./client/asset/js/index.js"></script>
+  <script src="./client/asset/js/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <!-- Script para el modal del footer-->
+   <script src="./client/asset/js/modal_footer.js"></script>
+  <script>
+    // JavaScript para mostrar el div si hay resultados y el botón de limpiar
+    <?php if (isset($resultados) && !empty($resultados)) : ?>
+      document.getElementById('resultados').style.display = 'block';
+      document.getElementById('clearButton').style.display = 'inline-block';
+      window.location.hash = 'searchAncla';
+    <?php endif; ?>
+  </script>
 </body>
 
 </html>
