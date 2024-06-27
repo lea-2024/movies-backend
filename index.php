@@ -144,6 +144,43 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
+    <div id="resultados" class="mt-5">
+      <h2>Resultados</h2>
+      <div class="row mt-5">
+        <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
+          <?php
+          if (isset($_GET['search'])) {
+            $name = $_GET['search'];
+            $resultados = searchMoviesByName($name);
+
+            if (!empty($resultados)) {
+              foreach ($resultados as $pelicula) {
+                echo '<div class="trend_container">';
+                echo '<a href="#" class="trend_container_link">';
+                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+                echo '<div class="trend_container-hover">';
+                echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
+                echo htmlspecialchars($pelicula['nombre']);
+                echo '</h4>';
+                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
+                echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+              }
+            } else {
+              echo "No se encontraron películas.";
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <div class="mb-5"></div>
+    </div>
+
+
+    <!-- Separar sección con línea -->
+    <hr class="line_divisor" />
 
     <!-- Sección de películas Tendencias-->
     <!-- Contenedor Tendencias -->
