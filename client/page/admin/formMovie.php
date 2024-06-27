@@ -119,7 +119,10 @@ if (isset($_GET['id'])) {
       <?php endif; ?>
 
       <!-- SUBIR IMAGEN -->
-      <img src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>" class="card-img-top img-card" alt="imagen pelicula">
+      <?php if (!empty($movieEdit['imagen']) ):?>
+        <img src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>" class="card-img-top img-card" alt="imagen pelicula">
+      <?php endif; ?>
+    
       <input type="file" name="imagen">
       <?php if (isset($errores['imagen'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
