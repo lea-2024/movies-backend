@@ -11,7 +11,6 @@ unset($_SESSION['errores']);
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
-  echo "El ID es: " . $id;
   $create = true;
   $movieEdit = searchMoviesById($id);
 } else {

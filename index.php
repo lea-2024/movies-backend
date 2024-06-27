@@ -233,7 +233,7 @@ $nameAutocomplete = json_encode($peliculasByName);
           <?php foreach ($peliculasPagina as $registro) { ?>
 
             <div class="trend_container">
-              <a href="#" class="trend_container_link">
+              <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
                 <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
                 <div class="trend_container-hover">
                   <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
@@ -295,7 +295,7 @@ $nameAutocomplete = json_encode($peliculasByName);
 
             <?php foreach ($aclamadas  as $registro) { ?>
               <div class="acclaimed_container">
-                <a href="#">
+                <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
                   <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
                 </a>
               </div>
