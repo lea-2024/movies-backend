@@ -8,6 +8,13 @@ session_start();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $registro = searchMoviesById($id);
+
+    $srcImagen = $registro['imagen'];
+    $inicio = '../../asset/uploads/';
+
+    if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+        $srcImagen = '../' . substr($srcImagen, 6);
+    }
 }
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 ?>
@@ -100,12 +107,12 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
         <div class="d-flex justify-content-center align-items-center">
 
-          
+
 
             <div class="card" style="max-width: 70%; margin-top: 18vh">
                 <div class="row g-1">
                     <div class="col-md-4">
-                        <img src="<?php echo $registro['imagen'] ?>" class="img-fluid rounded-start" alt="...">
+                        <img src="<?php echo $srcImagen ?>" class="img-fluid rounded-start" alt="..." width="100%">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -115,7 +122,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                             <p class="card-text"><?php echo $registro['descripcion'] ?></p>
                             <p class="card-text">director: <?php echo $registro['director'] ?></p>
                             <p class="card-text">
-                                <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {echo '⭐'; } ?>
+                                <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
+                                    echo '⭐';
+                                } ?>
                             </p>
                         </div>
                     </div>

@@ -146,18 +146,18 @@ $nameAutocomplete = json_encode($peliculasByName);
                 <input type="submit" value="Buscar" class="main_search_btn" />
                 <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn"">Limpiar</button>
               </form>
-              <div id="searchAncla">
+              <div id=" searchAncla">
             </div>
           </div>
         </div>
       </div>
       </div>
       <script>
-         $(document).ready(function() {
-            var peliculasByName = <?php echo $nameAutocomplete; ?>;
-            $("#search").autocomplete({
-                source: peliculasByName
-            });
+        $(document).ready(function() {
+          var peliculasByName = <?php echo $nameAutocomplete; ?>;
+          $("#search").autocomplete({
+            source: peliculasByName
+          });
         });
       </script>
     </section>
@@ -174,9 +174,17 @@ $nameAutocomplete = json_encode($peliculasByName);
 
             if (!empty($resultados)) {
               foreach ($resultados as $pelicula) {
+
+                $srcImagen = $pelicula['imagen'];
+                $inicio = '../../asset/uploads/';
+
+                if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+                  $srcImagen = './client/' . substr($srcImagen, 6);
+                }
+
                 echo '<div class="trend_container">';
-                echo '<a href="#" class="trend_container_link">';
-                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+                echo '<a href="./client/page/pelicula.php?id=' . $pelicula['id_pelicula'] . '" class="trend_container_link">';
+                echo '<img src="' . htmlspecialchars($srcImagen) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
                 echo '<div class="trend_container-hover">';
                 echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
                 echo htmlspecialchars($pelicula['nombre']);
@@ -202,20 +210,20 @@ $nameAutocomplete = json_encode($peliculasByName);
 
     <!-- Sección de películas Tendencias-->
     <?php
-      $peliculasPorPagina = 10;
-      $totalPeliculas = count($tendencias);
+    $peliculasPorPagina = 10;
+    $totalPeliculas = count($tendencias);
 
-      $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
+    $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
 
-      // Obtener la página actual de la solicitud, si no está presente, establecer en 1
-      $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    // Obtener la página actual de la solicitud, si no está presente, establecer en 1
+    $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
-      // Calcular el índice inicial y final para las películas de la página actual
-      $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
-      $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
+    // Calcular el índice inicial y final para las películas de la página actual
+    $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
+    $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
 
-      // Obtener las películas para la página actual
-      $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
+    // Obtener las películas para la página actual
+    $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
     ?>
     <!-- Contenedor Tendencias -->
     <section class="container p-5 trends_container" id="trends">
@@ -230,13 +238,22 @@ $nameAutocomplete = json_encode($peliculasByName);
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php foreach ($peliculasPagina as $registro) { ?>
+          <?php foreach ($peliculasPagina as $registro) {
+
+            $srcImagen = $registro['imagen'];
+            $inicio = '../../asset/uploads/';
+
+            if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+              $srcImagen = './client/' . substr($srcImagen, 6);
+            }
+
+          ?>
 
             <div class="trend_container">
               <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
-                <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+                <img src="<?php echo $srcImagen ?>" alt="<?php echo $registro['nombre'] ?>" class="trend_image" />
                 <div class="trend_container-hover">
-                  <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                  <h4 class="trend_title-hover" title=""><?php echo $registro['nombre'] ?></h4>
                   <p class="trend_review-hover">
                     <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
                       echo '⭐';
@@ -293,10 +310,18 @@ $nameAutocomplete = json_encode($peliculasByName);
               <i class="fa-solid fa-angle-right"></i>
             </button>
 
-            <?php foreach ($aclamadas  as $registro) { ?>
+            <?php foreach ($aclamadas  as $registro) {
+              $srcImagen = $registro['imagen'];
+              $inicio = '../../asset/uploads/';
+
+              if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+                $srcImagen = './client/' . substr($srcImagen, 6);
+              }
+
+            ?>
               <div class="acclaimed_container">
                 <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
-                  <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                  <img src="<?php echo $srcImagen ?>" alt="aclamada 1" class="acclaimed_image" />
                 </a>
               </div>
             <?php } ?>
@@ -309,41 +334,41 @@ $nameAutocomplete = json_encode($peliculasByName);
     <!-- Fin peliculas aclamadas -->
   </main>
   <!-- Fin contenido principal -->
-   <!-- Contenedor del modal footer-->
-   <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- El contenido del modal se cargará aquí -->
-            </div>
-        </div>
+  <!-- Contenedor del modal footer-->
+  <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- El contenido del modal se cargará aquí -->
+      </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con todos los términos aquí descritos.
-                        </p>
-                        <p>
-                            1. Uso del sitio: ...
-                        </p>
-                        <p>
-                            2. Propiedad intelectual: ...
-                        </p>
-                        <!-- Agrega más contenido según sea necesario -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <p>
+            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con todos los términos aquí descritos.
+          </p>
+          <p>
+            1. Uso del sitio: ...
+          </p>
+          <p>
+            2. Propiedad intelectual: ...
+          </p>
+          <!-- Agrega más contenido según sea necesario -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
+  </div>
+  </div>
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
@@ -387,8 +412,8 @@ $nameAutocomplete = json_encode($peliculasByName);
   <script src="./client/asset/js/index.js"></script>
   <script src="./client/asset/js/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-   <!-- Script para el modal del footer-->
-   <script src="./client/asset/js/modal_footer.js"></script>
+  <!-- Script para el modal del footer-->
+  <script src="./client/asset/js/modal_footer.js"></script>
   <script>
     // JavaScript para mostrar el div si hay resultados y el botón de limpiar
     <?php if (isset($resultados) && !empty($resultados)) : ?>
