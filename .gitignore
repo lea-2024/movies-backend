@@ -15,3 +15,7 @@ client/asset/json/
 
 #Ignorar archivo generado por VSCode
 .idea
+.vscode
+
+#Ignorar las imágenes
+client/asset/uploads/*.*
