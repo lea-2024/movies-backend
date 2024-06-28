@@ -89,15 +89,25 @@ function loginUser($email, $password)
 // ---------------------------------------------------------------------------------------------------
 //                                          CRUD DE PELICULAS
 // ---------------------------------------------------------------------------------------------------
-
 // trae todas las peliculas
-function getAllMovies()
-{
+function getAllMovies(){
   global $conn;
 
   try {
     $stmt = $conn->query("SELECT * FROM peliculas WHERE estado = 1");
     $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $peliculas;
+  } catch (PDOException $e) {
+    echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
+function getAllName() {
+  global $conn;
+
+  try {
+    $stmt = $conn->query("SELECT nombre FROM peliculas WHERE estado = 1");
+    $peliculas = $stmt->fetchAll(PDO::FETCH_COLUMN, 0); // Obtener solo la columna de nombres
     return $peliculas;
   } catch (PDOException $e) {
     echo "Error al obtener datos: " . $e->getMessage();
@@ -141,11 +151,30 @@ function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, 
   }
 }
 
-
+function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
+  global $conn;
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':nombre', $nombre);
+  $stmt->bindParam(':descripcion', $descripcion);
+  $stmt->bindParam(':genero', $genero);
+  $stmt->bindParam(':calificacion', $calificacion);
+  $stmt->bindParam(':seccion', $seccion);
+  $stmt->bindParam(':anio', $anio);
+  $stmt->bindParam(':director', $director);
+  $stmt->bindParam(':rutaImagen', $imagen);
+  try {
+    $stmt->execute();
+    move_uploaded_file($tempURL, $imagen);
+    return true;
+  } catch (PDOException $e){
+    echo "Error al guardar datos: ". $e->getMessage();
+    return false;
+  }
+}
 
 // trae las peliculas por seccion
-function getMoviesBySection($seccion)
-{
+function getMoviesBySection($seccion){
   global $conn;
 
   try {
@@ -160,23 +189,48 @@ function getMoviesBySection($seccion)
 }
 
 // Obtener pelicula por nombre
-function searchMoviesByName($name)
-{
+function searchMoviesByName($name) {
   global $conn;
 
   try {
-    $stmt = $conn->prepare("SELECT * FROM peliculas WHERE nombre LIKE :name AND estado = 1");
-    $stmt->execute(['name' => '%' . $name . '%']);
+    // Normalizar el nombre de entrada reemplazando caracteres especiales y espacios
+    $normalizedName = '%' . str_replace(['-', ' '], '%', $name) . '%';
+    // Preparar la consulta principal
+    $stmt = $conn->prepare("
+      SELECT * FROM peliculas 
+      WHERE REPLACE(REPLACE(REPLACE(nombre, '-', ''), ' ', ''), ' ', '') 
+      LIKE REPLACE(REPLACE(REPLACE(:name, '-', ''), ' ', ''), ' ', '') 
+      AND estado = 1
+    ");
+    
+    // Ejecutar la consulta principal
+    $stmt->execute(['name' => $normalizedName]);
     $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Si no hay resultados, hacer una nueva consulta con las primeras 4 letras
+    if (empty($peliculas)) {
+      $shortName = substr($name, 0, 4) . '%';
+      $stmt = $conn->prepare("
+        SELECT * FROM peliculas 
+        WHERE nombre LIKE :shortName 
+        AND estado = 1
+      ");
+      $stmt->execute(['shortName' => $shortName]);
+      $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     return $peliculas;
   } catch (PDOException $e) {
     echo "Error al obtener datos: " . $e->getMessage();
   }
 }
 
+
+
+
+
 // Obtener pelicula por id
-function searchMoviesById($id)
-{
+function searchMoviesById($id){
   global $conn;
 
   try {
@@ -190,8 +244,7 @@ function searchMoviesById($id)
 }
 
 // Da de baja la pelicula sin eliminarla de la DB
-function deleteMovie($id)
-{
+function deleteMovie($id){
   global $conn;
 
   try {
@@ -205,8 +258,7 @@ function deleteMovie($id)
 }
 
 // Elimina de la base de datos
-function deleteMoviePermanently($id)
-{
+function deleteMoviePermanently($id){
   global $conn;
 
   try {

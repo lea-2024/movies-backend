@@ -9,6 +9,11 @@ $seccionTendencias = 'tendencias';
 $seccionAclamadas = 'aclamadas';
 $tendencias = getMoviesBySection($seccionTendencias);
 $aclamadas = getMoviesBySection($seccionAclamadas);
+
+
+$peliculasByName = getAllName();
+$nameAutocomplete = json_encode($peliculasByName);
+
 ?>
 
 
@@ -37,6 +42,10 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
   <!-- Estilos personalizados-->
   <link rel="stylesheet" href="./client/asset/css/styles.css" />
   <link rel="stylesheet" href="./client/asset/css/modalFooter.css" />
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./client/asset/images/film.ico" type="image/x-icon" />
@@ -143,6 +152,14 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
         </div>
       </div>
       </div>
+      <script>
+         $(document).ready(function() {
+            var peliculasByName = <?php echo $nameAutocomplete; ?>;
+            $("#search").autocomplete({
+                source: peliculasByName
+            });
+        });
+      </script>
     </section>
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
@@ -216,7 +233,7 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
           <?php foreach ($peliculasPagina as $registro) { ?>
 
             <div class="trend_container">
-              <a href="#" class="trend_container_link">
+              <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
                 <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
                 <div class="trend_container-hover">
                   <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
@@ -278,7 +295,7 @@ $aclamadas = getMoviesBySection($seccionAclamadas);
 
             <?php foreach ($aclamadas  as $registro) { ?>
               <div class="acclaimed_container">
-                <a href="#">
+                <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
                   <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
                 </a>
               </div>
