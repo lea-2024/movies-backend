@@ -17,8 +17,3 @@ client/asset/json/
 .idea
 .vscode
 
-#Ignorar las imágenes
-client/asset/uploads/*
-
-#no ignorar la carpeta uploads
-!client/asset/uploads/
