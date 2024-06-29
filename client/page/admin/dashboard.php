@@ -18,61 +18,13 @@
 
 
 	$peliculas = getAllMoviesBack();
+	
+	// incluir el header pasandole el titulo para la pestaña
+	$title = 'Panel-Admin';
+	include '../layouts/partials/backend/header.php';
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CDN - Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Fuente Nunito - Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet" />
-
-  <!-- Animate CSS - animaciones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-  <!-- Link estilos -->
-  <!-- Estilos Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <!--Estilos Pikaday-->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" />
-
-  <!-- Estilos datatables	-->
-  <link rel="stylesheet" href="../../asset/css/datatables_2.css">
-  <link rel="stylesheet" href="../../asset/css/datatables.css">
-
-  <!-- Estilos personalizados-->
-  <link rel="stylesheet" href="../../asset/css/styles.css" />
-
-  <!-- Icono Pestaña -->
-  <link rel="shortcut icon" href="../../asset/images/film.ico" type="image/x-icon" />
-
-  <!-- Título de la Pestaña -->
-  <title>CAC-movies | Panel-Admin</title>
-</head>
-
-<body>
-  <header class="header_color">
-    <nav class="header_nav_links">
-      <!-- Icono y logo -->
-      <a href="../../../index.php" class="header_logo">
-        <i class="fas fa-film"></i>
-        <span>CAC-Movies</span>
-      </a>
-    </nav>
-  </header>
-
+<!--Contenido para mostrar en vista dashboard-->
   <?php if ($user) : ?>
   <?php if ($user['rol'] == 'admin') : ?>
   <main class="container-fluid p-5 container-api">
@@ -153,36 +105,5 @@
   <?php endif; ?>
   <?php endif; ?>
 
-
-  <!-- CDN sweet Alert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <!-- helper para mostrar modal sweetalert2 enviandole los datos necesarios -->
-  <?php
-    if(isset($_SESSION['messages'])){
-      echo modalSweetAlert($_SESSION['messages']['title'], $_SESSION['messages']['message'], $_SESSION['messages']['icon']);
-    }
-
-    unset($_SESSION['messages']);
-  ?>
-
-
-  <!--	JQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <!--Script Bootstrap  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-  </script>
-
-  <!--	script datatables -->
-  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
-
-  <!--	Custom Script  -->
-  <script src="../../asset/js/api_movies.js"></script>
-  <!-- Cargar Script para la actualicación de estado: activo / inactivo -->
-  <script src="../../asset/js/change_status.js"></script>
-</body>
-
-</html>
+<!-- Incluir el footer -->
+<?php include '../layouts/partials/backend/footer.php' ?>

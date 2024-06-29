@@ -18,39 +18,12 @@ if (isset($_GET['id'])) {
   $create = false;
 }
 
+// incluuir header pasandole el título
+	$title = 'Nueva Pelicula';
+	include '../layouts/partials/backend/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../../asset/css/styles.css" />
-
-  <!-- CDN - Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- CDN sweetalert2 estilos theme dark -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet"> -->
-
-  <title>Cargar Películas</title>
-</head>
-
-<body>
-  <header class="header_color">
-    <nav class="header_nav_links">
-      <!-- Icono y logo -->
-      <a href="../../../index.php" class="header_logo">
-        <i class="fas fa-film"></i>
-        <span>CAC-Movies</span>
-      </a>
-    </nav>
-  </header>
+<!-- Contenido para mostrar en crear peliculas -->
   <section class="container-fluid p-5 container-api">
     <div class="d-flex align-items-center justify-content-end">
       <!--			<h1 class="fs-3">Administrador de Películas</h1>-->
@@ -140,58 +113,8 @@ if (isset($_GET['id'])) {
       <?php endif; ?>
       <input type="submit" value="enviar" class="mt-3" />
     </form>
-    <!--		<footer class="container-fluid">-->
-    <!--			 links de navagación - footer -->
-    <!--			<div class="container-fluid py-5 text-center position-relative">-->
-    <!--				<div class="row mb-2 mb-md-0">-->
-    <!--					<div class="col-12">-->
-    <!--						<nav class="footer_links d-flex justify-content-center">-->
-    <!--							<ul-->
-    <!--								class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">-->
-    <!--								<li class="footer_item">-->
-    <!--									<a href="#" class="footer_link">Términos y condiciones</a>-->
-    <!--								</li>-->
-    <!--								<li class="footer_item">-->
-    <!--									<a href="#" class="footer_link">Preguntas frecuentes</a>-->
-    <!--								</li>-->
-    <!--								<li class="footer_item">-->
-    <!--									<a href="#" class="footer_link">Ayuda</a>-->
-    <!--								</li>-->
-    <!--								<li class="footer_item">-->
-    <!--									<a href="#" class="footer_link">Contacto</a>-->
-    <!--								</li>-->
-    <!--							</ul>-->
-    <!--						</nav>-->
-    <!--					</div>-->
-    <!--				</div>-->
-    <!---->
-    <!--				CopyRight -->
-    <!--				<div class="row w-100 text-center bottom-0 position-absolute">-->
-    <!--					<div class="col">-->
-    <!--						<p class="footer_copyRight">-->
-    <!--							&copy; CAC - PHP-ERROR 404 - 2024-->
-    <!--						</p>-->
-    <!--					</div>-->
-    <!--				</div>-->
-    <!--			</div>-->
-    <!--		</footer>-->
+   
   </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-  </script>
 
-
-  <!-- CDN sweet Alert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <!-- helper para mostrar modal sweetalert2 enviandole los datos necesarios -->
-  <?php
-    if(isset($_SESSION['messages'])){
-      echo modalSweetAlert($_SESSION['messages']['title'], $_SESSION['messages']['message'], $_SESSION['messages']['icon']);
-    }
-    unset($_SESSION['messages']);
-  ?>
-
-</body>
-
-</html>
+<!-- Inluir footer -->
+<?php include '../layouts/partials/backend/footer.php' ?>

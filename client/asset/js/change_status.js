@@ -1,7 +1,5 @@
 const changeStatus = (id) => {
     let inputCheck = document.getElementById(`estado${id}`);
-    console.log(id);
-    console.log(inputCheck);
     let estado = inputCheck.checked ? 1 : 0;
     const params = new URLSearchParams();
     params.append('estado', estado);
