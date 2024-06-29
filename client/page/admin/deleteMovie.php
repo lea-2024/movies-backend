@@ -5,6 +5,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method']=='DELETE'){
   $id = $_POST['id'];
   $messages=[];
   try{
+    // Buscamos la pelicula para saber que imágen tiene
+    $movie = searchMoviesById($id);
+    // verificamos si la imágen es una url ó no, y si no es una url eliminanos la imágen de la carpeta uploads
+    if(!filter_var($movie['imagen'], FILTER_VALIDATE_URL)){
+      unlink('../../asset/uploads/'.$movie['imagen']);
+    }
+    // eliminamos la pelicula permanentemente
     $deleteMovie = deleteMoviePermanently($id);
     if ($deleteMovie > 0){
       $messages['title'] = "Pelicula eliminada";
