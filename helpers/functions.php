@@ -49,4 +49,20 @@
       echo "Error al obtener datos de la DB ".$e->getMessage();
     }
   }
+
+  // Mostrar modal de sweetAlert según el título, mensaje e icono que se requiera
+  function modalSweetAlert($title, $message, $icon)
+  {    
+    return "
+      <script>
+        Swal.fire({
+          title: '$title',
+          text: '$message',
+          icon: '$icon',
+          color:'#fff',
+          background:'#333333',
+        });
+      </script>
+    ";
+  }
   ?>

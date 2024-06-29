@@ -89,7 +89,7 @@ function loginUser($email, $password)
 // ---------------------------------------------------------------------------------------------------
 //                                          CRUD DE PELICULAS
 // ---------------------------------------------------------------------------------------------------
-// trae todas las peliculas
+// Listar todas las peliculas - Front
 function getAllMovies(){
   global $conn;
 
@@ -101,6 +101,20 @@ function getAllMovies(){
     echo "Error al obtener datos: " . $e->getMessage();
   }
 }
+
+// Listar todas las peliculas - panel Admin
+function getAllMoviesBack(){
+  global $conn;
+
+  try {
+    $stmt = $conn->query("SELECT * FROM peliculas");
+    $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $peliculas;
+  } catch (PDOException $e) {
+    echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
 
 function getAllName() {
   global $conn;

@@ -30,6 +30,8 @@ if (!empty($id)) {
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 // array de errores
 $errores = [];
+  // array para mostrar mensajes 
+$messages = [];
 
   if (empty($_POST['nombre'])) {
       $errores['nombre'] = 'El nombre es obligatorio';
@@ -121,10 +123,13 @@ if (empty($errores)) {
   $movie_exists = movie_exists($nombre,$descripcion,$genero, $calificacion, $seccion, $anio, $director);
   
   if ($movie_exists) {
-      echo '<script type="text/javascript">
-      alert("ya existe un registro con estos datos.Por favor cargue nuevamente la pelicula o cambie los datos");
-      window.location.href="formMovie.php";
-      </script>';
+    $messages['title'] = 'Error al crear la pelicula';
+    $messages['message'] = 'ya existe un registro con estos datos';
+    $messages['icon'] = 'error';
+    session_start();
+    $_SESSION['messages'] = $messages;  
+    header('Location:formMovie.php');
+
   } else {
     // si no existe insertar los datos y guarda la imágen en uploads
     $tempURL = $imagen['tmp_name'];
@@ -132,17 +137,19 @@ if (empty($errores)) {
     
     // si el proceso fue correcto muestra mensaje
     if($movie){
-      echo
-      '<script type="text/javascript">
-        alert("Pelicula cargada con exito");
-        window.location.href="formMovie.php";
-      </script>';
+      $messages['title'] = 'Pelicula creada';
+      $messages['message'] = 'La película se creó correctamente';
+      $messages['icon'] = 'success';
+      session_start();
+      $_SESSION['messages'] = $messages;  
+      header('Location:dashboard.php');
     } else {
-    echo
-    '<script type="text/javascript">
-      alert("Error al cargar la pelicula");
-      window.location.href="formMovie.php";
-      </script>';
+      $messages['title'] = 'Error al crear la pelicula';
+      $messages['message'] = 'No se pudo crear la pelicula';
+      $messages['icon'] = 'error';
+      session_start();
+      $_SESSION['messages'] = $messages;  
+      header('Location:formMovie.php');
     }
   }
 };

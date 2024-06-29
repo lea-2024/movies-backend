@@ -1,5 +1,6 @@
 <?php
 require '../../../api/crud.php';
+require '../../../helpers/functions.php';
 session_start();
 
 //si existe la variable de sesion errores se almacena en el array
@@ -33,7 +34,10 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- CDN sweetalert2 estilos theme dark -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet"> -->
+
   <title>Cargar Películas</title>
 </head>
 
@@ -54,7 +58,8 @@ if (isset($_GET['id'])) {
     </div>
     <form action="createMovie.php" method="post" class="form-peliculas" enctype=multipart/form-data>
       <h1 class="text-center p-2 h1-form">Cargar Películas</h1>
-      <input type="hidden" name="id" value="<?php echo isset($movieEdit['id_pelicula']) ? $movieEdit['id_pelicula'] : ''; ?>" />
+      <input type="hidden" name="id"
+        value="<?php echo isset($movieEdit['id_pelicula']) ? $movieEdit['id_pelicula'] : ''; ?>" />
 
       <label for="nombre">Nombre</label>
       <!-- <input type="text" name="nombre" /> -->
@@ -65,13 +70,15 @@ if (isset($_GET['id'])) {
       <?php endif; ?>
 
       <label for="">Descripción</label>
-      <textarea name="descripcion" id="" class="descripcion" ><?php echo $create ? $movieEdit['descripcion'] : ''; ?></textarea>
+      <textarea name="descripcion" id=""
+        class="descripcion"><?php echo $create ? $movieEdit['descripcion'] : ''; ?></textarea>
       <?php if (isset($errores['descripcion'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['descripcion'] ?></p>
       <?php endif; ?>
 
       <label for="genero">Género</label>
-      <input type="text" name="genero" placeholder="separar con coma los Género" value="<?php echo $create ? $movieEdit['genero'] : ''; ?>" />
+      <input type="text" name="genero" placeholder="separar con coma los Género"
+        value="<?php echo $create ? $movieEdit['genero'] : ''; ?>" />
       <?php if (isset($errores['genero'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['genero'] ?></p>
       <?php endif; ?>
@@ -88,7 +95,7 @@ if (isset($_GET['id'])) {
             echo "<option value='$i' $selected>$i</option>";
         }
         ?>
-    </select>
+      </select>
       <?php if (isset($errores['calificacion'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['calificacion'] ?></p>
       <?php endif; ?>
@@ -96,11 +103,14 @@ if (isset($_GET['id'])) {
       <!-- SELECT SECCION -->
       <label for=" seccion">Sección</label>
       <select name="seccion" id="seccion">
-        <option value="" disabled <?php echo !$create || empty($movieEdit['seccion']) ? 'selected' : ''; ?>>Selecciona una sección</option>
+        <option value="" disabled <?php echo !$create || empty($movieEdit['seccion']) ? 'selected' : ''; ?>>Selecciona
+          una sección</option>
         <option value="list" <?php echo $create && $movieEdit['seccion'] === 'list' ? 'selected' : ''; ?>>List</option>
-        <option value="tendencias" <?php echo $create && $movieEdit['seccion'] === 'tendencias' ? 'selected' : ''; ?>>Tendencias</option>
-        <option value="aclamadas" <?php echo $create && $movieEdit['seccion'] === 'aclamadas' ? 'selected' : ''; ?>>Aclamadas</option>
-    </select>
+        <option value="tendencias" <?php echo $create && $movieEdit['seccion'] === 'tendencias' ? 'selected' : ''; ?>>
+          Tendencias</option>
+        <option value="aclamadas" <?php echo $create && $movieEdit['seccion'] === 'aclamadas' ? 'selected' : ''; ?>>
+          Aclamadas</option>
+      </select>
       <?php if (isset($errores['seccion'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['seccion'] ?></p>
       <?php endif; ?>
@@ -119,9 +129,11 @@ if (isset($_GET['id'])) {
 
       <!-- SUBIR IMAGEN -->
       <?php if (!empty($movieEdit['imagen']) ):?>
-        <img src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>" class="card-img-top img-card" alt="imagen pelicula">
+      <img
+        src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>"
+        class="card-img-top img-card" alt="imagen pelicula">
       <?php endif; ?>
-    
+
       <input type="file" name="imagen">
       <?php if (isset($errores['imagen'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
@@ -167,6 +179,19 @@ if (isset($_GET['id'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
   </script>
+
+
+  <!-- CDN sweet Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- helper para mostrar modal sweetalert2 enviandole los datos necesarios -->
+  <?php
+    if(isset($_SESSION['messages'])){
+      echo modalSweetAlert($_SESSION['messages']['title'], $_SESSION['messages']['message'], $_SESSION['messages']['icon']);
+    }
+
+    unset($_SESSION['messages']);
+  ?>
 
 </body>
 

@@ -15,8 +15,9 @@
 		header('Location: ../../../index.php');
 		exit; // Detén la ejecución del script
 	}
-	
-	$peliculas = getAllMovies();
+
+
+	$peliculas = getAllMoviesBack();
 ?>
 
 
@@ -73,7 +74,7 @@
   </header>
 
   <?php if ($user) : ?>
-	<?php if ($user['rol'] == 'admin') : ?>
+  <?php if ($user['rol'] == 'admin') : ?>
   <main class="container-fluid p-5 container-api">
     <div class="d-flex align-items-center justify-content-between">
       <h1 class="fs-3">Administrador de Películas</h1>
@@ -150,10 +151,24 @@
       </div>
       <div id="message" data-active="<?php echo $active ?>" data-message="<?php echo $message ?>"></div>
       <?php endif ?>
-		</section>
-	</main>
-	<?php endif; ?>
-	<?php endif; ?>
+    </section>
+  </main>
+  <?php endif; ?>
+  <?php endif; ?>
+
+
+  <!-- CDN sweet Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- helper para mostrar modal sweetalert2 enviandole los datos necesarios -->
+  <?php
+    if(isset($_SESSION['messages'])){
+      echo modalSweetAlert($_SESSION['messages']['title'], $_SESSION['messages']['message'], $_SESSION['messages']['icon']);
+    }
+
+    unset($_SESSION['messages']);
+  ?>
+
 
   <!--	JQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -169,6 +184,8 @@
 
   <!--	Custom Script  -->
   <script src="../../asset/js/api_movies.js"></script>
+  <!-- Cargar Script para la actualicación de estado: activo / inactivo -->
+  <script src="../../asset/js/change_status.js"></script>
 </body>
 
 </html>
