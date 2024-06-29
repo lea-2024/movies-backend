@@ -240,9 +240,6 @@ function searchMoviesByName($name) {
 }
 
 
-
-
-
 // Obtener pelicula por id
 function searchMoviesById($id){
   global $conn;

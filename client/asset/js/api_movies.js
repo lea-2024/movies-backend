@@ -26,3 +26,25 @@ $(document).ready( function () {
         }
     });
 });
+
+// Mosrar modal de confirmación al eliminar una película
+function confirmDelete(nombre, id)
+{
+  Swal.fire({
+    title: 'Está seguro?',
+    text: 'Está acción no se podrá revertir!',
+    icon: 'warning',
+    color:'#ffffff',
+    background:'#333333',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let form  = document.getElementById(`${nombre}${id}`);
+        form.submit();
+      }
+  });
+}
+

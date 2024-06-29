@@ -127,16 +127,13 @@
                       <a href="formMovie.php?id=<?php echo $pelicula['id_pelicula'] ?>">
                         <i class="fa-regular fa-pen-to-square text-pink text-hover" title="Editar"></i>
                       </a>
-
-
-                      <form action="delete_movie.php" method="POST"
-                        id="formDelete<?php echo $pelicula['id_pelicula'] ?>">
+											<!-- Eliminar película -->
+                      <form action="deleteMovie.php" method="POST" id="formDelete<?php echo $pelicula['id_pelicula']?>">
                         <input type="hidden" name="id" value="<?php echo $pelicula['id_pelicula'] ?>">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="button"
-                          onclick="confirmDelete('formDelete',<?php echo $pelicula['id_pelicula'] ?>)"
-                          class="link-delete text-hover"><i class="fa-regular fa-trash-can text-danger text-hover"
-                            title="Eliminar"></i></button>
+                        <button type="button" onclick="confirmDelete('formDelete', <?php echo $pelicula['id_pelicula']?>)" class="link-delete text-hover">
+	                        <i class="fa-regular fa-trash-can text-danger text-hover" title="Eliminar"></i>
+                        </button>
                       </form>
                     </div>
                   </td>

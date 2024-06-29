@@ -189,7 +189,6 @@ if (isset($_GET['id'])) {
     if(isset($_SESSION['messages'])){
       echo modalSweetAlert($_SESSION['messages']['title'], $_SESSION['messages']['message'], $_SESSION['messages']['icon']);
     }
-
     unset($_SESSION['messages']);
   ?>
 
