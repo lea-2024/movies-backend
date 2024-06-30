@@ -271,6 +271,14 @@ input:-webkit-autofill:focus {
     opacity: 0;
 }
 
+/* contenedor detalle pelicula */
+.container_movie_detail{
+  margin-top: 19vh;
+  margin-bottom: 10vh;
+  min-height: calc(100vh - 20vh - 135px);
+}
+
+
 /* Footer **************************************/
 footer {
   background-color: rgb(0, 105, 197);
