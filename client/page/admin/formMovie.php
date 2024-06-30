@@ -62,12 +62,11 @@ if (isset($_GET['id'])) {
         <option value="" disabled <?php echo !$create ? 'selected' : ''; ?>>Selecciona una calificación</option>
         <?php
         $selectedCalificacion = $create ? (int) $movieEdit['calificacion'] : null;  // Solo el primer dígito
-
-        for ($i = 1; $i <= 10; $i++) {
-            $selected = $selectedCalificacion === $i ? 'selected' : '';
-            echo "<option value='$i' $selected>$i</option>";
-        }
-        ?>
+				?>
+        <?php for ($i = 1; $i <= 10; $i++) : ?>
+	      <!--  Se modifica valor porque sino arroja error al seleccionar el 10 por los 2 decimales enteros -->
+            <option value="<?php echo $i - 0.1 ?>" <?php echo $selectedCalificacion === $i ? 'selected': '' ?>><?php echo $i ?></option>
+        <?php endfor?>
       </select>
       <?php if (isset($errores['calificacion'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['calificacion'] ?></p>
@@ -104,7 +103,7 @@ if (isset($_GET['id'])) {
       <?php if (!empty($movieEdit['imagen']) ):?>
       <img
         src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>"
-        class="card-img-top img-card" alt="imagen pelicula">
+        class="mx-5 my-4 img-form" alt="imagen pelicula">
       <?php endif; ?>
 
       <input type="file" name="imagen">

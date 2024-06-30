@@ -1039,6 +1039,14 @@ input[type='date'] {
   object-fit: cover;
 }
 
+/* Imágenes formulario modo edición */
+.img-form{
+  height: 250px;
+  object-fit: cover;
+  border-radius: 7px;
+  box-shadow: 0 0 1px 2px #0069c5;
+}
+
 /* Botón estado acvito / no activo  */
 input[type=checkbox]{
   appearance: none;

@@ -1,5 +1,6 @@
 $(document).ready( function () {
     $('#myTable').DataTable({
+      "stateSave": true, // se habilita guardar el estado
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
