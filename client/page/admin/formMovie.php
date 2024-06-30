@@ -17,6 +17,7 @@ if (isset($_GET['id'])) {
   $create = false;
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +59,9 @@ if (isset($_GET['id'])) {
 
       <label for="nombre">Nombre</label>
       <!-- <input type="text" name="nombre" /> -->
-      <input type="text" name="nombre" value="<?php echo $create ? $movieEdit['nombre'] : ''; ?>" />
+      <input type="text" id="nombre" name="nombre" value="<?php echo $create ? $movieEdit['nombre'] : ''; ?>" />
+      
+
 
       <?php if (isset($errores['nombre'])) : ?>
       <p class="text-danger fs-6 mx-5"><?php echo $errores['nombre'] ?></p>

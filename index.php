@@ -144,7 +144,7 @@ $nameAutocomplete = json_encode($peliculasByName);
               <form id="searchForm" method="GET" action="" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
                 <input type="search" name="search" id="search" placeholder="Buscar..." class="h-50 main_search_input" />
                 <input type="submit" value="Buscar" class="main_search_btn" />
-                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn"">Limpiar</button>
+                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn">Limpiar</button>
               </form>
               <div id=" searchAncla">
             </div>
