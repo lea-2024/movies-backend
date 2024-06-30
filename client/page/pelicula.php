@@ -107,7 +107,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       <div class="card" style="max-width: 70%;">
         <div class="row g-1">
           <div class="col-md-4">
-            <img src="<?php echo $registro['imagen'] ?>" class="img-fluid rounded-start" alt="...">
+            <img src="<?php echo filter_var($registro['imagen'],FILTER_VALIDATE_URL) ? $registro['imagen'] : '../asset/uploads/'.htmlspecialchars($registro['imagen']) ?>" class="img-fluid h-100 rounded-start" alt="..." style="object-fit: cover;">
           </div>
           <div class="col-md-8">
             <div class="card-body">

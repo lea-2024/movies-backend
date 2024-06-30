@@ -174,8 +174,13 @@ $nameAutocomplete = json_encode($peliculasByName);
 
             if (!empty($resultados)) {
               foreach ($resultados as $pelicula) {
+								if(filter_var($pelicula['imagen'],FILTER_VALIDATE_URL)){
+									$pelicula['imagen'] = $pelicula['imagen'];
+								} else{
+									$pelicula['imagen'] = 'client/asset/uploads/' . htmlspecialchars($pelicula['imagen']);
+								};
                 echo '<div class="trend_container">';
-                echo '<a href="#" class="trend_container_link">';
+                echo '<a href="./client/page/pelicula.php?id='.$pelicula["id_pelicula"].'"'. 'class="trend_container_link">';
                 echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
                 echo '<div class="trend_container-hover">';
                 echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
