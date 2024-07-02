@@ -2,6 +2,8 @@
 require '../../api/crud.php';
 session_start();
 
+$showSignUp = isset($_GET['source']) && $_GET['source'] === 'main_register_btn';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $action = $_POST['action']; // Campo oculto para diferenciar entre registro y login
 
@@ -76,6 +78,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./images/film.ico" type="image/x-icon" />
+  <style>
+        /* Estilos iniciales */
+        <?php if ($showSignUp) : ?>
+            #loginSection { display: none; }
+            #signUpSection { display: block; }
+        <?php else : ?>
+            #loginSection { display: block; }
+            #signUpSection { display: none; }
+        <?php endif; ?>
+    </style>
 
   <!-- Título de la Pestaña -->
   <title>CAC-movies | Registro</title>
@@ -134,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- fin formulario de login  -->
 
     <!-- formulario de registro  -->
-    <section class="container mb-5" id="signUpSection" style="display: none;">
+    <section class="container mb-5" id="signUpSection">
       <div class="row align-items-center px-2 px-md-0">
         <div class="col-md-6 offset-md-3 px-md-5 px-3 px-0 py-3 mt-5 rounded-3 register_form_container animate__animated animate__fadeIn animate__slow">
           <h1 class="fs-md-3 fs-4 mt-2">Nuevo Usuario</h1>
