@@ -100,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header('Location:dashboard.php');
             exit();
         } else {
+            $rutaImagen = empty($_FILES['imagen']['name']) ? '../../asset/images/film.png' : $rutaImagen;
             $tempURL = isset($_FILES['imagen']['tmp_name']) ? $_FILES['imagen']['tmp_name'] : '';
             $movie = storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $rutaImagen, $tempURL);
 
