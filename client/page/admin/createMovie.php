@@ -6,17 +6,16 @@ global $conn;
 session_start();
 
 // Recibir datos del formulario
-$id = $_POST['id'];
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
-$genero = $_POST['genero'];
-$calificacion = floatval($_POST['calificacion']);
-$seccion = $_POST['seccion'];
-$anio = intval($_POST['anio']);
-$director = $_POST['director'];
-
-// Validar que el formulario se haya enviado correctamente
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $genero = $_POST['genero'];
+    $calificacion = floatval($_POST['calificacion']);
+    $seccion = $_POST['seccion'];
+    $anio = intval($_POST['anio']);
+    $director = $_POST['director'];
+
     // Array para errores y mensajes
     $errores = [];
     $messages = [];
@@ -97,7 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $messages['title'] = 'Pelicula actualizada';
             $messages['message'] = 'La película se actualizó correctamente';
             $messages['icon'] = 'success';
-            session_start();
             $_SESSION['messages'] = $messages;
             header('Location:dashboard.php');
             exit();
@@ -110,7 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $messages['title'] = 'Pelicula creada';
                 $messages['message'] = 'La película se creó correctamente';
                 $messages['icon'] = 'success';
-                session_start();
                 $_SESSION['messages'] = $messages;
                 header('Location: dashboard.php');
                 exit();
@@ -118,8 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $messages['title'] = 'Error al crear la pelicula';
                 $messages['message'] = 'No se pudo crear la pelicula';
                 $messages['icon'] = 'error';
-                session_start();
+                
                 $_SESSION['messages'] = $messages;
+                $_SESSION['form_data'] = $_POST;
                 header('Location: formMovie.php');
                 exit();
             }
@@ -127,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         // Si hay errores, guardar en sesión y redirigir al formulario
         $_SESSION['errores'] = $errores;
+        $_SESSION['form_data'] = $_POST;
         header('Location: formMovie.php');
         exit();
     }
