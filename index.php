@@ -127,7 +127,7 @@ $nameAutocomplete = json_encode($peliculasByName);
             Cancela en cualquier momento.
           </h2>
           <?php if (!$user) : ?>
-            <a href="./client/page/register.php" class="main_register_btn">Registrate</a>
+            <a href="./client/page/register.php?source=main_register_btn" class="main_register_btn">Registrate</a>
           <?php endif; ?>
         </section>
       </div>
