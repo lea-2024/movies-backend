@@ -3,15 +3,27 @@
 [Sitio Web CAC-Movie](https://lea-2024.github.io/proyecto-movies/)
 
 ---
-####  Crear la base de datos si no existe
+
+# Tecnología
+
+<img src ="./client/asset/images/tecnologias/html5.png"/><img src ="./client/asset/images/tecnologias/css3.png"><img src ="./client/asset/images/tecnologias/js.png"/><img src ="./client/asset/images/tecnologias/php.png"/><img src ="./client/asset/images/tecnologias/bootstrap4.png"/><img src ="./client/asset/images/tecnologias/mysql.png"/>
+
+---
+
+#### Crear la base de datos si no existe
+
 ```sql
 CREATE DATABASE IF NOT EXISTS movies_db;
 ```
+
 #### Seleccionar la base de datos
+
 ```sql
 USE movies_db;
 ```
+
 #### Crear la tabla usuarios
+
 ```sql
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,8 +37,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
     CONSTRAINT chk_rol CHECK (rol IN ('admin', 'usuario'))
 );
 ```
+
 ---
+
 #### Crear la tabla peliculas
+
 ```sql
 CREATE TABLE IF NOT EXISTS peliculas (
   id_pelicula INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -43,12 +58,13 @@ CREATE TABLE IF NOT EXISTS peliculas (
   PRIMARY KEY (id_pelicula)
 );
 ```
+
 ---
+
 #### Pegar esta direccion en la url y crea las peliculas en la base de datos
+
 ```markdown
-  localhost/movies-backend/api/unload/uploadmovies
+localhost/movies-backend/api/unload/uploadmovies
 ```
+
 ---
-
-
-
