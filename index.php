@@ -1,11 +1,19 @@
 <?php
-include 'conexion.php';
-
 require './api/crud.php';
 session_start();
 
 // Comprobar si el usuario ha iniciado sesión
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
+$seccionTendencias = 'tendencias';
+$seccionAclamadas = 'aclamadas';
+$tendencias = getMoviesBySection($seccionTendencias);
+$aclamadas = getMoviesBySection($seccionAclamadas);
+
+
+$peliculasByName = getAllName();
+$nameAutocomplete = json_encode($peliculasByName);
+
 ?>
 
 
@@ -23,6 +31,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <link rel="pre<connect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <!-- Animate CSS - animaciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -32,9 +41,19 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
   <!-- Estilos personalizados-->
   <link rel="stylesheet" href="./client/asset/css/styles.css" />
+  <link rel="stylesheet" href="./client/asset/css/modalFooter.css" />
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./client/asset/images/film.ico" type="image/x-icon" />
+  <style>
+    #resultados {
+      display: none;
+    }
+  </style>
   <!-- Título de la Pestaña -->
   <title>CAC-MOVIES | Inicio</title>
 </head>
@@ -122,26 +141,26 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <!-- Formulario para buscar películas -->
           <div class="row">
             <div class="col-md-8 col-12 offset-md-2 col-lg-6 offset-lg-3 offset-0">
-              <!-- <form class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form"> -->
-
-              <form id="searchForm" method="GET" action="#searchContainer" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
-
+              <form id="searchForm" method="GET" action="" class="d-flex flex-column flex-sm-row mt-4 align-items-center justify-content-center gap-2 main_search_form">
                 <input type="search" name="search" id="search" placeholder="Buscar..." class="h-50 main_search_input" />
                 <input type="submit" value="Buscar" class="main_search_btn" />
-
-                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn"">Limpiar</button>
-
+                <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn">Limpiar</button>
               </form>
-
-              <div id="searchAncla">
-              </div>
-               
+              <div id=" searchAncla">
             </div>
           </div>
         </div>
       </div>
+      </div>
+      <script>
+        $(document).ready(function() {
+          var peliculasByName = <?php echo $nameAutocomplete; ?>;
+          $("#search").autocomplete({
+            source: peliculasByName
+          });
+        });
+      </script>
     </section>
-
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
     <div id="resultados" class="mt-5">
@@ -155,14 +174,26 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
             if (!empty($resultados)) {
               foreach ($resultados as $pelicula) {
+
+                $srcImagen = $pelicula['imagen'];
+                $inicio = '../../asset/uploads/';
+
+                if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+                  $srcImagen = './client/' . substr($srcImagen, 6);
+                }
+
                 echo '<div class="trend_container">';
-                echo '<a href="pelicula.php?id=' . $pelicula["id_pelicula"] . '" class="trend_container_link">';
-                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+                echo '<a href="./client/page/pelicula.php?id=' . $pelicula['id_pelicula'] . '" class="trend_container_link">';
+                echo '<img src="' . htmlspecialchars($srcImagen) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
                 echo '<div class="trend_container-hover">';
                 echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
                 echo htmlspecialchars($pelicula['nombre']);
                 echo '</h4>';
-                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
+                echo '<p class="trend_review-hover">';
+                for ($i = 0; $i < $pelicula['calificacion']; $i = $i + 2) {
+                  echo '⭐';
+                };
+                echo '</p>';
                 echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
                 echo '</div>';
                 echo '</a>';
@@ -178,11 +209,26 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       <div class="mb-5"></div>
     </div>
 
-
     <!-- Separar sección con línea -->
     <hr class="line_divisor" />
 
     <!-- Sección de películas Tendencias-->
+    <?php
+    $peliculasPorPagina = 10;
+    $totalPeliculas = count($tendencias);
+
+    $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
+
+    // Obtener la página actual de la solicitud, si no está presente, establecer en 1
+    $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+    // Calcular el índice inicial y final para las películas de la página actual
+    $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
+    $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
+
+    // Obtener las películas para la página actual
+    $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
+    ?>
     <!-- Contenedor Tendencias -->
     <section class="container p-5 trends_container" id="trends">
       <div class="row">
@@ -192,22 +238,26 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       </div>
 
       <!-- Contenedor Películas    -->
-      <?php
-      // query de insercion
-      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='tendencias'";
-      $consulta = mysqli_query($conexion, $query);
-      ?>
       <div class="row mt-5">
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+          <?php foreach ($peliculasPagina as $registro) {
+
+            $srcImagen = $registro['imagen'];
+            $inicio = '../../asset/uploads/';
+
+            if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+              $srcImagen = './client/' . substr($srcImagen, 6);
+            }
+
+          ?>
 
             <div class="trend_container">
-              <a href="pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
-                <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+              <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
+                <img src="<?php echo $srcImagen ?>" alt="<?php echo $registro['nombre'] ?>" class="trend_image" />
                 <div class="trend_container-hover">
-                  <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                  <h4 class="trend_title-hover" title=""><?php echo $registro['nombre'] ?></h4>
                   <p class="trend_review-hover">
                     <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
                       echo '⭐';
@@ -227,11 +277,20 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
       <!-- Botones anterior - siguiente -->
       <div class="row text-center mt-5">
         <div class="col d-flex gap-4 justify-content-center align-items-center">
-          <button class="main_trends_btn" id="btnTrendPrev">Anterior</button>
-          <button class="main_trends_btn" id="btnTrendNext">Siguiente</button>
+          <button class="main_trends_btn" id="btnTrendPrev" <?php if ($paginaActual <= 1) echo 'disabled'; ?>>Anterior</button>
+          <button class="main_trends_btn" id="btnTrendNext" <?php if ($paginaActual >= $totalPaginas) echo 'disabled'; ?>>Siguiente</button>
         </div>
       </div>
     </section>
+    <script>
+      document.getElementById('btnTrendPrev').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> - 1) + '#trends';
+      });
+
+      document.getElementById('btnTrendNext').addEventListener('click', function() {
+        window.location.href = '?pagina=' + (<?php echo $paginaActual; ?> + 1) + '#trends';
+      });
+    </script>
     <!-- Fin contenedor tendencias -->
 
     <!-- Separar sección con línea -->
@@ -245,11 +304,6 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
       </div>
       <!-- Contenedor aclamadas -->
-      <?php
-      // query de insercion
-      $query = "SELECT * FROM movies_db.peliculas WHERE seccion='aclamadas'";
-      $consulta = mysqli_query($conexion, $query);
-      ?>
       <div class="row acclaimeds">
         <div class="col position-relative p-md-5">
           <section class="d-flex gap-md-5 gap-3 mt-5 mt-md-0 px-md-3 align-items-center acclaimeds_container" id="acclaimedsContainer">
@@ -260,10 +314,18 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
               <i class="fa-solid fa-angle-right"></i>
             </button>
 
-            <?php while ($registro = mysqli_fetch_array($consulta)) { ?>
+            <?php foreach ($aclamadas  as $registro) {
+              $srcImagen = $registro['imagen'];
+              $inicio = '../../asset/uploads/';
+
+              if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
+                $srcImagen = './client/' . substr($srcImagen, 6);
+              }
+
+            ?>
               <div class="acclaimed_container">
-                <a href="pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
-                  <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
+                  <img src="<?php echo $srcImagen ?>" alt="aclamada 1" class="acclaimed_image" />
                 </a>
               </div>
             <?php } ?>
@@ -276,6 +338,41 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <!-- Fin peliculas aclamadas -->
   </main>
   <!-- Fin contenido principal -->
+  <!-- Contenedor del modal footer-->
+  <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- El contenido del modal se cargará aquí -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con todos los términos aquí descritos.
+          </p>
+          <p>
+            1. Uso del sitio: ...
+          </p>
+          <p>
+            2. Propiedad intelectual: ...
+          </p>
+          <!-- Agrega más contenido según sea necesario -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
@@ -285,16 +382,16 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           <nav class="footer_links d-flex justify-content-center">
             <ul class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
               <li class="footer_item">
-                <a href="#" class="footer_link">Términos y condiciones</a>
+                <a href="#" class="footer_link" data-content="terms">Términos y condiciones</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Preguntas frecuentes</a>
+                <a href="#" class="footer_link" data-content="pregunt">Preguntas frecuentes</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Ayuda</a>
+                <a href="#" class="footer_link" data-content="ayuda">Ayuda</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Contacto</a>
+                <a href="#" class="footer_link" data-content="default">Contacto</a>
               </li>
             </ul>
           </nav>
@@ -318,6 +415,17 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Enlace script index.js-->
   <script src="./client/asset/js/index.js"></script>
   <script src="./client/asset/js/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- Script para el modal del footer-->
+  <script src="./client/asset/js/modal_footer.js"></script>
+  <script>
+    // JavaScript para mostrar el div si hay resultados y el botón de limpiar
+    <?php if (isset($resultados) && !empty($resultados)) : ?>
+      document.getElementById('resultados').style.display = 'block';
+      document.getElementById('clearButton').style.display = 'inline-block';
+      window.location.hash = 'searchAncla';
+    <?php endif; ?>
+  </script>
 </body>
 
 </html>
