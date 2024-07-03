@@ -71,4 +71,4 @@ localhost/movies-backend/api/unload/uploadmovies
 
 ---
 
-[![](https://visitcount.itsvg.in/api?id=cac-movies&icon=1&color=0)](https://visitcount.itsvg.in)
+[![](https://visitcount.itsvg.in/api?id=cac-movies&icon=1&color=0)]
