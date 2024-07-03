@@ -13,14 +13,40 @@ $seccion = $_POST['seccion'];
 $anio = intval($_POST['anio']);
 $director = $_POST['director'];
 $imagen = $_FILES['imagen'];
+$urlImagen = $_POST['urlImagen'];
+$estado = 1;
+
+if ($imagen['size'] == 0) {
+  echo '<br> NO HAY IMAGEN nueva <br>';
+  $imagen = $urlImagen; 
+} else {
+  var_dump($imagen);
+  $tempURL = $imagen['tmp_name'];
+  echo '<br>' . $imagen['size'];
+  echo '<br>' . $tempURL;
+  $urlDestino = '../../asset/uploads/img_' . $imagen['name'];
+  // grabar el archivo nuevo en uploads
+  move_uploaded_file($imagen['tmp_name'], $urlDestino);
+
+
+  $imagen = '../../asset/uploads/img_' . $imagen['name'];
+  echo '<br>' . $imagen;
+  
+}
 
 if (!empty($id)) {
   updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $imagen, $seccion, $estado);
   echo
   '<script type="text/javascript">
     alert("Pelicula actualizada con exito");
-    window.location.href="formMovie.php";
+    window.location.href="dashboard.php";
   </script>';
+
+  echo '<br>';
+  var_dump($imagen);
+  // window.location.href="dashboard.php";
+  
+  echo '<br>' . $urlImagen;
   
   exit();
 }
@@ -135,7 +161,7 @@ if (empty($errores)) {
       echo
       '<script type="text/javascript">
         alert("Pelicula cargada con exito");
-        window.location.href="formMovie.php";
+        window.location.href="dashboard.php";
       </script>';
     } else {
     echo

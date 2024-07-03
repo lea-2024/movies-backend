@@ -189,7 +189,11 @@ $nameAutocomplete = json_encode($peliculasByName);
                 echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
                 echo htmlspecialchars($pelicula['nombre']);
                 echo '</h4>';
-                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
+                echo '<p class="trend_review-hover">';
+                for ($i = 0; $i < $pelicula['calificacion']; $i = $i + 2) {
+                  echo '⭐';
+                };
+                echo '</p>';
                 echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
                 echo '</div>';
                 echo '</a>';
