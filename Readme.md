@@ -1,5 +1,7 @@
 # Proyecto Movies CAC - 2024
 
+En CAC-Movies, podrás descubrir todo lo que siempre has querido saber sobre tus películas preferidas. Desde sinopsis detalladas y elenco principal hasta trivia fascinante y datos curiosos, nuestra plataforma te brinda una experiencia cinematográfica completa.<br>¿Quieres conocer a fondo la trama de una película antes de verla? No hay problema. En <b>CAC-Movies</b>, encontrarás resúmenes completos y análisis profundos de las películas más populares. Podrás conocer los giros sorprendentes, los personajes memorables y las escenas más icónicas antes de sumergirte en la historia.<br>Además, en nuestra página también podrás explorar el extenso catálogo de películas de diferentes géneros y épocas. ¿Buscas una comedia romántica para una noche acogedora en casa? ¿O tal vez prefieres sumergirte en un mundo de fantasía épica? Sea cual sea tu preferencia, seguro encontrarás una película que capturará tu atención.
+
 [Sitio Web CAC-Movie](https://lea-2024.github.io/proyecto-movies/)
 
 ---
@@ -7,11 +9,6 @@
 # Tecnología
 
 <img src ="./client/asset/images/tecnologias/html5.png"/><img src ="./client/asset/images/tecnologias/css3.png"><img src ="./client/asset/images/tecnologias/js.png"/><img src ="./client/asset/images/tecnologias/php.png"/><img src ="./client/asset/images/tecnologias/bootstrap4.png"/><img src ="./client/asset/images/tecnologias/mysql.png"/>
-
-
-
-
-
 
 ---
 
@@ -73,3 +70,11 @@ localhost/movies-backend/api/unload/uploadmovies
 ```
 
 ---
+
+# 💻 Tecnología:
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
+---
+
+[![](https://visitcount.itsvg.in/api?id=cac-movies&icon=1&color=0)](https://visitcount.itsvg.in)
