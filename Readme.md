@@ -8,7 +8,8 @@
 
 | HTML5 |CSS3   |JavaScript   | PHP   |Bootstrap   | MySql   |
 | ------------ | ------------ | ------------ | ------------ | ------------ || ------------ |
-| <img src ="./client/asset/images/tecnologias/html5.png"/>|<img src ="./client/asset/images/tecnologias/css3.png">|<img src ="./client/asset/images/tecnologias/js.png"/>|<img src ="./client/asset/images/tecnologias/php.png"/>|<img src ="./client/asset/images/tecnologias/bootstrap4.png"/>|<img src ="./client/asset/images/tecnologias/mysql.png"/> |
+|   |   |   |   |   |  | |
+
 
 
 
