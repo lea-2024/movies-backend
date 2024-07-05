@@ -24,10 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if ($user = loginUser($email, $password)) {
-      // Asume que loginUser devuelve un array con los datos del usuario, incluyendo el rol
-      $_SESSION['user'] = $user;
-      $rol = $user['rol']; // Obtener el rol del usuario desde el array
+    $resultado = loginUser($email, $password);
+
+    if ($resultado === 'email_incorrecto') {
+      $errorEmail = "El correo electrónico es incorrecto.";
+    } elseif ($resultado === 'contraseña_incorrecta') {
+      $errorPassword = "La contraseña es incorrecta.";
+    } elseif (is_array($resultado)) {
+      // Login exitoso
+      $_SESSION['user'] = $resultado;
+      $rol = $resultado['rol']; // Obtener el rol del usuario desde el array
 
       if ($rol == 'admin') {
         header('Location: ../page/admin/dashboard.php'); // Ajuste de la ruta para redirigir a admin
@@ -36,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
       exit; // Detener la ejecución del script
     } else {
-      echo "Email o contraseña incorrectos";
+      $errorGeneral = "Ocurrió un error desconocido.";
     }
   }
 }
@@ -100,10 +106,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col my-4">
               <input type="text" autocomplete="off" placeholder="Email" name="email" id="email" class="form_input w-100" />
               <div id="errorEmail"></div>
+              <?php if (isset($errorEmail)) : ?>
+                <p style="color: red;"><?php echo $errorEmail; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
               <input type="password" autocomplete="off" name="password" id="password" placeholder="Contraseña" class="form_input w-100" />
               <div id="errorPassword"></div>
+              <?php if (isset($errorPassword)) : ?>
+                <p style="color: red;"><?php echo $errorPassword; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
               <input type="hidden" name="action" value="login">
@@ -112,6 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col my-3">
               <a href="#" id="signUpLink" class="form_link w-100">No tienes una cuenta?</a>
             </div>
+            <?php if (isset($errorGeneral)) : ?>
+              <p style="color: red;"><?php echo $errorGeneral; ?></p>
+            <?php endif; ?>
           </form>
         </div>
       </div>
@@ -160,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="submit" value="Registrarse" class="form_btn w-100">
             </div>
             <div class="col my-3">
-              <a href="#" class="form_link w-100" id="loginLink">Ya estás registrado?</a>
+              <a href="#" class="form_link w-100" id="loginLink" style="color: yellow">Ya estás REGISTRADO ?</a>
             </div>
           </form>
         </div>
@@ -170,18 +185,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </main>
   <!--enlace script index.js-->
   <script>
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simular clic en el enlace "No tienes una cuenta?"
+      document.getElementById('signUpLink').click();
+    });
+
     document.getElementById('loginLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('loginSection').style.display = 'block';
-        document.getElementById('signUpSection').style.display = 'none';
+      event.preventDefault();
+      document.getElementById('loginSection').style.display = 'block';
+      document.getElementById('signUpSection').style.display = 'none';
     });
 
     document.getElementById('signUpLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('signUpSection').style.display = 'block';
-        document.getElementById('loginSection').style.display = 'none';
+      event.preventDefault();
+      document.getElementById('signUpSection').style.display = 'block';
+      document.getElementById('loginSection').style.display = 'none';
     });
-</script>
+  </script>
   <!-- Manejo de fechas - Pikaday -->
   <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
   <script src="../asset/js/register.js"></script>
