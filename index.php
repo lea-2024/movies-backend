@@ -96,13 +96,11 @@ $nameAutocomplete = json_encode($peliculasByName);
           <span class="bienvenido">Bienvenido, <?php echo htmlspecialchars($user['nombre']); ?></span>
         <?php else : ?>
           <li class="header_items">
-            <a href="./client/page/register.php" class="header_link-login">Iniciar Sesión</a>
+            <a href="./client/page/register.php" class="header_link-login">Registrarse</a>
           </li>
         <?php endif; ?>
 
-        <!-- <li class="header_items">
-            <a href="./client/page/register.php" class="header_link">Registrarse</a>
-          </li> -->
+
 
       </ul>
     </nav>
@@ -147,10 +145,10 @@ $nameAutocomplete = json_encode($peliculasByName);
                 <button type="button" id="clearButton" onclick="clearSearch()" class="main_search_btn">Limpiar</button>
               </form>
               <div id=" searchAncla">
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
       <script>
         $(document).ready(function() {
@@ -376,7 +374,7 @@ $nameAutocomplete = json_encode($peliculasByName);
   <!-- Footer - Links de navegación - Botón ir a top  -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
-    <div class="container-fluid py-5 text-center position-relative">
+    <div class="container-fluid py-3 text-center position-relative">
       <div class="row mb-2 mb-md-0">
         <div class="col-12">
           <nav class="footer_links d-flex justify-content-center">

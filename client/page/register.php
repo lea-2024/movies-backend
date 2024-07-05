@@ -106,15 +106,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col my-4">
               <input type="text" autocomplete="off" placeholder="Email" name="email" id="email" class="form_input w-100" />
               <div id="errorEmail"></div>
-              <?php if (isset($errorEmail)): ?>
-                  <p style="color: red;"><?php echo $errorEmail; ?></p>
+              <?php if (isset($errorEmail)) : ?>
+                <p style="color: red;"><?php echo $errorEmail; ?></p>
               <?php endif; ?>
             </div>
             <div class="col my-4">
               <input type="password" autocomplete="off" name="password" id="password" placeholder="Contraseña" class="form_input w-100" />
               <div id="errorPassword"></div>
-              <?php if (isset($errorPassword)): ?>
-                  <p style="color: red;"><?php echo $errorPassword; ?></p>
+              <?php if (isset($errorPassword)) : ?>
+                <p style="color: red;"><?php echo $errorPassword; ?></p>
               <?php endif; ?>
             </div>
             <div class="col my-4">
@@ -124,8 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col my-3">
               <a href="#" id="signUpLink" class="form_link w-100">No tienes una cuenta?</a>
             </div>
-            <?php if (isset($errorGeneral)): ?>
-                <p style="color: red;"><?php echo $errorGeneral; ?></p>
+            <?php if (isset($errorGeneral)) : ?>
+              <p style="color: red;"><?php echo $errorGeneral; ?></p>
             <?php endif; ?>
           </form>
         </div>
@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="submit" value="Registrarse" class="form_btn w-100">
             </div>
             <div class="col my-3">
-              <a href="#" class="form_link w-100" id="loginLink">Ya estás registrado?</a>
+              <a href="#" class="form_link w-100" id="loginLink" style="color: yellow">Ya estás REGISTRADO ?</a>
             </div>
           </form>
         </div>
@@ -185,18 +185,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </main>
   <!--enlace script index.js-->
   <script>
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simular clic en el enlace "No tienes una cuenta?"
+      document.getElementById('signUpLink').click();
+    });
+
     document.getElementById('loginLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('loginSection').style.display = 'block';
-        document.getElementById('signUpSection').style.display = 'none';
+      event.preventDefault();
+      document.getElementById('loginSection').style.display = 'block';
+      document.getElementById('signUpSection').style.display = 'none';
     });
 
     document.getElementById('signUpLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('signUpSection').style.display = 'block';
-        document.getElementById('loginSection').style.display = 'none';
+      event.preventDefault();
+      document.getElementById('signUpSection').style.display = 'block';
+      document.getElementById('loginSection').style.display = 'none';
     });
-</script>
+  </script>
   <!-- Manejo de fechas - Pikaday -->
   <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
   <script src="../asset/js/register.js"></script>

@@ -89,7 +89,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <span class="bienvenido">Bienvenido, <?php echo htmlspecialchars($user['nombre']); ?></span>
                 <?php else : ?>
                     <li class="header_items">
-                        <a href="../../client/page/register.php" class="header_link-login">Iniciar Sesión</a>
+                        <a href="../../client/page/register.php" class="header_link-login">Registrarse</a>
                     </li>
                 <?php endif; ?>
 
@@ -139,7 +139,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <!-- Footer - Links de navegación - Botón ir a top  -->
     <footer class="container-fluid fixed-bottom">
         <!-- links de navagación - footer -->
-        <div class="container-fluid py-5 text-center position-relative">
+        <div class="container-fluid py-3 text-center position-relative">
             <div class="row mb-2 mb-md-0">
                 <div class="col-12">
                     <nav class="footer_links d-flex justify-content-center">

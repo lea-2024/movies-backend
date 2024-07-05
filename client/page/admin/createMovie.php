@@ -16,25 +16,28 @@ $imagen = $_FILES['imagen'];
 $urlImagen = $_POST['urlImagen'];
 $estado = 1;
 
-if ($imagen['size'] == 0) {
-  echo '<br> NO HAY IMAGEN nueva <br>';
-  $imagen = $urlImagen; 
-} else {
-  var_dump($imagen);
-  $tempURL = $imagen['tmp_name'];
-  echo '<br>' . $imagen['size'];
-  echo '<br>' . $tempURL;
-  $urlDestino = '../../asset/uploads/img_' . $imagen['name'];
-  // grabar el archivo nuevo en uploads
-  move_uploaded_file($imagen['tmp_name'], $urlDestino);
-
-
-  $imagen = '../../asset/uploads/img_' . $imagen['name'];
-  echo '<br>' . $imagen;
-  
-}
 
 if (!empty($id)) {
+
+  if ($imagen['size'] == 0) {
+    echo '<br> NO HAY IMAGEN nueva <br>';
+    $imagen = $urlImagen; 
+  } else {
+    var_dump($imagen);
+    $tempURL = $imagen['tmp_name'];
+    echo '<br>' . $imagen['size'];
+    echo '<br>' . $tempURL;
+    $urlDestino = '../../asset/uploads/img_' . $imagen['name'];
+    // grabar el archivo nuevo en uploads
+    move_uploaded_file($imagen['tmp_name'], $urlDestino);
+  
+    $imagen = '../../asset/uploads/img_' . $imagen['name'];
+    echo '<br>' . $imagen;
+    
+  }
+
+
+
   updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $imagen, $seccion, $estado);
   echo
   '<script type="text/javascript">
@@ -100,6 +103,7 @@ $rutaDestino = '../../asset/uploads/img_';
 if ($imagen['error'] === UPLOAD_ERR_OK) {
   // Obtener la ruta completa de la imagen
   $rutaImagen = $rutaDestino . $imagen['name'];
+  echo '<br>' . $rutaImagen;
 
   // Verificar si la imagen existe en la carpeta de destino
   if (file_exists($rutaImagen)) {
