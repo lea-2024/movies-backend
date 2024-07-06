@@ -576,12 +576,14 @@ footer {
         color: white;
     }
 
-    .img-visualizar {
-        width: 120px;
-        height: 140px;
+      .img-visualizar {
+        width: 200px;
+        height: 220px;
         background-image: url(../../asset/images/no-disponible.jpg);
         background-size: cover;
         background-position: center;
+        border-radius: 7px;
+        box-shadow: 0 0 5px 2px #0069c5;
     }
 }
 
