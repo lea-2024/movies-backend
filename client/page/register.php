@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="email" name="email" autocomplete="off" placeholder="Email" class="form_input w-100" required />
             </div>
             <div class="col my-4">
-              <input type="password" name="password" autocomplete="off" placeholder="Contraseña" class="form_input w-100" required />
+              <input type="password" name="password" autocomplete="off" placeholder="Contraseña (min. 8 caracteres)" class="form_input w-100" required />
             </div>
             <div class="col my-4">
               <input type="text" class="form_input w-100" id="datepicker" name="fecha_nac" placeholder="Seleccione una fecha" required />

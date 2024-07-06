@@ -421,7 +421,7 @@ $nameAutocomplete = json_encode($peliculasByName);
     <?php if (isset($resultados) && !empty($resultados)) : ?>
       document.getElementById('resultados').style.display = 'block';
       document.getElementById('clearButton').style.display = 'inline-block';
-      window.location.hash = 'searchAncla';
+      window.location.hash = 'searchContainer';
     <?php endif; ?>
   </script>
 </body>
