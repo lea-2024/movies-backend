@@ -95,12 +95,18 @@ unset($_SESSION['errores']);
 			<p class="text-danger fs-6 mx-5"><?php echo $errores['director'] ?></p>
 			<?php endif; ?>
 
-			<!-- SUBIR IMAGEN -->
-			<img id="imgPreview" class="m-auto my-2 img-visualizar">
-			<input type="file" name="imagen" onchange="previewImage(event, '#imgPreview')">
-			<?php if (isset($errores['imagen'])) : ?>
-			<p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
-			<?php endif; ?>
+				<!-- SUBIR IMAGEN -->
+
+		<img src="<?php echo !empty($movieEdit['imagen']) || file_exists('../uploads/image/'.$movieEdit['imagen']) ? $movieEdit['imagen'] : '../../asset/images/no-disponible.jpg' ?>"
+			id="imgPreview" class="m-auto my-2 img-visualizar">
+
+		<!-- crear input de tipo file para subir imagen y poder actualizarla en la base de datos -->
+
+		<input type="file" name="imagen" onchange="previewImage(event, '#imgPreview');">
+		<?php if (isset($errores['imagen'])) : ?>
+		<p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
+		<?php endif; ?>
+		<input type="submit" value="enviar" class="mt-3" />
 
 
 			<input type="submit" value="enviar" />
