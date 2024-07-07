@@ -773,6 +773,16 @@ input[type='date'] {
 .spinner_style{
   color: rgb(0, 105, 197);
 }
+/* 
+.img-visualizar {
+  width: 200px;
+  height: 220px;
+  background-image: url(../../asset/images/no-disponible.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+  box-shadow: 0 0 5px 2px #0069c5;
+} */
 
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -1038,11 +1048,12 @@ input[type='date'] {
 .img-card{
   min-height: 250px;
   max-height: 250px;
-  object-fit: cover;
+  object-fit: cover;   
 }
 
 /* Imágenes formulario modo edición */
 .img-form{
+  width:80%;
   height: 250px;
   object-fit: cover;
   border-radius: 7px;
