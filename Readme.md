@@ -8,17 +8,7 @@ En <b>CAC-Movies</b>, podrás descubrir todo lo que siempre has querido saber so
 
 # 💻 Tecnología:
 
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![JqueryUI](https://1.bp.blogspot.com/-_nEv-jCX7jg/X8CoTKUfaqI/AAAAAAAAClY/BEST8wQxnz48yS2sjMgvRjVEYUTsSfgZQCLcBGAsYHQ/w80-h80/1516245064-1543980323.jpg) <img
-    style="
-        display: block;
-        -webkit-user-select: none;
-        margin: auto;
-        background-color: hsl(0, 0%, 90%);
-        transition: background-color 300ms;
-        width: 80px;
-    "
-    src="https://img-blog.csdnimg.cn/409078f0af254967b34e351d88f1ca4d.png?w=80&amp;h=80"
-/>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![JqueryUI](https://1.bp.blogspot.com/-_nEv-jCX7jg/X8CoTKUfaqI/AAAAAAAAClY/BEST8wQxnz48yS2sjMgvRjVEYUTsSfgZQCLcBGAsYHQ/w80-h80/1516245064-1543980323.jpg) <img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;width: 80px;" src="https://cdn.tsldesigns.co.uk/images/data-tables.png">
 
 ---
 
