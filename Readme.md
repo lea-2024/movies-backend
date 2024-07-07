@@ -16,9 +16,11 @@ En <b>CAC-Movies</b>, podrás descubrir todo lo que siempre has querido saber so
         background-color: hsl(0, 0%, 90%);
         transition: background-color 300ms;
         width: 80px;
+        height: 80px;
     "
     src="https://img-blog.csdnimg.cn/409078f0af254967b34e351d88f1ca4d.png?w=80&amp;h=80"
 />
+
 
 ---
 
