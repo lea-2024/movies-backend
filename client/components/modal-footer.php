@@ -1,4 +1,7 @@
 <?php
+// Obtener links linkedin
+require '../../helpers/functions.php';
+
 // Obtener el parámetro 'content' de la URL
 $content = isset($_GET['content']) ? $_GET['content'] : 'default';
 
@@ -18,7 +21,7 @@ switch ($content) {
         break;
     default:
         $modalTitle = 'Contacto';
-        $modalBody = 'Mail de contacto.';
+        $modalBody = generate_linkedin('Esteban Madrid','https://www.linkedin.com/in/esteban-misael-madrid/'). generate_linkedin('Leandro Wagner','https://www.linkedin.com/in/leandro-wagner-040490215/').generate_linkedin('Mario Dohmen','https://www.linkedin.com/in/mario-maximo-dohmen-0b511836/').generate_linkedin('Victor Pinto','https://www.linkedin.com/in/victor-pinto-fullstack/');
         break;
 }
 ?>

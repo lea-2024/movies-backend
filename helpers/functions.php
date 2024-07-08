@@ -65,3 +65,8 @@
       </script>
     ";
   }
+
+  function generate_linkedin($name, $url)
+  {
+    return '<a href="'. $url .'" class="link-linkedin nav-link fs-5 text-black d-flex align-items-center my-3" target="_blank"><img src="/client/asset/images/linkedin.png" width="30" class="me-2" alt="'. $name .'" >'. $name .'</a>';
+  }

@@ -1,5 +1,5 @@
 <?php
-include '../../api/connect.php';
+require '../../api/connect.php';
 
 require '../../api/crud.php';
 session_start();
@@ -10,8 +10,8 @@ if (isset($_GET['id'])) {
     $registro = searchMoviesById($id);
 }
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -41,11 +41,12 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
   <!-- Estilos personalizados-->
   <link rel="stylesheet" href="../asset/css/styles.css" />
+  <link rel="stylesheet" href="../asset/css/modalFooter.css" />
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="../asset/images/film.ico" type="image/x-icon" />
   <!-- Título de la Pestaña -->
-  <title>CAC-MOVIES | Inicio</title>
+  <title>CAC-MOVIES | Pelicula - Detalle</title>
 </head>
 
 <body>
@@ -123,54 +124,8 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           </div>
         </div>
       </div>
-
     </div>
-
-
   </main>
 
-  <!-- Footer - Links de navegación - Botón ir a top  -->
-  <footer class="container-fluid">
-    <!-- links de navagación - footer -->
-    <div class="container-fluid py-5 text-center position-relative">
-      <div class="row mb-2 mb-md-0">
-        <div class="col-12">
-          <nav class="footer_links d-flex justify-content-center">
-            <ul
-              class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
-              <li class="footer_item">
-                <a href="#" class="footer_link">Términos y condiciones</a>
-              </li>
-              <li class="footer_item">
-                <a href="#" class="footer_link">Preguntas frecuentes</a>
-              </li>
-              <li class="footer_item">
-                <a href="#" class="footer_link">Ayuda</a>
-              </li>
-              <li class="footer_item">
-                <a href="#" class="footer_link">Contacto</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
 
-      <!-- CopyRight -->
-      <div class="row w-100 text-center bottom-0 position-absolute">
-        <div class="col">
-          <p class="footer_copyRight">&copy; CAC - PHP-ERROR 404 - 2024</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botón ir arriba-->
-    <a class="btn_top" id="btnTop">
-      <img src="../asset/images/flecha-hacia-arriba.svg" alt="Ir arriba flecha" class="btn_top_image" />
-    </a>
-  </footer>
-  <!-- Fin footer-->
-  <!-- Enlace script index.js-->
-  <script src="../asset/js/index.js"></script>
-</body>
-
-</html>
+<?php include '../page/layouts/partials/frontend/footer.php' ?>

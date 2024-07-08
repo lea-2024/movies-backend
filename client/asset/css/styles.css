@@ -1097,3 +1097,9 @@ input[type=checkbox]:checked{
   display: none;
 }
 /* fin search */
+
+/* Links de linkedin */
+
+.link-linkedin:hover{
+  opacity:0.8;
+}
