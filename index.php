@@ -239,7 +239,14 @@ $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina)
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php foreach ($peliculasPagina as $registro) {?>
+          <?php foreach ($peliculasPagina as $registro) {
+             if (filter_var($registro['imagen'], FILTER_VALIDATE_URL)) {
+              $registro['imagen'] = $registro['imagen'];
+              } else {
+                $registro['imagen'] = 'client/asset/uploads/' . htmlspecialchars($registro['imagen']);
+              }
+            ?>
+            
 
           <div class="trend_container">
             <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
@@ -252,7 +259,8 @@ $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina)
 }
     ?>
                 </p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
+                <?php echo '<img src="' . htmlspecialchars($registro['imagen']) . '" alt="' . htmlspecialchars($registro['nombre']) . '" class="trend_image-hover" />';?>
+                <!-- <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" /> -->
               </div>
             </a>
           </div>
@@ -309,10 +317,17 @@ $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina)
               <i class="fa-solid fa-angle-right"></i>
             </button>
 
-            <?php foreach ($aclamadas as $registro) {?>
+            <?php foreach ($aclamadas as $registro) {
+               if (filter_var($registro['imagen'], FILTER_VALIDATE_URL)) {
+                $registro['imagen'] = $registro['imagen'];
+                } else {
+                  $registro['imagen'] = 'client/asset/uploads/' . htmlspecialchars($registro['imagen']);
+                }
+              ?>
             <div class="acclaimed_container">
               <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
-                <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                <!-- <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" /> -->
+                <?php echo '<img src="' . htmlspecialchars($registro['imagen']) . '" alt="' . htmlspecialchars($registro['nombre']) . '" class="acclaimed_image" />';?>
               </a>
             </div>
             <?php }?>
