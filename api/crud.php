@@ -167,7 +167,8 @@ function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, 
 
 function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
   global $conn;
-  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen, estado) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen, 1)";
+  $estado = $tempURL === '' ? 0 : 1;
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen, estado) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen, :estado)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':nombre', $nombre);
   $stmt->bindParam(':descripcion', $descripcion);
@@ -177,6 +178,7 @@ function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $an
   $stmt->bindParam(':anio', $anio);
   $stmt->bindParam(':director', $director);
   $stmt->bindParam(':rutaImagen', $imagen);
+  $stmt->bindParam('estado', $estado);
   try {
     $stmt->execute();
     move_uploaded_file($tempURL, $imagen);
