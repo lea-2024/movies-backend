@@ -184,7 +184,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 <a href="#" class="footer_link" data-content="ayuda" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Ayuda</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link" data-content="default" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Contacto</a>
+                <a href="#" class="footer_link" data-content="detailsContact" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Contacto</a>
               </li>
             </ul>
           </nav>
