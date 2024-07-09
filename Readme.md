@@ -25,7 +25,6 @@ USE movies_db;
 ```
 
 #### Crear la tabla usuarios
-
 ```sql
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,19 +53,20 @@ CREATE TABLE IF NOT EXISTS peliculas (
   calificacion DECIMAL(4,3) NOT NULL DEFAULT 1,
   director VARCHAR(255) NOT NULL,
   imagen VARCHAR(255) NOT NULL,
-  seccion VARCHAR(100),
+  seccion ENUM('tendencias', 'aclamadas', 'list') DEFAULT 'list',
   estado TINYINT NOT NULL DEFAULT 1,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_pelicula)
 );
 ```
 
+
 ---
 
 #### Pegar esta direccion en la url y crea las peliculas en la base de datos
 
 ```markdown
-localhost/movies-backend/api/unload/uploadmovies
+  localhost/movies-backend/api/unload/uploadmovies
 ```
 
 ---
