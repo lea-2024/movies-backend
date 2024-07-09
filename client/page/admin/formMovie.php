@@ -126,7 +126,7 @@ for ($i = 1; $i <= 10; $i++): ?>
     <?php if (isset($errores['imagen'])): ?>
     <p class="text-danger fs-6 mx-5"><?php echo $errores['imagen'] ?></p>
     <?php endif;?>
-    <input type="submit" value="enviar" class="mt-3" />
+    <input type="submit" value="<?php echo !$create ? 'Guardar' : 'Actualizar' ?>" class="mt-3" />
   </form>
 
 </section>

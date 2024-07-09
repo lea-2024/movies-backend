@@ -129,7 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // Si hay errores, guardar en sesión y redirigir al formulario
         $_SESSION['errores'] = $errores;
         $_SESSION['form_data'] = $_POST;
-        header('Location: formMovie.php');
+        // si existe id , es porque se esta editando reenviamos enviando el id correspondiente
+        if($id){
+            header("Location: formMovie.php?id=$id");
+        } else{
+            // sino existe id, es porque se esta creando y se reenvia sin enviarlo
+            header('Location: formMovie.php');
+        }
         exit();
     }
 }
