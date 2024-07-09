@@ -38,6 +38,10 @@
   
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="../../asset/images/film.ico" type="image/x-icon" />
+  <!--	JQuery -->
+  <script src="../../asset/js/jquery-3.7.1.min.js"></script>
+  <!--	script datatables -->
+  <script src="../../asset/js/dataTables.min.js"></script>
   
   <!-- Título de la Pestaña -->
   <title>CAC-movies | <?php echo $title?></title>
