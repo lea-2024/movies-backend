@@ -1,5 +1,6 @@
 <?php 
 require './api/crud.php';
+require './helpers/functions.php';
 session_start();
 
 // Comprobar si el usuario ha iniciado sesión
@@ -190,8 +191,8 @@ if (isset($_GET['search'])) {
             echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
             echo htmlspecialchars($pelicula['nombre']);
             echo '</h4>';
-            echo '<p class="trend_review-hover">⭐⭐⭐</p>';
-            echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
+            echo '<p class="trend_review-hover">'.convert_ratings(htmlspecialchars($pelicula['calificacion'])).'</p>';
+            echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image-hover" />';
             echo '</div>';
             echo '</a>';
             echo '</div>';
@@ -250,9 +251,9 @@ $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina)
 
           <div class="trend_container">
             <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
-              <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+              <img src="<?php echo $registro['imagen'] ?>" alt="<?php echo $registro['nombre'] ?>" class="trend_image" />
               <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                <h4 class="trend_title-hover" title="<?php echo $registro['nombre'] ?>"><?php echo $registro['nombre'] ?></h4>
                 <p class="trend_review-hover">
                   <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
     echo '⭐';
