@@ -7,18 +7,26 @@ require 'connect.php';
 function createUser($email, $password, $nombre, $apellido, $fecha_nac, $pais, $rol = 'usuario')
 {
   global $conn;
-  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  // Verificar si el correo ya está registrado
+  if (getUserByEmail($email)) {
+      return 'email_existente';
+  }
+  try {
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-  $stmt = $conn->prepare("INSERT INTO usuarios (email, password, nombre, apellido, fecha_nac, pais, rol) VALUES (:email, :password, :nombre, :apellido, :fecha_nac, :pais, :rol)");
-  $stmt->bindParam(':email', $email);
-  $stmt->bindParam(':password', $hashedPassword);
-  $stmt->bindParam(':nombre', $nombre);
-  $stmt->bindParam(':apellido', $apellido);
-  $stmt->bindParam(':fecha_nac', $fecha_nac);
-  $stmt->bindParam(':pais', $pais);
-  $stmt->bindParam(':rol', $rol);
+      $stmt = $conn->prepare("INSERT INTO usuarios (email, password, nombre, apellido, fecha_nac, pais, rol) VALUES (:email, :password, :nombre, :apellido, :fecha_nac, :pais, :rol)");
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $hashedPassword);
+      $stmt->bindParam(':nombre', $nombre);
+      $stmt->bindParam(':apellido', $apellido);
+      $stmt->bindParam(':fecha_nac', $fecha_nac);
+      $stmt->bindParam(':pais', $pais);
+      $stmt->bindParam(':rol', $rol);
 
-  return $stmt->execute();
+      return $stmt->execute();
+    } catch (PDOException $e) {
+      return false;
+  }
 }
 
 // Obtener usuario por email
