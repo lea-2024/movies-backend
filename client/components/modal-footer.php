@@ -21,7 +21,18 @@ switch ($content) {
         break;
     default:
         $modalTitle = 'Contacto';
-        $modalBody = generate_linkedin('Esteban Madrid','https://www.linkedin.com/in/esteban-misael-madrid/'). generate_linkedin('Leandro Wagner','https://www.linkedin.com/in/leandro-wagner-040490215/').generate_linkedin('Mario Dohmen','https://www.linkedin.com/in/mario-maximo-dohmen-0b511836/').generate_linkedin('Victor Pinto','https://www.linkedin.com/in/victor-pinto-fullstack/');
+        $linkedinLinks = array(
+            array('name' => 'Esteban Madrid', 'url' => 'https://www.linkedin.com/in/esteban-misael-madrid/'),
+            array('name' => 'Leandro Wagner', 'url' => 'https://www.linkedin.com/in/leandro-wagner-040490215/'),
+            array('name' => 'Mario Dohmen', 'url' => 'https://www.linkedin.com/in/mario-maximo-dohmen-0b511836/'),
+            array('name' => 'Victor Pinto', 'url' => 'https://www.linkedin.com/in/victor-pinto-fullstack/')
+        );
+
+        $modalBody = '<div class="list-group">';
+        foreach ($linkedinLinks as $link) {
+            $modalBody .= '<a href="' . $link['url'] . '" class="list-group-item list-group-item-action" target="_blank"><span>' . $link['name'] . '</span></a>';
+        }
+        $modalBody .= '</div>';
         break;
 }
 ?>
