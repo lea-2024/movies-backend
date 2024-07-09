@@ -90,6 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         // Actualizar o crear la película en la base de datos
         if (!empty($id)) {
+            //buscamos la pelicula y enviamos el valor del estado que contenga para que se actualice con ese valor
+            $movie = searchMoviesById($id);
+            $estado = $movie['estado'];
             updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $rutaImagen, $seccion, $estado);
 
             // Redirigir con mensaje de éxito

@@ -167,7 +167,7 @@ function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, 
 
 function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
   global $conn;
-  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen, estado) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen, 1)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':nombre', $nombre);
   $stmt->bindParam(':descripcion', $descripcion);
