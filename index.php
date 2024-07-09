@@ -404,13 +404,13 @@ $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina)
   </footer>
   <!-- Fin footer-->
   <!-- Enlace script index.js-->
-  <script src="/client/asset/js/index.js"></script>
-  <script src="/client/asset/js/search.js"></script>
+  <script src="./client/asset/js/index.js"></script>
+  <script src="./client/asset/js/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
   </script>
   <!-- Script para el modal del footer-->
-  <script src="/client/asset/js/modal_footer.js"></script>
+  <script src="./client/asset/js/modal_footer.js"></script>
   <script>
   // JavaScript para mostrar el div si hay resultados y el botón de limpiar
   <?php if (isset($resultados) && !empty($resultados)): ?>
