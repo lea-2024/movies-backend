@@ -2,6 +2,8 @@
 // Obtener links linkedin
 require '../../helpers/functions.php';
 
+$content = isset($_GET['content']) ? $_GET['content'] : 'default';
+
 // Definir el contenido del modal según el parámetro
 switch ($content) {
     case 'terms':
@@ -61,7 +63,6 @@ switch ($content) {
 ?>
 <section class="modal-container">
     <div class="modal-header">
-    <?php echo $content ?>
         <h5 class="modal-title" id="dynamicModalLabel"><?php echo $modalTitle; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
