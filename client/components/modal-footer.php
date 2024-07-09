@@ -2,11 +2,6 @@
 // Obtener links linkedin
 require '../../helpers/functions.php';
 
-$content = isset($_GET['content']) ? $_GET['content'] : 'default';
-
-// Obtener el parámetro 'id' de la URL si está presente
-$id = isset($_GET['id']) ? $_GET['id'] : null;
-
 // Definir el contenido del modal según el parámetro
 switch ($content) {
     case 'terms':
@@ -66,13 +61,6 @@ switch ($content) {
 ?>
 <section class="modal-container">
     <div class="modal-header">
-    <?php
-if (isset($_GET['id'])) {
-    echo 'ID encontrado: ' . $_GET['id'];
-} else {
-    echo 'ID no encontrado';
-}
-?>
     <?php echo $content ?>
         <h5 class="modal-title" id="dynamicModalLabel"><?php echo $modalTitle; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
