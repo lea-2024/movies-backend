@@ -22,24 +22,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
    // Validaciones de campos obligatorios
-   if (empty($_POST['nombre'])) {
-       $errores['nombre'] = 'El nombre es obligatorio';
-   }
-   if (empty($_POST['apellido'])) {
-       $errores['apellido'] = 'El apellido es obligatoria';
-   }
-   if (empty($_POST['email'])) {
-       $errores['email'] = 'El email es obligatorio';
-   }
-   if (empty($_POST['password'])) {
-       $errores['password'] = 'El password es obligatoria';
-   }
-   if (empty($_POST['fecha_nac'])) {
-       $errores['fecha_nac'] = 'La fecha nacimiento es obligatoria';
-   }
-   if (empty($_POST['pais'])) {
-       $errores['pais'] = 'El pais es obligatorio';
-   }
+   $campos_obligatorios = [
+        'nombre' => 'El nombre es obligatorio',
+        'apellido' => 'El apellido es obligatorio',
+        'email' => 'El email es obligatorio',
+        'password' => 'El password es obligatorio',
+        'pais' => 'El país es obligatorio',
+        'fecha_nac' => 'La fecha de nacimiento es obligatoria',
+    ];
+
+    // Validar campos obligatorios
+    foreach ($campos_obligatorios as $campo => $mensaje) {
+        if (empty($_POST[$campo])) {
+            $errores[$campo] = $mensaje;
+        }
+    }
+
+    // Validar fecha de nacimiento mínima (mayor de 16 años)
+    if (!empty($_POST['fecha_nac'])) {
+        $fecha_nac = $_POST['fecha_nac'];
+        $fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nac);
+    
+        if ($fecha_nacimiento === false) {
+            $errores['fecha_nac'] = 'Formato de fecha incorrecto. Utiliza el formato DD/MM/YYYY';
+        } else {
+            $fecha_actual = new DateTime();
+            $edad = $fecha_actual->diff($fecha_nacimiento)->y;
+    
+            if ($edad < 16) {
+                $errores['fecha_nac'] = 'Debes tener al menos 16 años para registrarte';
+            }
+        }
+    }
 
   if ($action == 'register' && empty($errores)) {
     // Registro de usuario
@@ -218,14 +232,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <?php endif; ?>
             </div>
             <div class="col my-4">
-              <input type="text" class="form_input w-100" id="datepicker" name="fecha_nac" placeholder="Seleccione una fecha" value="<?php echo htmlspecialchars($values['fecha_nac']); ?>"/>
+              <input type="text" class="form_input w-100" id="datepicker" name="fecha_nac" placeholder="Fecha de nacimiento" value="<?php echo htmlspecialchars($values['fecha_nac']); ?>"/>
               <?php if (isset($errores['fecha_nac'])): ?>
                 <p class="text-danger fs-6 mx-5"><?php echo $errores['fecha_nac']; ?></p>
               <?php endif; ?>
             </div>
             <div class="col my-4">
               <select class="w-100 form_input form_select" name="pais">
-                <option value="" selected disabled>Seleccione un País</option>
+                <option value="" selected disabled>Pais de residencia</option>
                 <option value="Argentina" <?php echo $values['pais'] === 'Argentina' ? 'selected' : ''; ?>>Argentina</option>
                 <option value="colombia" <?php echo $values['pais'] === 'Colombia' ? 'selected' : ''; ?>>Colombia</option>
                 <option value="espania" <?php echo $values['pais'] === 'espania' ? 'selected' : ''; ?>>España</option>
