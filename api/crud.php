@@ -7,18 +7,26 @@ require 'connect.php';
 function createUser($email, $password, $nombre, $apellido, $fecha_nac, $pais, $rol = 'usuario')
 {
   global $conn;
-  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  // Verificar si el correo ya está registrado
+  if (getUserByEmail($email)) {
+      return 'email_existente';
+  }
+  try {
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-  $stmt = $conn->prepare("INSERT INTO usuarios (email, password, nombre, apellido, fecha_nac, pais, rol) VALUES (:email, :password, :nombre, :apellido, :fecha_nac, :pais, :rol)");
-  $stmt->bindParam(':email', $email);
-  $stmt->bindParam(':password', $hashedPassword);
-  $stmt->bindParam(':nombre', $nombre);
-  $stmt->bindParam(':apellido', $apellido);
-  $stmt->bindParam(':fecha_nac', $fecha_nac);
-  $stmt->bindParam(':pais', $pais);
-  $stmt->bindParam(':rol', $rol);
+      $stmt = $conn->prepare("INSERT INTO usuarios (email, password, nombre, apellido, fecha_nac, pais, rol) VALUES (:email, :password, :nombre, :apellido, :fecha_nac, :pais, :rol)");
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $hashedPassword);
+      $stmt->bindParam(':nombre', $nombre);
+      $stmt->bindParam(':apellido', $apellido);
+      $stmt->bindParam(':fecha_nac', $fecha_nac);
+      $stmt->bindParam(':pais', $pais);
+      $stmt->bindParam(':rol', $rol);
 
-  return $stmt->execute();
+      return $stmt->execute();
+    } catch (PDOException $e) {
+      return false;
+  }
 }
 
 // Obtener usuario por email
@@ -89,7 +97,7 @@ function loginUser($email, $password)
 // ---------------------------------------------------------------------------------------------------
 //                                          CRUD DE PELICULAS
 // ---------------------------------------------------------------------------------------------------
-// trae todas las peliculas
+// Listar todas las peliculas - Front
 function getAllMovies(){
   global $conn;
 
@@ -101,6 +109,20 @@ function getAllMovies(){
     echo "Error al obtener datos: " . $e->getMessage();
   }
 }
+
+// Listar todas las peliculas - panel Admin
+function getAllMoviesBack(){
+  global $conn;
+
+  try {
+    $stmt = $conn->query("SELECT * FROM peliculas");
+    $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $peliculas;
+  } catch (PDOException $e) {
+    echo "Error al obtener datos: " . $e->getMessage();
+  }
+}
+
 
 function getAllName() {
   global $conn;
@@ -153,7 +175,8 @@ function updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, 
 
 function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $imagen, $tempURL){
   global $conn;
-  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen)";
+  $estado = $tempURL === '' ? 0 : 1;
+  $sql = "INSERT INTO peliculas (nombre, descripcion, genero, calificacion, seccion, anio, director,imagen, estado) VALUES (:nombre, :descripcion, :genero, :calificacion, :seccion, :anio, :director,:rutaImagen, :estado)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':nombre', $nombre);
   $stmt->bindParam(':descripcion', $descripcion);
@@ -163,6 +186,7 @@ function storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $an
   $stmt->bindParam(':anio', $anio);
   $stmt->bindParam(':director', $director);
   $stmt->bindParam(':rutaImagen', $imagen);
+  $stmt->bindParam('estado', $estado);
   try {
     $stmt->execute();
     move_uploaded_file($tempURL, $imagen);
@@ -224,9 +248,6 @@ function searchMoviesByName($name) {
     echo "Error al obtener datos: " . $e->getMessage();
   }
 }
-
-
-
 
 
 // Obtener pelicula por id

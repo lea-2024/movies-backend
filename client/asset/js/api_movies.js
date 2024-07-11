@@ -1,5 +1,6 @@
 $(document).ready( function () {
     $('#myTable').DataTable({
+      "stateSave": true, // se habilita guardar el estado
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
@@ -27,7 +28,10 @@ $(document).ready( function () {
     });
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 // Mosrar modal de confirmación al eliminar una película
 function confirmDelete(nombre, id)
 {
@@ -48,3 +52,7 @@ function confirmDelete(nombre, id)
       }
   });
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev

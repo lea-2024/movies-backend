@@ -2,48 +2,106 @@
 require '../../api/crud.php';
 session_start();
 
+$showSignUp = isset($_GET['source']) && $_GET['source'] === 'main_register_btn';
+
+ // Array para errores y mensajes
+ $errores = [];
+ $messages = [];
+ $values = ['nombre' => '', 'apellido' => '', 'email' => '', 'password' => '', 'fecha_nac' => '', 'pais' => ''];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $action = $_POST['action']; // Campo oculto para diferenciar entre registro y login
 
-  if ($action == 'register') {
+   // Actualizar valores con los datos enviados por el usuario
+   $values['nombre'] = $_POST['nombre'] ?? '';
+   $values['apellido'] = $_POST['apellido'] ?? '';
+   $values['email'] = $_POST['email'] ?? '';
+   $values['password'] = $_POST['password'] ?? '';
+   $values['fecha_nac'] = $_POST['fecha_nac'] ?? '';
+   $values['pais'] = $_POST['pais'] ?? '';
+
+
+   // Validaciones de campos obligatorios
+   $campos_obligatorios = [
+        'nombre' => 'El nombre es obligatorio',
+        'apellido' => 'El apellido es obligatorio',
+        'email' => 'El email es obligatorio',
+        'password' => 'El password es obligatorio',
+        'pais' => 'El país es obligatorio',
+        'fecha_nac' => 'La fecha de nacimiento es obligatoria',
+    ];
+
+    // Validar campos obligatorios
+    foreach ($campos_obligatorios as $campo => $mensaje) {
+        if (empty($_POST[$campo])) {
+            $errores[$campo] = $mensaje;
+        }
+    }
+
+    // Validar fecha de nacimiento mínima (mayor de 16 años)
+    if (!empty($_POST['fecha_nac'])) {
+        $fecha_nac = $_POST['fecha_nac'];
+        $fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nac);
+    
+        if ($fecha_nacimiento === false) {
+            $errores['fecha_nac'] = 'Formato de fecha incorrecto. Utiliza el formato DD/MM/YYYY';
+        } else {
+            $fecha_actual = new DateTime();
+            $edad = $fecha_actual->diff($fecha_nacimiento)->y;
+    
+            if ($edad < 16) {
+                $errores['fecha_nac'] = 'Debes tener al menos 16 años para registrarte';
+            }
+        }
+    }
+
+  if ($action == 'register' && empty($errores)) {
     // Registro de usuario
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $nombre = $_POST['nombre'] ?? null;
-    $apellido = $_POST['apellido'] ?? null;
-    $fecha_nac = $_POST['fecha_nac'] ?? null;
-    $pais = $_POST['pais'] ?? null;
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $fecha_nac = $_POST['fecha_nac'];
+    $pais = $_POST['pais'];
 
-    if (createUser($email, $password, $nombre, $apellido, $fecha_nac, $pais)) {
-      echo "Usuario creado exitosamente";
+    $resultado = createUser($email, $password, $nombre, $apellido, $fecha_nac, $pais);
+
+    if ($resultado === 'email_existente') {
+        $errores['email'] = 'El email ya está registrado';
+    } elseif ($resultado) {
+        $messages['success'] = 'Usuario creado exitosamente';
     } else {
-      echo "Error al crear el usuario";
+        $errores['general'] = 'Error al crear el usuario';
     }
-  } elseif ($action == 'login') {
-    // Inicio de sesión
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    } elseif ($action == 'login') {
+      // Inicio de sesión
+      $email = $_POST['email'];
+      $password = $_POST['password'];
 
-    $resultado = loginUser($email, $password);
+      $resultado = loginUser($email, $password);
 
-    if ($resultado === 'email_incorrecto') {
-      $errorEmail = "El correo electrónico es incorrecto.";
-    } elseif ($resultado === 'contraseña_incorrecta') {
-      $errorPassword = "La contraseña es incorrecta.";
-    } elseif (is_array($resultado)) {
-      // Login exitoso
-      $_SESSION['user'] = $resultado;
-      $rol = $resultado['rol']; // Obtener el rol del usuario desde el array
+      if ($resultado === 'email_incorrecto') {
+        $errorEmail = "El correo electrónico es incorrecto.";
+      } elseif ($resultado === 'contraseña_incorrecta') {
+        $errorPassword = "La contraseña es incorrecta.";
+      } elseif (is_array($resultado)) {
+        // Login exitoso
+        $_SESSION['user'] = $resultado;
+        $rol = $resultado['rol']; // Obtener el rol del usuario desde el array
 
-      if ($rol == 'admin') {
-        header('Location: ../page/admin/dashboard.php'); // Ajuste de la ruta para redirigir a admin
+        if ($rol == 'admin') {
+          header('Location: ../page/admin/dashboard.php'); // Ajuste de la ruta para redirigir a admin
+        } else {
+          header('Location: ../../index.php'); // Ajuste de la ruta para redirigir al índice
+        }
+        exit; // Detener la ejecución del script
       } else {
-        header('Location: ../../index.php'); // Ajuste de la ruta para redirigir al índice
+        $errorGeneral = "Ocurrió un error desconocido.";
       }
-      exit; // Detener la ejecución del script
-    } else {
-      $errorGeneral = "Ocurrió un error desconocido.";
     }
+    // Si hay errores en el registro, mostrar la sección de registro
+    if ($action == 'register' && !empty($errores)) {
+      $showSignUp = true;
   }
 }
 ?>
@@ -76,6 +134,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <!-- Icono Pestaña -->
   <link rel="shortcut icon" href="./images/film.ico" type="image/x-icon" />
+  <style>
+        /* Estilos iniciales */
+        <?php if ($showSignUp) : ?>
+            #loginSection { display: none; }
+            #signUpSection { display: block; }
+        <?php else : ?>
+            #loginSection { display: block; }
+            #signUpSection { display: none; }
+        <?php endif; ?>
+    </style>
 
   <!-- Título de la Pestaña -->
   <title>CAC-movies | Registro</title>
@@ -134,35 +202,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- fin formulario de login  -->
 
     <!-- formulario de registro  -->
-    <section class="container mb-5" id="signUpSection" style="display: none;">
+    <section class="container mb-5" id="signUpSection">
       <div class="row align-items-center px-2 px-md-0">
         <div class="col-md-6 offset-md-3 px-md-5 px-3 px-0 py-3 mt-5 rounded-3 register_form_container animate__animated animate__fadeIn animate__slow">
           <h1 class="fs-md-3 fs-4 mt-2">Nuevo Usuario</h1>
           <form method="POST" action="register.php" class="mt-5">
             <div class="col my-4">
-              <input type="text" name="nombre" autocomplete="off" class="form_input w-100" placeholder="Nombre" required />
+              <input type="text" name="nombre" autocomplete="off" class="form_input w-100" placeholder="Nombre" value="<?php echo htmlspecialchars($values['nombre']); ?>" />
+              <?php if (isset($errores['nombre'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['nombre']; ?></p>
+              <?php endif;?>
             </div>
             <div class="col my-4">
-              <input type="text" name="apellido" autocomplete="off" placeholder="Apellido" class="form_input w-100" required />
+              <input type="text" name="apellido" autocomplete="off" placeholder="Apellido" class="form_input w-100" value="<?php echo htmlspecialchars($values['apellido']); ?>"/>
+              <?php if (isset($errores['apellido'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['apellido']; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
-              <input type="email" name="email" autocomplete="off" placeholder="Email" class="form_input w-100" required />
+              <input type="email" name="email" autocomplete="off" placeholder="Email" class="form_input w-100" value="<?php echo htmlspecialchars($values['email']); ?>"/>
+              <?php if (isset($errores['email'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['email']; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
-              <input type="password" name="password" autocomplete="off" placeholder="Contraseña" class="form_input w-100" required />
+              <input type="password" name="password" autocomplete="off" placeholder="Contraseña" class="form_input w-100" value="<?php echo htmlspecialchars($values['password']); ?>"/>
+              <?php if (isset($errores['password'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['password']; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
-              <input type="text" class="form_input w-100" id="datepicker" name="fecha_nac" placeholder="Seleccione una fecha" required />
+              <input type="text" class="form_input w-100" id="datepicker" name="fecha_nac" placeholder="Fecha de nacimiento" value="<?php echo htmlspecialchars($values['fecha_nac']); ?>"/>
+              <?php if (isset($errores['fecha_nac'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['fecha_nac']; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
-              <select class="w-100 form_input form_select" required name="pais">
-                <option value="" selected disabled>Seleccione un País</option>
-                <option value="argentina">Argentina</option>
-                <option value="colombia">Colombia</option>
-                <option value="espania">España</option>
-                <option value="italia">Italia</option>
-                <option value="uruguay">Uruguay</option>
+              <select class="w-100 form_input form_select" name="pais">
+                <option value="" selected disabled>Pais de residencia</option>
+                <option value="Argentina" <?php echo $values['pais'] === 'Argentina' ? 'selected' : ''; ?>>Argentina</option>
+                <option value="colombia" <?php echo $values['pais'] === 'Colombia' ? 'selected' : ''; ?>>Colombia</option>
+                <option value="espania" <?php echo $values['pais'] === 'espania' ? 'selected' : ''; ?>>España</option>
+                <option value="Italia" <?php echo $values['pais'] === 'Italia' ? 'selected' : ''; ?>>Italia</option>
+                <option value="Uruguay" <?php echo $values['pais'] === 'Uruguay' ? 'selected' : ''; ?>>Uruguay</option>
               </select>
+              <?php if (isset($errores['pais'])): ?>
+                <p class="text-danger fs-6 mx-5"><?php echo $errores['pais']; ?></p>
+              <?php endif; ?>
             </div>
             <div class="col my-4">
               <div class="form_container_terms ms-1">

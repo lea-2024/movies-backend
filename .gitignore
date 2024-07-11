@@ -17,5 +17,3 @@ client/asset/json/
 .idea
 .vscode
 
-#Ignorar las imágenes
-client/asset/uploads/*.*

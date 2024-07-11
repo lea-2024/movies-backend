@@ -1,16 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var links = document.querySelectorAll('.footer_link');
+    let links = document.querySelectorAll('.footer_link');
     links.forEach(function(link) {
         link.addEventListener('click', function(event) {
             event.preventDefault();
-            var content = link.getAttribute('data-content');
-            fetchModalContent(content);
+            let content = link.getAttribute('data-content');
+            let url = link.getAttribute('data-url');
+            fetchModalContent(content, url);
         });
     });
 });
 
-function fetchModalContent(content) {
-  fetch('client/components/modal-footer.php?content=' + content)
+function fetchModalContent(content, url) {
+    if(url === '/'){
+        url = './client/components/modal-footer.php?content=';
+    } else{
+        url = '../components/modal-footer.php?content=';
+    }
+  fetch( url + content)
         .then(response => response.text())
         .then(data => {
             var modalContent = document.querySelector('#dynamicModal .modal-content');

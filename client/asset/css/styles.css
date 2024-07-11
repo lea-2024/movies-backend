@@ -271,6 +271,14 @@ input:-webkit-autofill:focus {
     opacity: 0;
 }
 
+/* contenedor detalle pelicula */
+.container_movie_detail{
+  margin-top: 19vh;
+  margin-bottom: 10vh;
+  min-height: calc(100vh - 20vh - 135px);
+}
+
+
 /* Footer **************************************/
 footer {
   background-color: rgb(0, 105, 197);
@@ -350,13 +358,15 @@ footer {
 .trend_container {
     position: relative;
     width: 200px;
+    min-height: 300px;
     overflow: hidden;
 }
 
 /* imágen de pelicula */
 .trend_image {
     width: 100%;
-    object-fit: contain;
+    min-height: 300px;
+    object-fit: cover;
     border-radius: 15px;
     transition: all ease-in-out 300ms;
 }
@@ -439,12 +449,15 @@ footer {
 .acclaimed_container {
     width: 160px;
     min-width: 160px;
+    height: 240px;
+    min-height: 240px;
 }
 
 /* Imagen aclamadas */
 .acclaimed_image {
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -580,6 +593,7 @@ footer {
     .descripcion {
         width: 80%;
         margin: 0 auto;
+        padding: 5px 7px;
         height: 100px;
         border-radius: 10px;
         background-color: #222222;
@@ -763,6 +777,16 @@ input[type='date'] {
 .spinner_style{
   color: rgb(0, 105, 197);
 }
+/* 
+.img-visualizar {
+  width: 200px;
+  height: 220px;
+  background-image: url(../../asset/images/no-disponible.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+  box-shadow: 0 0 5px 2px #0069c5;
+} */
 
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -1028,7 +1052,16 @@ input[type='date'] {
 .img-card{
   min-height: 250px;
   max-height: 250px;
+  object-fit: cover;   
+}
+
+/* Imágenes formulario modo edición */
+.img-form{
+  width:80%;
+  height: 250px;
   object-fit: cover;
+  border-radius: 7px;
+  box-shadow: 0 0 1px 2px #0069c5;
 }
 
 /* Botón estado acvito / no activo  */
@@ -1068,3 +1101,9 @@ input[type=checkbox]:checked{
   display: none;
 }
 /* fin search */
+
+/* Links de linkedin */
+
+.link-linkedin:hover{
+  opacity:0.8;
+}

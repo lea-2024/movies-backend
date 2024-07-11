@@ -3,177 +3,144 @@ require '../../../api/connect.php';
 require '../../../api/crud.php';
 require '../../../helpers/functions.php';
 global $conn;
-  
-$id = $_POST['id'];
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
-$genero = $_POST['genero'];
-$calificacion = floatval($_POST['calificacion']);
-$seccion = $_POST['seccion'];
-$anio = intval($_POST['anio']);
-$director = $_POST['director'];
-$imagen = $_FILES['imagen'];
-$urlImagen = $_POST['urlImagen'];
-$estado = 1;
+session_start();
 
-
-if (!empty($id)) {
-
-  if ($imagen['size'] == 0) {
-    echo '<br> NO HAY IMAGEN nueva <br>';
-    $imagen = $urlImagen; 
-  } else {
-    var_dump($imagen);
-    $tempURL = $imagen['tmp_name'];
-    echo '<br>' . $imagen['size'];
-    echo '<br>' . $tempURL;
-    $urlDestino = '../../asset/uploads/img_' . $imagen['name'];
-    // grabar el archivo nuevo en uploads
-    move_uploaded_file($imagen['tmp_name'], $urlDestino);
-  
-    $imagen = '../../asset/uploads/img_' . $imagen['name'];
-    echo '<br>' . $imagen;
-    
-  }
-
-
-
-  updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $imagen, $seccion, $estado);
-  echo
-  '<script type="text/javascript">
-    alert("Pelicula actualizada con exito");
-    window.location.href="dashboard.php";
-  </script>';
-
-  echo '<br>';
-  var_dump($imagen);
-  // window.location.href="dashboard.php";
-  
-  echo '<br>' . $urlImagen;
-  
-  exit();
-}
-
-// validar si los campos no estan vacios
-
+// Recibir datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-// array de errores
-$errores = [];
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $genero = $_POST['genero'];
+    $calificacion = floatval($_POST['calificacion']);
+    $seccion = $_POST['seccion'];
+    $anio = intval($_POST['anio']);
+    $director = $_POST['director'];
 
-  if (empty($_POST['nombre'])) {
-      $errores['nombre'] = 'El nombre es obligatorio';
-  }
-  if (empty($_POST['descripcion'])) {
-      $errores['descripcion'] = 'La descripción es obligatoria';
-  }
-  if (empty($_POST['genero'])) {
-      $errores['genero'] = 'El género es obligatorio';
-  }
-  if (empty($_POST['calificacion'])) {
-      $errores['calificacion'] = 'La calificación es obligatoria';
-  }
-  if (empty($_POST['seccion'])) {
-      $errores['seccion'] = 'La sección es obligatoria';
-  }
-  if (empty($_POST['anio'])) {
-      $errores['anio'] = 'El año es obligatorio';
-  }
-  if (empty($_POST['director'])) {
-      $errores['director'] = 'El director es obligatorio';
-  }
-  // VALIDAR IMAGEN
-  if (empty($_FILES['imagen']['name'])) {
-    $errores['imagen'] = 'La imagen es obligatoria';
-  }
-  elseif($_FILES['imagen']['size'] >= 1000000) {
-    $errores['imagen'] = 'La imagen es muy grande';
-  }
-  elseif($_FILES['imagen']['type'] !== 'image/png' && $_FILES['imagen']['type'] !== 'image/jpeg') {
-    $errores['imagen'] = 'La imagen no tiene la extensión correcta';
-  }
-}
- /*
-?======================GUARDAR IMAGEN======================
-*/
+    // Array para errores y mensajes
+    $errores = [];
+    $messages = [];
 
-// Definir la carpeta de destino
-$rutaDestino = '../../asset/uploads/img_';
+    // Validaciones de campos obligatorios
+    if (empty($_POST['nombre'])) {
+        $errores['nombre'] = 'El nombre es obligatorio';
+    }
+    if (empty($_POST['descripcion'])) {
+        $errores['descripcion'] = 'La descripción es obligatoria';
+    }
+    if (empty($_POST['genero'])) {
+        $errores['genero'] = 'El género es obligatorio';
+    }
+    if (empty($_POST['calificacion'])) {
+        $errores['calificacion'] = 'La calificación es obligatoria';
+    }
+    if (empty($_POST['seccion'])) {
+        $errores['seccion'] = 'La sección es obligatoria';
+    }
+    if (empty($_POST['anio'])) {
+        $errores['anio'] = 'El año es obligatorio';
+    }
+    if (empty($_POST['director'])) {
+        $errores['director'] = 'El director es obligatorio';
+    }
 
-// Verificar si se cargó correctamente la imagen
-if ($imagen['error'] === UPLOAD_ERR_OK) {
-  // Obtener la ruta completa de la imagen
-  $rutaImagen = $rutaDestino . $imagen['name'];
-  echo '<br>' . $rutaImagen;
+    // Validar imagen si se está actualizando
+    if (isset($_FILES['imagen']['name']) && $_FILES['imagen']['size'] > 0) {
+        // Verificar tamaño y tipo de la imagen
+        if ($_FILES['imagen']['size'] >= 1000000) {
+            $errores['imagen'] = 'La imagen es muy grande';
+        }
+        elseif (!in_array($_FILES['imagen']['type'], ['image/png', 'image/jpeg'])) {
+            $errores['imagen'] = 'La imagen no tiene la extensión correcta';
+        }
+    }
 
-  // Verificar si la imagen existe en la carpeta de destino
-  if (file_exists($rutaImagen)) {
-    echo 'La imagen ya existe en la carpeta de destino'.'<br>';
-    echo '<script>alert("La imagen ya existe")</script>';
-  } else {
-    // Verificar el tamaño de la imagen
-    if ($_FILES['imagen']['size'] <= 1000000) {
-      // Verificar la extensión de la imagen
-      if(!in_array($imagen['type'], ['image/png', 'image/jpeg'])) {
-          echo 'La imagen no tiene la extensión correcta!!'.'<br>';
+    // Si no hay errores, proceder con la actualización o creación
+    if (empty($errores)) {
+        // Obtener la película actual si es una actualización
+        $movie = [];
+        if (!empty($id)) {
+            $movie = searchMoviesById($id);
+        }
+
+       // Si se ha subido una nueva imagen
+      if (isset($_FILES['imagen']['name']) && $_FILES['imagen']['size'] > 0) {
+        $rutaDestino = '../../asset/uploads/';
+
+        // Generar un nombre aleatorio único para la imagen
+        $nombreImagen = uniqid('img_') . '_' . bin2hex(random_bytes(6)) . '.' . pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+        $rutaImagen = $rutaDestino . $nombreImagen;
+
+        // Mover la imagen al directorio de destino
+        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen)) {
+            // Eliminar imagen anterior si existe y no es la imagen por defecto
+            if (!empty($movie['imagen']) && $movie['imagen'] !== 'default.jpg') {
+                $rutaImagenAnterior = $rutaDestino . $movie['imagen'];
+                if (file_exists($rutaImagenAnterior)) {
+                    unlink($rutaImagenAnterior);
+                }
+            }
+        } else {
+            $errores['imagen'] = 'Error al subir la imagen';
+        }
+      } else {
+        // Si no se subió una nueva imagen, mantener la imagen actual
+        $rutaImagen = !empty($movie['imagen']) ? $movie['imagen'] : '';
       }
+
+
+        // Actualizar o crear la película en la base de datos
+        if (!empty($id)) {
+            //buscamos la pelicula y enviamos el valor del estado que contenga para que se actualice con ese valor
+            $movie = searchMoviesById($id);
+            $estado = $movie['estado'];
+            updateMovie($id, $nombre, $descripcion, $genero, $anio, $calificacion, $director, $rutaImagen, $seccion, $estado);
+
+            // Redirigir con mensaje de éxito
+            $messages['title'] = 'Pelicula actualizada';
+            $messages['message'] = 'La película se actualizó correctamente';
+            $messages['icon'] = 'success';
+            $_SESSION['messages'] = $messages;
+            header('Location:dashboard.php');
+            exit();
+        } else {
+            $tempURL = isset($_FILES['imagen']['tmp_name']) ? $_FILES['imagen']['tmp_name'] : '';
+            $movie = storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $rutaImagen, $tempURL);
+
+            // Si se creó la película correctamente
+            if ($movie) {
+                $messages['title'] = 'Pelicula creada';
+                $messages['message'] = 'La película se creó correctamente';
+                $messages['icon'] = 'success';
+                $_SESSION['messages'] = $messages;
+                header('Location: dashboard.php');
+                exit();
+            } else {
+                $messages['title'] = 'Error al crear la pelicula';
+                $messages['message'] = 'No se pudo crear la pelicula';
+                $messages['icon'] = 'error';
+                
+                $_SESSION['messages'] = $messages;
+                $_SESSION['form_data'] = $_POST;
+                header('Location: formMovie.php');
+                exit();
+            }
+        }
     } else {
-      echo 'La imagen es demasiado grande'.'<br>';
+        // Si hay errores, guardar en sesión y redirigir al formulario
+        $_SESSION['errores'] = $errores;
+        $_SESSION['form_data'] = $_POST;
+        // si existe id , es porque se esta editando reenviamos enviando el id correspondiente
+        if($id){
+            header("Location: formMovie.php?id=$id");
+        } else{
+            // sino existe id, es porque se esta creando y se reenvia sin enviarlo
+            header('Location: formMovie.php');
+        }
+        exit();
     }
-  }
 }
-
-// Validar si la imagen ya existe en la base de datos
-
-$sql_check_image = 'SELECT * FROM peliculas WHERE imagen = :rutaImagen';
-
-$result = $conn->prepare($sql_check_image);
-$result->bindParam(':rutaImagen', $rutaImagen);
-$result->execute();
-if($result->rowCount() > 0){
-  $errores['imagen'] = 'La imagen ya existe, por favor cargue nuevamente la pelicula o cambie la imagen';
-}
-
-// si contiene errores el array
-if (count($errores) > 0) {
-  session_start();
-  $_SESSION['errores'] = $errores; // guarda el array errores en la session con el nombre errores
-  header('Location:formMovie.php');
-  
-}
-
-// si no hay errores, inserto los datos
-
-if (empty($errores)) {
-  /*
-  ?======================iNSERTAR DATOS====================
-  */
-  // Verificar si ya existe un registro con los mismos valores
-  $movie_exists = movie_exists($nombre,$descripcion,$genero, $calificacion, $seccion, $anio, $director);
-  
-  if ($movie_exists) {
-      echo '<script type="text/javascript">
-      alert("ya existe un registro con estos datos.Por favor cargue nuevamente la pelicula o cambie los datos");
-      window.location.href="formMovie.php";
-      </script>';
-  } else {
-    // si no existe insertar los datos y guarda la imágen en uploads
-    $tempURL = $imagen['tmp_name'];
-    $movie = storeMovie($nombre, $descripcion, $genero, $calificacion, $seccion, $anio, $director, $rutaImagen, $tempURL);
-    
-    // si el proceso fue correcto muestra mensaje
-    if($movie){
-      echo
-      '<script type="text/javascript">
-        alert("Pelicula cargada con exito");
-        window.location.href="dashboard.php";
-      </script>';
-    } else {
-    echo
-    '<script type="text/javascript">
-      alert("Error al cargar la pelicula");
-      window.location.href="formMovie.php";
-      </script>';
-    }
-  }
-};
 ?>
+
+
+
+

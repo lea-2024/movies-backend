@@ -49,4 +49,24 @@
       echo "Error al obtener datos de la DB ".$e->getMessage();
     }
   }
-  ?>
+
+  // Mostrar modal de sweetAlert según el título, mensaje e icono que se requiera
+  function modalSweetAlert($title, $message, $icon)
+  {    
+    return "
+      <script>
+        Swal.fire({
+          title: '$title',
+          text: '$message',
+          icon: '$icon',
+          color:'#fff',
+          background:'#333333',
+        });
+      </script>
+    ";
+  }
+
+  function generate_linkedin($name, $url)
+  {
+    return '<a href="'. $url .'" class="link-linkedin nav-link fs-5 text-black d-flex align-items-center my-3" target="_blank"><img src="/client/asset/images/linkedin.png" width="30" class="me-2" alt="'. $name .'" >'. $name .'</a>';
+  }
