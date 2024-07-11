@@ -68,8 +68,7 @@ include '../layouts/partials/backend/header.php';
       <?php
 $selectedCalificacion = isset($form_data['calificacion']) ? (int) $form_data['calificacion'] : ($create ? (int) $movieEdit['calificacion'] : null);
 for ($i = 1; $i <= 10; $i++): ?>
-      <option value="<?php echo $i - 0.1; ?>" <?php echo $selectedCalificacion === $i ? 'selected' : ''; ?>>
-        <?php echo $i; ?>
+      <option value="<?php echo $i - 0.1; ?>" <?php echo $selectedCalificacion === $i ? 'selected' : ''; ?>><?php echo $i; ?>
       </option>
       <?php endfor;?>
     </select>

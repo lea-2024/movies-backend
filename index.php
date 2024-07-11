@@ -104,7 +104,9 @@ $nameAutocomplete = json_encode($peliculasByName);
         </li>
         <?php endif;?>
 
-
+        <!-- <li class="header_items">
+            <a href="./client/page/register.php" class="header_link">Registrarse</a>
+          </li> -->
 
       </ul>
     </nav>
@@ -174,26 +176,32 @@ if (isset($_GET['search'])) {
     $name = $_GET['search'];
     $resultados = searchMoviesByName($name);
 
-            if (!empty($resultados)) {
-              foreach ($resultados as $pelicula) {
-                echo '<div class="trend_container">';
-                echo '<a href="#" class="trend_container_link">';
-                echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
-                echo '<div class="trend_container-hover">';
-                echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
-                echo htmlspecialchars($pelicula['nombre']);
-                echo '</h4>';
-                echo '<p class="trend_review-hover">⭐⭐⭐</p>';
-                echo '<img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-              }
+    if (!empty($resultados)) {
+        foreach ($resultados as $pelicula) {
+            if (filter_var($pelicula['imagen'], FILTER_VALIDATE_URL)) {
+                $pelicula['imagen'] = $pelicula['imagen'];
             } else {
-              echo "No se encontraron películas.";
+                $pelicula['imagen'] = 'client/asset/uploads/' . htmlspecialchars($pelicula['imagen']);
             }
-          }
-          ?>
+            ;
+            echo '<div class="trend_container">';
+            echo '<a href="./client/page/pelicula.php?id=' . $pelicula["id_pelicula"] . '"' . 'class="trend_container_link">';
+            echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image" />';
+            echo '<div class="trend_container-hover">';
+            echo '<h4 class="trend_title-hover" title="' . htmlspecialchars($pelicula['nombre']) . '">';
+            echo htmlspecialchars($pelicula['nombre']);
+            echo '</h4>';
+            echo '<p class="trend_review-hover">'.convert_ratings(htmlspecialchars($pelicula['calificacion'])).'</p>';
+            echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '" class="trend_image-hover" />';
+            echo '</div>';
+            echo '</a>';
+            echo '</div>';
+        }
+    } else {
+        echo "No se encontraron películas.";
+    }
+}
+?>
         </div>
       </div>
       <div class="mb-5"></div>
@@ -204,21 +212,21 @@ if (isset($_GET['search'])) {
 
     <!-- Sección de películas Tendencias-->
     <?php
-      $peliculasPorPagina = 10;
-      $totalPeliculas = count($tendencias);
+$peliculasPorPagina = 10;
+$totalPeliculas = count($tendencias);
 
-      $totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
+$totalPaginas = ceil($totalPeliculas / $peliculasPorPagina);
 
-      // Obtener la página actual de la solicitud, si no está presente, establecer en 1
-      $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+// Obtener la página actual de la solicitud, si no está presente, establecer en 1
+$paginaActual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 
-      // Calcular el índice inicial y final para las películas de la página actual
-      $indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
-      $indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
+// Calcular el índice inicial y final para las películas de la página actual
+$indiceInicial = ($paginaActual - 1) * $peliculasPorPagina;
+$indiceFinal = min($indiceInicial + $peliculasPorPagina, $totalPeliculas);
 
-      // Obtener las películas para la página actual
-      $peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
-    ?>
+// Obtener las películas para la página actual
+$peliculasPagina = array_slice($tendencias, $indiceInicial, $peliculasPorPagina);
+?>
     <!-- Contenedor Tendencias -->
     <section class="container p-5 trends_container" id="trends">
       <div class="row">
@@ -232,20 +240,28 @@ if (isset($_GET['search'])) {
         <div class="col d-flex flex-wrap justify-content-center align-items-center column-gap-sm-3 gap-5 gap-lg-5">
 
           <!-- Tendencias -->
-          <?php foreach ($peliculasPagina as $registro) { ?>
+          <?php foreach ($peliculasPagina as $registro) {
+             if (filter_var($registro['imagen'], FILTER_VALIDATE_URL)) {
+              $registro['imagen'] = $registro['imagen'];
+              } else {
+                $registro['imagen'] = 'client/asset/uploads/' . htmlspecialchars($registro['imagen']);
+              }
+            ?>
+            
 
           <div class="trend_container">
             <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>" class="trend_container_link">
-              <img src="<?php echo $registro['imagen'] ?>" alt="The Beekeeper" class="trend_image" />
+              <img src="<?php echo $registro['imagen'] ?>" alt="<?php echo $registro['nombre'] ?>" class="trend_image" />
               <div class="trend_container-hover">
-                <h4 class="trend_title-hover" title="The Beekeeper"><?php echo $registro['nombre'] ?></h4>
+                <h4 class="trend_title-hover" title="<?php echo $registro['nombre'] ?>"><?php echo $registro['nombre'] ?></h4>
                 <p class="trend_review-hover">
                   <?php for ($i = 0; $i < $registro['calificacion']; $i = $i + 2) {
-                      echo '⭐';
-                    }
-                    ?>
+    echo '⭐';
+}
+    ?>
                 </p>
-                <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" />
+                <?php echo '<img src="' . htmlspecialchars($registro['imagen']) . '" alt="' . htmlspecialchars($registro['nombre']) . '" class="trend_image-hover" />';?>
+                <!-- <img src="./client/asset/images/film.ico" alt="icono pelicula" class="trend_image-hover" /> -->
               </div>
             </a>
           </div>
@@ -302,13 +318,20 @@ if (isset($_GET['search'])) {
               <i class="fa-solid fa-angle-right"></i>
             </button>
 
-            <?php foreach ($aclamadas  as $registro) { ?>
+            <?php foreach ($aclamadas as $registro) {
+               if (filter_var($registro['imagen'], FILTER_VALIDATE_URL)) {
+                $registro['imagen'] = $registro['imagen'];
+                } else {
+                  $registro['imagen'] = 'client/asset/uploads/' . htmlspecialchars($registro['imagen']);
+                }
+              ?>
             <div class="acclaimed_container">
               <a href="./client/page/pelicula.php?id=<?php echo $registro['id_pelicula'] ?>">
-                <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" />
+                <!-- <img src="<?php echo $registro['imagen'] ?>" alt="aclamada 1" class="acclaimed_image" /> -->
+                <?php echo '<img src="' . htmlspecialchars($registro['imagen']) . '" alt="' . htmlspecialchars($registro['nombre']) . '" class="acclaimed_image" />';?>
               </a>
             </div>
-            <?php } ?>
+            <?php }?>
 
           </section>
         </div>
@@ -317,7 +340,8 @@ if (isset($_GET['search'])) {
     </section>
     <!-- Fin peliculas aclamadas -->
   </main>
-  <!-- Fin contenido principal -->
+  
+<!-- Fin contenido principal -->
   <!-- Contenedor del modal footer-->
   <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -354,10 +378,11 @@ if (isset($_GET['search'])) {
     </div>
   </div>
   </div>
-  <!-- Footer - Links de navegación - Botón ir a top  -->
+
+  <!-- Footer - Links de navegación - Botón ir a top -->
   <footer class="container-fluid">
     <!-- links de navagación - footer -->
-    <div class="container-fluid py-3 text-center position-relative">
+    <div class="container-fluid py-5 text-center position-relative">
       <div class="row mb-2 mb-md-0">
         <div class="col-12">
           <nav class="footer_links d-flex justify-content-center">

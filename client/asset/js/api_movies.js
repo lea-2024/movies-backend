@@ -28,10 +28,6 @@ $(document).ready( function () {
     });
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/dev
 // Mosrar modal de confirmación al eliminar una película
 function confirmDelete(nombre, id)
 {
@@ -52,7 +48,4 @@ function confirmDelete(nombre, id)
       }
   });
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/dev

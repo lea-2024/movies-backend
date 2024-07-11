@@ -8,13 +8,6 @@ session_start();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $registro = searchMoviesById($id);
-
-    $srcImagen = $registro['imagen'];
-    $inicio = '../../asset/uploads/';
-
-    if (substr($srcImagen, 0, strlen($inicio)) === $inicio) {
-        $srcImagen = '../' . substr($srcImagen, 6);
-    }
 }
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
@@ -110,14 +103,12 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Contenido principal del sitio -->
   <main class="container">
 
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center container_movie_detail">
 
-
-
-      <div class="card" style="max-width: 70%; margin-top: 18vh">
+      <div class="card" style="max-width: 70%;">
         <div class="row g-1">
           <div class="col-md-4">
-            <img src="<?php echo $registro['imagen'] ?>" class="img-fluid rounded-start" alt="...">
+            <img src="<?php echo filter_var($registro['imagen'],FILTER_VALIDATE_URL) ? $registro['imagen'] : '../asset/uploads/'.htmlspecialchars($registro['imagen']) ?>" class="img-fluid h-100 rounded-start" alt="..." style="object-fit: cover;">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -133,14 +124,49 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
           </div>
         </div>
       </div>
-
     </div>
-
-
   </main>
 
-  <!-- Footer - Links de navegación - Botón ir a top  -->
-  <footer class="container-fluid fixed-bottom">
+<!-- Fin contenido principal -->
+  <!-- Contenedor del modal footer-->
+  <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- El contenido del modal se cargará aquí -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Estos son los términos y condiciones de uso de nuestra página web. Al usar este sitio, aceptas cumplir con
+            todos los términos aquí descritos.
+          </p>
+          <p>
+            1. Uso del sitio: ...
+          </p>
+          <p>
+            2. Propiedad intelectual: ...
+          </p>
+          <!-- Agrega más contenido según sea necesario -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Footer - Links de navegación - Botón ir a top -->
+  <footer class="container-fluid">
     <!-- links de navagación - footer -->
     <div class="container-fluid py-5 text-center position-relative">
       <div class="row mb-2 mb-md-0">
@@ -149,16 +175,16 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <ul
               class="footer_list_links d-flex row-gap-3 w-100 flex-md-row flex-column justify-content-md-evenly align-items-center p-0">
               <li class="footer_item">
-                <a href="#" class="footer_link">Términos y condiciones</a>
+                <a href="#" class="footer_link" data-content="terms" data-url="">Términos y condiciones</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Preguntas frecuentes</a>
+                <a href="#" class="footer_link" data-content="pregunt" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Preguntas frecuentes</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Ayuda</a>
+                <a href="#" class="footer_link" data-content="ayuda" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Ayuda</a>
               </li>
               <li class="footer_item">
-                <a href="#" class="footer_link">Contacto</a>
+                <a href="#" class="footer_link" data-content="detailsContact" data-url="<?php echo $uri_actual === '/index.php' ? '/' : '' ?>">Contacto</a>
               </li>
             </ul>
           </nav>
